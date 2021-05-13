@@ -8,6 +8,7 @@
     
 </head>
 <body>
+<div id="container"></div>
 <button id="north" onclick="move(-1,0)" disabled> North </button>
 <button id="east" onclick="move(0,1)" disabled> East </button>
 <button id="south" onclick="move(1,0)" disabled> South </button>

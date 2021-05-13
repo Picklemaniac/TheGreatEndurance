@@ -2,11 +2,11 @@
 let map1 = new Map();
 let player1 = new Player(2, 3); //I should be able to move north and south from here
 
-function Map (){
+function Map() {
     //0 = wall
     //1 = movable
     this.sizeX = 8;
-    this.sizeY = 5;
+    this.sizeY = 7;
     this.grid = [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 1, 1, 1, 1, 0],
@@ -18,13 +18,41 @@ function Map (){
     ];
 }
 
-function Player (ylocation, xlocation) {
+function Player(ylocation, xlocation) {
     this.ylocation = ylocation;
     this.xlocation = xlocation
 }
 
 function test() {
     //Initialize map  & player
+    // (B) CREATE HTML TABLE STRING
+    var perrow = 8, // 2 CELLS PER ROW
+        html = "<table>";
+
+    // LOOP THROUGH ARRAY AND ADD TABLE CELLS
+    for (let y = 0; y < map1.sizeY; y++) {
+        html += `<tr>`;
+        for (let x = 0; x < map1.sizeX; x++) {
+            console.log('y =' + map1.grid[y][y] + 'x =' + map1.grid[y][x] + '');
+            // "NORMAL" CELL
+            if (map1.grid[y][y] == player1.sizeY && map1.grid[y][x] == player1.sizeX) {
+                html += `<td style='background-color: orange'> p </td>`;
+            } else {
+                if (map1.grid[y][x] == 0) {
+                    html += `<td style='background-color: red'>   ` + map1.grid[y][x] + `</td>`;
+                } else if (map1.grid[y][x] == 1) {
+                    html += `<td style='background-color: green'>   ` + map1.grid[y][x] + `</td>`;
+                }
+            }
+
+        }
+    }
+    html += "</table>";
+
+    // (C) ATTACH HTML TO CONTAINER
+    document.getElementById("container").innerHTML = html;
+
+
     document.getElementById('east').disabled = true;
     document.getElementById('north').disabled = true;
     document.getElementById('west').disabled = true;
@@ -60,7 +88,7 @@ function move(y, x) {
 
 function neighbors(arr, m, n) {
     // define what a neighbor is
-    let v = [[0, 1],[1, 0],[0, -1],[-1, 0]]
+    let v = [[0, 1], [1, 0], [0, -1], [-1, 0]]
     // filter edges & map
     return v.filter(([h, j]) => h + m >= 0 && h + m < arr.length && j + n >= 0 && j + n < arr[0].length)
         .map(([h, j]) => arr[h + m][j + n])
