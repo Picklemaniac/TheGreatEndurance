@@ -33,18 +33,16 @@ function test() {
     for (let y = 0; y < map1.sizeY; y++) {
         html += `<tr>`;
         for (let x = 0; x < map1.sizeX; x++) {
-            console.log('y =' + map1.grid[y][y] + 'x =' + map1.grid[y][x] + '');
-            // "NORMAL" CELL
-            if (map1.grid[y][y] == player1.sizeY && map1.grid[y][x] == player1.sizeX) {
-                html += `<td style='background-color: orange'> p </td>`;
-            } else {
+            if (y === player1.ylocation && x === player1.xlocation) {
+                html += `<td style='background-color: orange'>p</td>`;
+            }
+            else {
                 if (map1.grid[y][x] == 0) {
                     html += `<td style='background-color: red'>   ` + map1.grid[y][x] + `</td>`;
                 } else if (map1.grid[y][x] == 1) {
                     html += `<td style='background-color: green'>   ` + map1.grid[y][x] + `</td>`;
                 }
             }
-
         }
     }
     html += "</table>";
