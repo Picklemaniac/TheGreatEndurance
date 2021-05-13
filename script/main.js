@@ -32,22 +32,23 @@ function test() {
 
     let surrounding = neighbors(map1.grid, player1.ylocation, player1.xlocation);
     console.log(surrounding);
+    console.log(player1.ylocation + '/' + player1.xlocation);
 
     if (surrounding[0] == 1) {
         console.log("Go East");
         document.getElementById('east').disabled = false;
     }
     if (surrounding[1] == 1) {
-        console.log("Go North");
-        document.getElementById('north').disabled = false;
+        console.log("Go South");
+        document.getElementById('south').disabled = false;
     }
     if (surrounding[2] == 1) {
         console.log("Go West");
         document.getElementById('west').disabled = false;
     }
     if (surrounding[3] == 1) {
-        console.log("Go South");
-        document.getElementById('south').disabled = false;
+        console.log("Go North");
+        document.getElementById('north').disabled = false;
     }
 }
 
@@ -55,8 +56,6 @@ function move(y, x) {
     player1.ylocation += y;
     player1.xlocation += x;
     test();
-    console.log(player1.ylocation + '/' + player1.xlocation);
-    
 }
 
 function neighbors(arr, m, n) {
@@ -65,7 +64,6 @@ function neighbors(arr, m, n) {
     // filter edges & map
     return v.filter(([h, j]) => h + m >= 0 && h + m < arr.length && j + n >= 0 && j + n < arr[0].length)
         .map(([h, j]) => arr[h + m][j + n])
-        
 }
 
 test();
