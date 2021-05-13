@@ -1,25 +1,231 @@
 html {
-
+    background: black;
+    color: white;
+    font-family: 'ancient-modern-tales', serif;
+    text-align: center;
+    height: 100%;
 }
-
+.mainBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 25px;
+    margin: 4px 2px;
+    font-family: 'ancient-modern-tales', serif;
+}
+.mainBtnStyling:hover {
+    background-color: #262626;
+}
+.bigBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    width: 50%;
+    height: 80%;
+    text-align: center;
+    font-size: 25px;
+    margin: 4px 2px;
+    font-family: 'ancient-modern-tales', serif;
+}
+.bigBtnStyling:hover {
+    background-color: #262626;
+}
+.navBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    width: 50%;
+    height: 20%;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    font-family: 'ancient-modern-tales', serif;
+}
+.navBtnStyling:hover {
+    background-color: #262626;
+}
+.actionBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    text-align: center;
+    width: 10.0em;
+    height: 3.0em;
+    font-size: 15px;
+    margin:0 0.3em 0.3em 0;
+    font-family: 'ancient-modern-tales', serif;
+}
+.actionBtnStyling:hover {
+    background-color: #262626;
+}
+@font-face{
+    font-family: 'ancient-modern-tales';
+    src: url('../media/font/ancient-modern-tales.ttf');
+}
+.currentTextContainer {
+    margin: 2%;
+}
+.currentText {
+    text-align: left;
+    font-size: 25px;
+}
+.logoText {
+    font-size: 80px;
+    grid-area: logoText;
+}
+.historyText {
+    color: #7F7F7F;
+    text-align: left;
+    margin-left: 2%;
+    font-size: 20px;
+}
+hr {
+    width: 100%;
+    color: #303030;
+}
+/* grid and containers */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2.5fr 1fr;
     grid-template-rows: 1fr;
-    gap: 0px 2%;
-    grid-template-areas:
-    "left main right";
+    gap: 0px 60px;
+    grid-template-areas:"leftMenu gameBody rightMenu";
+    margin: 3%;
 }
-.main {
-    grid-area: main;
-    background: black;
-
+.gameBody {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 2fr 1.3fr;
+    gap: 15px 0px;
+    grid-template-areas:"logoText""history""current""actions";
+    grid-area: gameBody;
+    height: 75%;
 }
-.left {
-    grid-area: left;
-
+.history {
+    grid-area: history;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    overflow:auto;
+    height: 100%;
 }
-.right {
-    grid-area: right;
-
+.current {
+    grid-area: current;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
 }
+.actions {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 1px;
+    grid-template-areas:"currentActions Combat Navigation";
+    grid-area: actions;
+    text-align: center;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+}
+.currentActions {
+    grid-area: currentActions;
+    margin: auto;
+}
+.Combat {
+    text-align: center;
+    grid-area: Combat;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+.Navigation {
+    grid-area: Navigation;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+.leftMenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.5fr 1fr 1fr 1fr;
+    gap: 20px 0px;
+    grid-template-areas:"basicActions""Crafting""Inventory""Misc";
+    grid-area: 1 / 1 / 2 / 2;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    height: 75%;
+}
+.basicActions {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.5fr 1.5fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:"food""drink""rest";
+    grid-area: basicActions;
+}
+.food {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 5px;
+    grid-template-areas:". .";
+    grid-area: food;
+    margin: 5%;
+}
+.drink {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 5px;
+    grid-template-areas:". .";
+    grid-area: drink;
+    margin: 5%;
+}
+.rest {
+    grid-area: rest;
+}
+.Crafting {
+    grid-area: Crafting;
+}
+.Inventory {
+    grid-area: Inventory;
+}
+.Misc {
+    grid-area: Misc;
+}
+.rightMenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 1.5fr;
+    gap: 0px 0px;
+    grid-template-areas:"charBasic""charInfo""rightButtons";
+    grid-area: rightMenu;
+    text-align: center;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    height: 75%;
+}
+.charBasic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:". .";
+    grid-area: charBasic;
+}
+.charInfo {
+    grid-area: charInfo;
+}
+.rightButtons {
+    grid-area: rightButtons;
+}
+/* end grid and containers */
