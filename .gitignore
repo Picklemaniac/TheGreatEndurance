@@ -3,3 +3,4 @@
 /.idea/TheGreatEndurance.iml
 /.idea/vcs.xml
 /node_modules/
+package-lock.json
