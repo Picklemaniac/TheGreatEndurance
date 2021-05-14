@@ -80,6 +80,7 @@ html {
 }
 .currentTextContainer {
     margin: 2%;
+    font-size: 40px;
 }
 .currentText {
     text-align: left;
@@ -254,3 +255,4 @@ hr {
     margin: 30px;
 }
 /* end grid and containers */
+

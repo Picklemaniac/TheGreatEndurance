@@ -2,6 +2,8 @@
 let player1 = new Player(2, 3); //I should be able to move north and south from here
 let map1 = new Map();
 
+
+
 function move(y, x) {
     player1.ylocation += y;
     player1.xlocation += x;
@@ -21,18 +23,18 @@ function move(y, x) {
             break;
     }
 }
+
+document.getElementById("north").addEventListener("click", function () {
+    move(-1,0);
+});
+document.getElementById("east").addEventListener("click", function () {
+    move(0,1);
+});
+document.getElementById("south").addEventListener("click", function () {
+    move(1,0);
+});
+document.getElementById("west").addEventListener("click", function () {
+    move(0,-1);
+});
+
 player1.controls();
-
-
-
-
-
-
-
-
-
-
-
-
-
-

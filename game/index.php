@@ -21,9 +21,12 @@
             </div>
             <div class="current">
                <div class="currentTextContainer">
-                   <p class="currentText">You’re in a dark room. The mossy stone walls around you are damp with some kind of fungus. Mushrooms are growing on the ceiling.</p>
-                   <p class="currentText">Upon inspecting the room you notice a strange locked box in the corner. A long dead corpse appears to be guarding it.</p>
-                   <p class="currentText">There’s a corridor going left, and a corridor going right. There also seems to be a strange hole in the wall to the front, but you’re not sure if it would lead anywhere...</p>
+                   <div id="container">
+
+                   </div>
+<!--                   <p class="currentText">You’re in a dark room. The mossy stone walls around you are damp with some kind of fungus. Mushrooms are growing on the ceiling.</p>-->
+<!--                   <p class="currentText">Upon inspecting the room you notice a strange locked box in the corner. A long dead corpse appears to be guarding it.</p>-->
+<!--                   <p class="currentText">There’s a corridor going left, and a corridor going right. There also seems to be a strange hole in the wall to the front, but you’re not sure if it would lead anywhere...</p>-->
                </div>
             </div>
             <div class="actions">
@@ -42,10 +45,10 @@
                     <button class="navBtnStyling">Defend</button><br>
                 </div>
                 <div class="Navigation">
-                    <button class="navBtnStyling">North</button><br>
-                    <button class="navBtnStyling">East</button><br>
-                    <button class="navBtnStyling">South</button><br>
-                    <button class="navBtnStyling">West</button><br>
+                    <button id="north" class="navBtnStyling">North</button><br>
+                    <button id="east" class="navBtnStyling">East</button><br>
+                    <button id="south" class="navBtnStyling">South</button><br>
+                    <button id="west" class="navBtnStyling">West</button><br>
                 </div>
             </div>
         </div>
@@ -113,5 +116,8 @@
             </div>
         </div>
     </div>
+    <script src="..\script\game_objects\map.js"></script>
+    <script src="..\script\game_objects\player.js"></script>
+    <script src="..\script\main.js"></script>
 </body>
 </html>
