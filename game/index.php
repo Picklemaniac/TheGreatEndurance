@@ -36,7 +36,6 @@
                     <button class="actionBtnStyling">Inspect treasure chest</button>
                     <button class="actionBtnStyling">Inspect corpse</button>
                     <button class="actionBtnStyling">Open treasure chest</button>
-
                 </div>
                 <div class="Combat">
                     <button class="navBtnStyling">Attack</button><br>
@@ -75,7 +74,7 @@
                     <button class="mainBtnStyling">Drink</button>
                 </div>
                 <div class="rest">
-                    <button class="mainBtnStyling">Rest</button>
+                    <button class="mainBtnStyling" style="width: 88%">Rest</button>
                 </div>
                 <hr>
             </div>
@@ -94,8 +93,24 @@
                 <div>[face]</div>
                 <div>[charactername]</div>
             </div>
-            <div class="charInfo"></div>
-            <div class="rightButtons"></div>
+            <div class="charInfo">
+                <p>
+                    Health: <span class="good">15/24</span> <br>
+                    Stamina: <span class="bad">3/45</span> <br>
+                    General Mood: <span class="bad">Terrible</span>
+                </p>
+                <p>
+                    Hunger: <span class="bad">Malnourished</span> <br>
+                    Thirst: <span class="bad">Parched</span> <br>
+                    Rest: <span class="bad">Sleep Deprived</span>
+                </p>
+            </div>
+            <div class="rightButtons">
+                <button class="menuBtnStyling">Skills</button> <br>
+                <button class="menuBtnStyling">Stats / Mood</button> <br>
+                <button class="menuBtnStyling">Character</button> <br>
+                <button class="menuBtnStyling">Home / Menu</button> <br>
+            </div>
         </div>
     </div>
 </body>
