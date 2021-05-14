@@ -67,18 +67,27 @@ class Map {
             ['Stone pole', 'Iron pole', 'Cruel judgement'],
         ];
 
-        let items = [
+        let foods = [
             ['shit', 'bigger shit', 'Legendary shit'],
+            ['Cookie', 'Big Cookie', 'American Cookie'],
+            ['Rice bowl', 'Big Rice bowl', ' Giant Rice bowl'],
+            ['Bread slice', 'Half bread', 'Full bread'],
+        ];
+
+        let drinks = [
+            ['water', 'clean water', 'expenisve water'],
             ['Health potion', 'Health potion+', 'Healthpotion++'],
             ['Mana potion', 'Mana potion+', 'Mana potion++'],
-            ['Bread slice', 'Half bread', 'Full bread'],
+            ['Sugary Drink', 'Half bread', 'Full bread'],
         ];
 
         switch (itemKind) {
             case 0:
                 return weapons[itemKindSub][itemRarity];
             case 1:
-                return items[itemKindSub][itemRarity];
+                return foods[itemKindSub][itemRarity];
+            case 2:
+                return drinks[itemKindSub][itemRarity];
         }
 
     }

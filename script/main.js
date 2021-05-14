@@ -1,7 +1,7 @@
 
 let player1 = new Player(2, 3); //I should be able to move north and south from here
 let map1 = new Map();
-
+let inventory1 = new Inventory();
 
 
 function move(y, x) {
@@ -16,7 +16,9 @@ function move(y, x) {
                 let itemKind = Math.floor(Math.random() * 2);
                 let itemKindSub = Math.floor(Math.random() * 4);
                 let itemRarity = Math.floor(Math.random() * 3);
-                document.getElementById("inventory").value += map1.ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
+                let item = map1.ItemPool(itemKind, itemKindSub, itemRarity);
+                inventory1.addItem(itemKind, item);
+                //document.getElementById("inventory").value += map1.ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }
 

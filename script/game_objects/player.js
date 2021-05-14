@@ -40,3 +40,34 @@ class Player {
         }
     }
 }
+
+class Inventory {
+    constructor() {
+        this.Foods = [];
+        this.Drinks = [];
+        this.Weapons = [];
+    }
+
+    addItem(itemKind, item) {
+        switch (itemKind) {
+            case 0:
+                this.Weapons.push(item);
+                console.log('het item' + item + ' is toegoevoegd')
+                console.log('het soort item is ' + itemKind + ' is toegoevoegd')
+                console.log('dit is nu de weapons inventory:' + this.Weapons + '')
+                break;
+            case 1:
+                this.Foods.push(item);
+                console.log('het item' + item + ' is toegoevoegd')
+                console.log('het soort item is ' + itemKind + ' is toegoevoegd')
+                console.log('dit is nu de foods inventory:' + this.Foods + '')
+                break;
+            case 2:
+                this.Drinks.push(item);
+                console.log('het item' + item + ' is toegoevoegd')
+                console.log('het soort item is ' + itemKind + ' is toegoevoegd')
+                console.log('dit is nu de drinks inventory:' + this.Drinks + '')
+                break;
+        }
+    }
+}
