@@ -1,6 +1,7 @@
 
 let map1 = new Map();
 let player1 = new Player(2, 3); //I should be able to move north and south from here
+roomshift();
 
 function Map() {
     //0 = wall
@@ -16,11 +17,52 @@ function Map() {
         [0, 1, 1, 1, 1, 1, 1, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
     ];
+
+}
+
+function roomshift() {
+    for (let y = 0; y < map1.sizeY; y++) {
+        for (let x = 0; x < map1.sizeX; x++) {
+            if (map1.grid[y][x] == 1) {
+                let dice = Math.floor(Math.random() * 100) + 1;
+                if (dice > 20 && dice < 40) {
+                    map1.grid[y][x] = 2;
+                }
+
+            }
+        }
+    }
+    map1.grid[player1.ylocation][player1.xlocation] = 1;
 }
 
 function Player(ylocation, xlocation) {
     this.ylocation = ylocation;
-    this.xlocation = xlocation
+    this.xlocation = xlocation;
+    let inventory;
+}
+
+function ItemPool(itemKind, itemKindSub, itemRarity) {
+    let weapons = [
+        ['Stone blade', 'Iron Blade', 'Cruel Edge'],
+        ['Stone axe', 'Iron axe', 'Cruel Brute'],
+        ['Stone gauntlets', 'Iron gauntlets', 'Cruel hands'],
+        ['Stone pole', 'Iron pole', 'Cruel judgement'],
+    ];
+
+    let items = [
+        ['shit', 'bigger shit', 'Legendary shit'],
+        ['Health potion', 'Health potion+', 'Healthpotion++'],
+        ['Mana potion', 'Mana potion+', 'Mana potion++'],
+        ['Bread slice', 'Half bread', 'Full bread'],
+    ];
+
+    switch (itemKind) {
+        case 0:
+            return weapons[itemKindSub][itemRarity];
+        case 1:
+            return items[itemKindSub][itemRarity];
+    }
+    
 }
 
 function test() {
@@ -41,6 +83,10 @@ function test() {
                     html += `<td style='background-color: red'>   ` + map1.grid[y][x] + `</td>`;
                 } else if (map1.grid[y][x] == 1) {
                     html += `<td style='background-color: green'>   ` + map1.grid[y][x] + `</td>`;
+                } else if (map1.grid[y][x] == 2) {
+                    html += `<td style='background-color: brown'> c </td>`;
+                } else {
+                    html += `<td>   ` + map1.grid[y][x] + `</td>`;
                 }
             }
         }
@@ -60,22 +106,37 @@ function test() {
     console.log(surrounding);
     console.log(player1.ylocation + '/' + player1.xlocation);
 
-    if (surrounding[0] == 1) {
+    if (surrounding[0] > 0) {
         console.log("Go East");
         document.getElementById('east').disabled = false;
     }
-    if (surrounding[1] == 1) {
+    if (surrounding[1] > 0) {
         console.log("Go South");
         document.getElementById('south').disabled = false;
     }
-    if (surrounding[2] == 1) {
+    if (surrounding[2] > 0) {
         console.log("Go West");
         document.getElementById('west').disabled = false;
     }
-    if (surrounding[3] == 1) {
+    if (surrounding[3] > 0) {
         console.log("Go North");
         document.getElementById('north').disabled = false;
     }
+
+    switch (map1.grid[player1.ylocation][player1.xlocation]) {
+        case 2:
+            if (confirm("Do you want this chest?") == true) {
+                let itemKind = Math.floor(Math.random() * 2);
+                let itemKindSub = Math.floor(Math.random() * 4);
+                let itemRarity = Math.floor(Math.random() * 3);
+                document.getElementById("inventory").value += ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
+                map1.grid[player1.ylocation][player1.xlocation] = 1;
+            }
+
+            break;
+    }
+
+
 }
 
 function move(y, x) {
