@@ -21,6 +21,7 @@
 </select>
 <script src="..\script\game_objects\map.js"></script>
 <script src="..\script\game_objects\player.js"></script>
+<script src="..\script\game_objects\item.js"></script>
 <script src="..\script\main.js"></script>
 </body>
 </html>

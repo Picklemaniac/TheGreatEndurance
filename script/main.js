@@ -14,10 +14,8 @@ function move(y, x) {
         case 2:
             if (confirm("Do you want this chest?") == true) {
                 let itemKind = Math.floor(Math.random() * 2);
-                let itemKindSub = Math.floor(Math.random() * 4);
-                let itemRarity = Math.floor(Math.random() * 3);
-                let item = map1.ItemPool(itemKind, itemKindSub, itemRarity);
-                inventory1.addItem(itemKind, item);
+                let item = ItemPool(itemKind);
+                inventory1.addItem(itemKind,item);
                 //document.getElementById("inventory").value += map1.ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }

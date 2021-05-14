@@ -52,21 +52,21 @@ class Inventory {
         switch (itemKind) {
             case 0:
                 this.Weapons.push(item);
-                console.log('het item' + item + ' is toegoevoegd')
+                console.log('het item' + item.name + ' is toegoevoegd')
                 console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de weapons inventory:' + this.Weapons + '')
+                console.log('dit is nu de weapons inventory:' + JSON.stringify(this.Weapons) + '')
                 break;
             case 1:
                 this.Foods.push(item);
-                console.log('het item' + item + ' is toegoevoegd')
+                console.log('het item' + item.name + ' is toegoevoegd')
                 console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de foods inventory:' + this.Foods + '')
+                console.log('dit is nu de foods inventory:' + JSON.stringify(this.Foods)  + '')
                 break;
             case 2:
                 this.Drinks.push(item);
-                console.log('het item' + item + ' is toegoevoegd')
+                console.log('het item' + item.name + ' is toegoevoegd')
                 console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de drinks inventory:' + this.Drinks + '')
+                console.log('dit is nu de drinks inventory:' + JSON.stringify(this.Drinks)  + '')
                 break;
         }
     }
