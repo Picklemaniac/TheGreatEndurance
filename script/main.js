@@ -16,7 +16,7 @@ function move(y, x) {
                 let itemKind = Math.floor(Math.random() * 2);
                 let item = ItemPool(itemKind);
                 inventory1.addItem(itemKind,item);
-                //document.getElementById("inventory").value += map1.ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
+                // document.getElementById("inventory").value += map1.ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }
 

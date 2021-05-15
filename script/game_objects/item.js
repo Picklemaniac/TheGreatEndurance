@@ -80,15 +80,12 @@ giantSugaryDrink = new Drink('Giant sugary drink', '', 2);
 
 //Making the arrays for each kind of item
 
-
-
 function ItemPool(itemKind) {
-
-    let itemRarity = Math.floor(Math.random() * 2);
+    let itemRarity;
     let types;
 
     let weapons = [
-        [stoneBlade, ironBlade, cruelEdge]
+        [stoneBlade, ironBlade, cruelEdge],
         [stoneAxe, ironAxe, cruelBrute],
         [stoneGauntlets, ironGauntlets, cruelHands],
         [stonePole, ironPole, cruelJudgement],
@@ -110,16 +107,16 @@ function ItemPool(itemKind) {
 
     switch (itemKind) {
         case 0:
-            console.log(''+ weapons.length +'');
-            types = weapons.length - 1
+            types = weapons.length - 1;
+            itemRarity = Math.floor(Math.random() * weapons[types].length);
             return weapons[Math.floor(Math.random() * types)][itemRarity];
         case 1:
-            console.log(''+ foods.length +'');
-            types = foods.length - 1
+            types = weapons.length - 1;
+            itemRarity = Math.floor(Math.random() * weapons[types].length);
             return foods[Math.floor(Math.random() * types)][itemRarity];
         case 2:
-            console.log(''+ drinks.length +'');
-            types = drinks.length - 1
+            types = weapons.length - 1;
+            itemRarity = Math.floor(Math.random() * weapons[types].length);
             return drinks[Math.floor(Math.random() * types)][itemRarity];
     }
 
