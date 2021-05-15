@@ -112,11 +112,11 @@ function ItemPool(itemKind) {
             return weapons[Math.floor(Math.random() * types)][itemRarity];
         case 1:
             types = weapons.length - 1;
-            itemRarity = Math.floor(Math.random() * weapons[types].length);
+            itemRarity = Math.floor(Math.random() * foods[types].length);
             return foods[Math.floor(Math.random() * types)][itemRarity];
         case 2:
             types = weapons.length - 1;
-            itemRarity = Math.floor(Math.random() * weapons[types].length);
+            itemRarity = Math.floor(Math.random() * drinks[types].length);
             return drinks[Math.floor(Math.random() * types)][itemRarity];
     }
 
