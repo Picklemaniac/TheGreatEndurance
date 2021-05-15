@@ -54,11 +54,11 @@
             <hr>
         </div>
         <div class="menuNavLeft">
-            <button class="bigBtnStyling">Crafting</button>
+            <button onclick="openCrafting()" class="bigBtnStyling">Crafting</button>
             <br>
-            <button class="bigBtnStyling" onclick="openInventory()">Inventory</button>
+            <button onclick="openInventory()" class="bigBtnStyling" >Inventory</button>
             <br>
-            <button class="bigBtnStyling">Misc</button>
+            <button onclick="openMisc()" class="bigBtnStyling">Misc</button>
         </div>
     </div>
     <div class="rightMenu">
@@ -83,30 +83,30 @@
             <hr>
         </div>
         <div class="menuNavRight">
-            <button class="mediumBtnStyling">Skills</button>
+            <button onclick="openSkills()" class="mediumBtnStyling">Skills</button>
             <br>
-            <button class="mediumBtnStyling">Stats / Mood</button>
+            <button onclick="openStatsMood()" class="mediumBtnStyling">Stats / Mood</button>
             <br>
-            <button class="mediumBtnStyling">Character</button>
+            <button onclick="openCharacterMenu()" class="mediumBtnStyling">Character</button>
             <br>
-            <button class="mediumBtnStyling">Home / Menu</button>
+            <button onclick="openMainMenu()" class="mediumBtnStyling">Home / Menu</button>
         </div>
     </div>
     <div class="gameBody">
         <div class="logoText">The Great Endurance</div>
-        <div class="historyText">
+        <div id="historyText" class="historyText">
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
         </div>
-        <div class="currentEvents">
+        <div id="currentEvents" class="currentEvents">
             <p class="currentText">You’re in a dark room. The mossy stone walls around you are damp with some kind of fungus. Mushrooms are growing on the ceiling.</p>
             <p class="currentText">Upon inspecting the room you notice a strange locked box in the corner. A long dead corpse appears to be guarding it.</p>
             <p class="currentText">There’s a corridor going left, and a corridor going right. There also seems to be a strange hole in the wall to the front, but you’re not sure if it would lead anywhere...</p>
         </div>
-        <div class="currenActions">
+        <div id="currentActions" class="currenActions">
             <div class="currentActionButtons">
                 <div class="actionMargin">
                     <button class="navBtnStyling">Attack</button>
@@ -133,5 +133,8 @@
         </div>
     </div>
 </div>
+
 </body>
+
+<script src="..\script\menu_navigation.js"></script>
 </html>
