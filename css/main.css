@@ -1,258 +1,338 @@
-html {
-    background: black;
-    color: white;
-    font-family: 'ancient-modern-tales', serif;
-    text-align: center;
-    height: 100%;
-}
-.mainBtnStyling {
-    background-color: #303030;
-    border: solid #939393 1px;
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    font-size: 25px;
-    margin: 4px 2px;
-    font-family: 'ancient-modern-tales', serif;
-}
-.mainBtnStyling:hover {
-    background-color: #262626;
-}
-.bigBtnStyling {
-    background-color: #303030;
-    border: solid #939393 1px;
-    color: white;
-    width: 50%;
-    height: 80%;
-    text-align: center;
-    font-size: 25px;
-    margin: 4px 2px;
-    font-family: 'ancient-modern-tales', serif;
-}
-.bigBtnStyling:hover {
-    background-color: #262626;
-}
-.navBtnStyling {
-    background-color: #303030;
-    border: solid #939393 1px;
-    color: white;
-    width: 50%;
-    height: 20%;
-    text-align: center;
-    font-size: 15px;
-    margin: 4px 2px;
-    font-family: 'ancient-modern-tales', serif;
-}
-.navBtnStyling:hover {
-    background-color: #262626;
-}
-.actionBtnStyling {
-    background-color: #303030;
-    border: solid #939393 1px;
-    color: white;
-    text-align: center;
-    width: 10.0em;
-    height: 3.0em;
-    font-size: 15px;
-    margin:0 0.3em 0.3em 0;
-    font-family: 'ancient-modern-tales', serif;
-}
-.actionBtnStyling:hover {
-    background-color: #262626;
-}
-.menuBtnStyling {
-    background-color: #303030;
-    border: solid #939393 1px;
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 3.0em;
-    font-size: 25px;
-    margin:0 0.3em 0.3em 0;
-    font-family: 'ancient-modern-tales', serif;
-}
-.menuBtnStyling:hover {
-    background-color: #262626;
-}
 @font-face{
     font-family: 'ancient-modern-tales';
     src: url('../media/font/ancient-modern-tales.ttf');
 }
-.currentTextContainer {
-    margin: 2%;
-    font-size: 40px;
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
 }
+
+::-webkit-scrollbar
+{
+    width: 1vh;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+/* button stuff */
+
+.navBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    font-family: 'ancient-modern-tales', serif;
+    font-size: 1.2vw;
+    margin: 0.5vw;
+}
+.navBtnStyling:hover {
+    background-color: #262626;
+}
+.navBtnStyling:disabled {
+    background-color: #262626;
+}
+
+.foodBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    font-family: 'ancient-modern-tales', serif;
+    font-size: 1.5vw;
+    margin: 0.5vw;
+    width: 100%;
+}
+
+.foodBtnStyling:hover {
+    background-color: #262626;
+}
+.foodBtnStyling:disabled {
+    background-color: #262626;
+}
+
+.bigBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    font-family: 'ancient-modern-tales', serif;
+    font-size: 1.8vw;
+    height: 7vw;
+    width: 10vw;
+    margin-top: 2vw;
+}
+
+.bigBtnStyling:hover {
+    background-color: #262626;
+}
+.bigBtnStyling:disabled {
+    background-color: #262626;
+}
+
+.mediumBtnStyling {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    font-family: 'ancient-modern-tales', serif;
+    font-size: 1.2vw;
+    height: 3vw;
+    width: 10vw;
+    margin-top: 2vw;
+}
+
+.mediumBtnStyling:hover {
+    background-color: #262626;
+}
+.mediumBtnStyling:disabled {
+    background-color: #262626;
+}
+
+/* text stuff */
+
+.charNameText {
+    margin-left: 15%;
+    font-size: 1.5vw;
+    float: left;
+}
+
+.historyParagraph {
+    margin-left: 1vw;
+    font-size: 1.2vw;
+    color: #7F7F7F;
+}
+
 .currentText {
     text-align: left;
-    font-size: 25px;
+    margin-left: 1vw;
+    font-size: 1.2vw;
 }
-.logoText {
-    font-size: 80px;
-    grid-area: logoText;
-}
-.historyText {
-    color: #7F7F7F;
-    text-align: left;
-    margin-left: 2%;
-    font-size: 20px;
-}
+
+/* other */
+
 .bad {
     color: darkred;
 }
+
 .good {
     color: darkcyan;
 }
-hr {
-    width: 100%;
-    color: #303030;
+
+.charNameMargin {
+    margin: 2vw;
 }
-/* grid and containers */
+
+.profilePic {
+    float: left;
+    width: 30%;
+}
+
+.basicActionTable {
+    width: 95%;
+}
+
+
+hr {
+    border-color: #939393;
+    width: 100%;
+}
+
+/* Grid Stuff*/
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: black;
+    font-family: 'ancient-modern-tales', serif;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 .grid-container {
+    height: 100%;
+    width: 100%;
+    padding: 50px;
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;
     grid-template-rows: 1fr;
-    gap: 0px 60px;
-    grid-template-areas:"leftMenu gameBody rightMenu";
-    margin: 3%;
+    gap: 0% 4%;
+    grid-template-areas:
+    "leftMenu gameBody rightMenu";
 }
-.gameBody {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 1fr 2fr 1.3fr;
-    gap: 15px 0px;
-    grid-template-areas:"logoText""history""current""actions";
-    grid-area: gameBody;
-    height: 75%;
-}
-.history {
-    grid-area: history;
-    background: #262626;
-    border-color: #939393;
-    border-style: solid;
-    border-width: 2px;
-    overflow:auto;
-    height: 100%;
-}
-.current {
-    grid-area: current;
-    background: #262626;
-    border-color: #939393;
-    border-style: solid;
-    border-width: 2px;
-}
-.actions {
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 1px;
-    grid-template-areas:"currentActions Combat Navigation";
-    grid-area: actions;
-    text-align: center;
-    background: #262626;
-    border-color: #939393;
-    border-style: solid;
-    border-width: 2px;
-}
-.currentActions {
-    grid-area: currentActions;
-    margin: auto;
-}
-.Combat {
-    text-align: center;
-    grid-area: Combat;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-}
-.Navigation {
-    grid-area: Navigation;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-}
+
 .leftMenu {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1.5fr 1fr 1fr 1fr;
-    gap: 20px 0px;
-    grid-template-areas:"basicActions""Crafting""Inventory""Misc";
-    grid-area: 1 / 1 / 2 / 2;
+    grid-template-rows: 1fr 2.5fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "basicActions"
+    "menuNavLeft";
+    grid-area: leftMenu;
+
+    overflow: auto;
+
     background: #262626;
     border-color: #939393;
     border-style: solid;
     border-width: 2px;
-    height: 75%;
+    height: 45vmax;
 }
+
 .basicActions {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1.5fr 1.5fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:"food""drink""rest";
+    grid-template-rows: 1.5fr;
+    grid-template-areas:
+    "eatDrink";
     grid-area: basicActions;
 }
-.food {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 5px;
-    grid-template-areas:". .";
-    grid-area: food;
-    margin: 5%;
+
+.actionSeperator {
+    color: #939393;
 }
-.drink {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 5px;
-    grid-template-areas:". .";
-    grid-area: drink;
-    margin: 5%;
+
+.eatDrink {
+    grid-area: eatDrink;
 }
-.rest {
-    grid-area: rest;
+
+.menuNavLeft {
+    grid-area: menuNavLeft;
+    text-align:center;
 }
-.Crafting {
-    grid-area: Crafting;
-}
-.Inventory {
-    grid-area: Inventory;
-}
-.Misc {
-    grid-area: Misc;
-}
+
 .rightMenu {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 1fr 1.5fr;
+    grid-template-rows: 0.5fr 1fr 2fr;
     gap: 0px 0px;
-    grid-template-areas:"charBasic""charInfo""rightButtons";
+    grid-template-areas:
+    "charName"
+    "charInfo"
+    "menuNavRight";
     grid-area: rightMenu;
+    text-align: center;
+
+    overflow: auto;
+
     background: #262626;
     border-color: #939393;
     border-style: solid;
     border-width: 2px;
-    height: 75%;
-    font-size: 25px;
-    text-align: left;
+    height: 45vmax;
 }
-.charBasic {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:". .";
-    grid-area: charBasic;
-    margin: 30px;
+
+.charName {
+    grid-area: charName;
 }
 
 .charInfo {
     grid-area: charInfo;
-    margin: 30px;
+    font-size: 2.4vh;
 }
-.rightButtons {
-    grid-area: rightButtons;
-    margin: 30px;
-}
-/* end grid and containers */
 
+.menuNavRight {
+    grid-area: menuNavRight;
+}
+
+.gameBody {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 1.5fr 1fr;
+    gap: 1.5vh 0px;
+    grid-template-areas:
+    "logoText"
+    "historyText"
+    "currentEvents"
+    "currenActions";
+    grid-area: gameBody;
+    height: 45vmax;
+}
+
+.logoText {
+    grid-area: logoText;
+    text-align: center;
+    font-size: 4vw;
+}
+
+.historyText {
+    grid-area: historyText;
+    overflow-y:scroll;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.currentEvents {
+    grid-area: currentEvents;
+    height: auto;
+    overflow: auto;
+
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.currenActions {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 2% 0px;
+    grid-template-areas:
+    "currentActionButtons combat navigation";
+    grid-area: currenActions;
+
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.currentActionButtons {
+    grid-area: currentActionButtons;
+    overflow: auto;
+    max-height: 20vh;
+}
+
+.actionMargin {
+    margin: 2vh;
+}
+
+.combat {
+    grid-area: combat;
+    border-style: solid;
+    border-bottom: 2px;
+    border-top: 2px;
+    border-color: #939393;
+    text-align: center;
+}
+
+.navigation {
+    grid-area: navigation;
+    text-align: center;
+}
+
+/* For presentation only, no need to copy the code below */
+/*.grid-container * {*/
+/*    border: 1px solid red;*/
+/*    position: relative;*/
+/*}*/
+
+/*.grid-container *:after {*/
+/*    content:attr(class);*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/

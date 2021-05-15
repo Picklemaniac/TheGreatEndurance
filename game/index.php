@@ -5,119 +5,133 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Great Endurance (Name TBD)</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/designtest.css">
+    <title>Test</title>
 </head>
 <body>
-    <div class="grid-container">
-        <div class="gameBody">
-            <div class="logoText">The Great Endurance</div>
-            <div class="history">
-                <p class="historyText">A rat bites you as you walk....</p>
-                <p class="historyText">A rat bites you as you walk....</p>
-                <p class="historyText">A rat bites you as you walk....</p>
-                <p class="historyText">A rat bites you as you walk....</p>
-                <p class="historyText">A rat bites you as you walk....</p>
+<div class="grid-container">
+    <div class="leftMenu">
+        <div class="basicActions">
+            <div class="eatDrink">
+                <table class="basicActionTable">
+                    <tr>
+                        <td>
+                            <select class="foodBtnStyling">
+                                <option disabled selected>
+                                    Select Food
+                                </option>
+                                <option>
+                                    food1
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="foodBtnStyling">Eat</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="foodBtnStyling">
+                                <option disabled selected>
+                                    Select Drink
+                                </option>
+                                <option>
+                                    drink1
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="foodBtnStyling">Drink</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="foodBtnStyling">Rest</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="current">
-               <div class="currentTextContainer">
-                   <div id="container">
-
-                   </div>
-<!--                   <p class="currentText">You’re in a dark room. The mossy stone walls around you are damp with some kind of fungus. Mushrooms are growing on the ceiling.</p>-->
-<!--                   <p class="currentText">Upon inspecting the room you notice a strange locked box in the corner. A long dead corpse appears to be guarding it.</p>-->
-<!--                   <p class="currentText">There’s a corridor going left, and a corridor going right. There also seems to be a strange hole in the wall to the front, but you’re not sure if it would lead anywhere...</p>-->
-               </div>
-            </div>
-            <div class="actions">
-                <div class="currentActions">
-                    <button class="actionBtnStyling">Inspect left corridor</button>
-                    <button class="actionBtnStyling">Inspect hole in wall</button>
-                    <button class="actionBtnStyling">Inspect right corridor</button>
-                    <button class="actionBtnStyling">Inspect mushrooms</button>
-                    <button class="actionBtnStyling">Collect mushrooms</button>
-                    <button class="actionBtnStyling">Inspect treasure chest</button>
-                    <button class="actionBtnStyling">Inspect corpse</button>
-                    <button class="actionBtnStyling">Open treasure chest</button>
-                </div>
-                <div class="Combat">
-                    <button class="navBtnStyling">Attack</button><br>
-                    <button class="navBtnStyling">Defend</button><br>
-                </div>
-                <div class="Navigation">
-                    <button id="north" class="navBtnStyling">North</button><br>
-                    <button id="east" class="navBtnStyling">East</button><br>
-                    <button id="south" class="navBtnStyling">South</button><br>
-                    <button id="west" class="navBtnStyling">West</button><br>
-                </div>
+            <hr>
+        </div>
+        <div class="menuNavLeft">
+            <button class="bigBtnStyling">Crafting</button>
+            <br>
+            <button class="bigBtnStyling" onclick="openInventory()">Inventory</button>
+            <br>
+            <button class="bigBtnStyling">Misc</button>
+        </div>
+    </div>
+    <div class="rightMenu">
+        <div class="charName">
+            <div class="charNameMargin">
+                <img class="profilePic" src="../media/img/1.PNG" alt="">
+                <p class="charNameText">Picklemaniac</p>
             </div>
         </div>
-        <div class="leftMenu">
-            <div class="basicActions">
-                <div class="food">
-                    <select class="mainBtnStyling">
-                        <option disabled selected>
-                            Select Food
-                        </option>
-                        <option>
-                            food2
-                        </option>
-                    </select>
-                    <button class="mainBtnStyling">Eat</button>
-                </div>
-                <div class="drink">
-                    <select class="mainBtnStyling">
-                        <option disabled selected>
-                            Select Drink
-                        </option>
-                        <option>
-                            drink2
-                        </option>
-                    </select>
-                    <button class="mainBtnStyling">Drink</button>
-                </div>
-                <div class="rest">
-                    <button class="mainBtnStyling" style="width: 88%">Rest</button>
-                </div>
-                <hr>
-            </div>
-            <div class="Crafting">
-                <button class="bigBtnStyling">Crafting</button>
-            </div>
-            <div class="Inventory">
-                <button class="bigBtnStyling">Inventory</button>
-            </div>
-            <div class="Misc">
-                <button class="bigBtnStyling">Misc</button>
-            </div>
+        <div class="charInfo">
+            <hr>
+            <p>
+                Health: <span class="good">15/24</span> <br>
+                Stamina: <span class="bad">3/45</span> <br>
+                General Mood: <span class="bad">Terrible</span>
+            </p>
+            <p>
+                Hunger: <span class="bad">Malnourished</span> <br>
+                Thirst: <span class="bad">Parched</span> <br>
+                Rest: <span class="bad">Sleep Deprived</span>
+            </p>
+            <hr>
         </div>
-        <div class="rightMenu">
-            <div class="charBasic">
-                <div>[face]</div>
-                <div>[charactername]</div>
+        <div class="menuNavRight">
+            <button class="mediumBtnStyling">Skills</button>
+            <br>
+            <button class="mediumBtnStyling">Stats / Mood</button>
+            <br>
+            <button class="mediumBtnStyling">Character</button>
+            <br>
+            <button class="mediumBtnStyling">Home / Menu</button>
+        </div>
+    </div>
+    <div class="gameBody">
+        <div class="logoText">The Great Endurance</div>
+        <div class="historyText">
+            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
+            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
+            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
+            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
+            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
+        </div>
+        <div class="currentEvents">
+            <p class="currentText">You’re in a dark room. The mossy stone walls around you are damp with some kind of fungus. Mushrooms are growing on the ceiling.</p>
+            <p class="currentText">Upon inspecting the room you notice a strange locked box in the corner. A long dead corpse appears to be guarding it.</p>
+            <p class="currentText">There’s a corridor going left, and a corridor going right. There also seems to be a strange hole in the wall to the front, but you’re not sure if it would lead anywhere...</p>
+        </div>
+        <div class="currenActions">
+            <div class="currentActionButtons">
+                <div class="actionMargin">
+                    <button class="navBtnStyling">Attack</button>
+                    <button class="navBtnStyling">Defend</button>
+                    <button class="navBtnStyling">Attack</button>
+                    <button class="navBtnStyling">Attack</button>
+                    <button class="navBtnStyling">Defend</button>
+                    <button class="navBtnStyling">Attack</button>
+                    <button class="navBtnStyling">Attack</button>
+                    <button class="navBtnStyling">Defend</button>
+                    <button class="navBtnStyling">Attack</button>
+                </div>
             </div>
-            <div class="charInfo">
-                <p>
-                    Health: <span class="good">15/24</span> <br>
-                    Stamina: <span class="bad">3/45</span> <br>
-                    General Mood: <span class="bad">Terrible</span>
-                </p>
-                <p>
-                    Hunger: <span class="bad">Malnourished</span> <br>
-                    Thirst: <span class="bad">Parched</span> <br>
-                    Rest: <span class="bad">Sleep Deprived</span>
-                </p>
+            <div class="combat">
+                <button class="navBtnStyling">Attack</button><br>
+                <button class="navBtnStyling">Defend</button>
             </div>
-            <div class="rightButtons">
-                <button class="menuBtnStyling">Skills</button> <br>
-                <button class="menuBtnStyling">Stats / Mood</button> <br>
-                <button class="menuBtnStyling">Character</button> <br>
-                <button class="menuBtnStyling">Home / Menu</button> <br>
+            <div class="navigation">
+                <button class="navBtnStyling">North</button><br>
+                <button class="navBtnStyling">East</button>
+                <button class="navBtnStyling">South</button><br>
+                <button class="navBtnStyling">West</button>
             </div>
         </div>
     </div>
-    <script src="..\script\game_objects\map.js"></script>
-    <script src="..\script\game_objects\player.js"></script>
-    <script src="..\script\main.js"></script>
+</div>
 </body>
 </html>
