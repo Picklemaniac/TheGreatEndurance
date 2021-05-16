@@ -1,10 +1,14 @@
 class Inventory {
+    //3 inventory's.
+    //One inventory for weapons, one for drinks, one for foods
     constructor() {
         this.Foods = [];
         this.Drinks = [];
         this.Weapons = [];
     }
 
+    //Push an item to one of the 3 inventories
+    //Parameters are the inventory to push it too, and the item itself
     addItem(itemKind, item) {
         switch (itemKind) {
             case 0:
@@ -28,12 +32,17 @@ class Inventory {
         }
     }
 
+    //This function displays the current inventory to the player
+    //Will probably need reworks in the future
     fillInventory() {
         document.getElementById("weapons").innerHTML = '<option value="0" disabled selected> Select weapon</option>';
         document.getElementById("foods").innerHTML = '<option value="0" disabled selected> Select food</option>';
         document.getElementById("drinks").innerHTML = '<option value="0" disabled selected> Select drink</option>';
-        
+
+        //For each weapon / food / drink in the player inventory
         for (let weapons = 0; weapons < this.Weapons.length; weapons++) {
+            //Create a new HTML <option> tag
+            //Give it the name of the weapon, and give the weapon info as JSON
             let opt = document.createElement("option");
             opt.textContent = this.Weapons[weapons].name;
             opt.value = JSON.stringify(this.Weapons[weapons]);
@@ -51,9 +60,5 @@ class Inventory {
             opt.value = JSON.stringify(this.Drinks[drinks]);
             document.getElementById("drinks").appendChild(opt);
         }
-
-        this.htmlWeaponsInventory = '';
-        this.htmlFoodsInventory = '';
-        this.htmlDrinksInventory = '';
     }
 }

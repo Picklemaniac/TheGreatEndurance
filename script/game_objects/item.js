@@ -1,3 +1,4 @@
+//Define an item
 class Item {
     constructor(name, info, rarity) {
         this.name = name;
@@ -6,6 +7,7 @@ class Item {
     }
 }
 
+//Define a food
 class Food extends Item {
     constructor(name, info, rarity, fills) {
         super(name, info, rarity);
@@ -13,12 +15,14 @@ class Food extends Item {
     }
 }
 
+//Define a weapon
 class Weapon extends Item {
     constructor(name, info, rarity) {
         super(name, info, rarity);
     }
 }
 
+//Define a drink
 class Drink extends Item {
     constructor(name, info, rarity, replenishType, quantity) {
         super(name, info, rarity);
@@ -81,8 +85,8 @@ sugaryDrink = new Drink('Sugary drink', '', 0, 'thirst' -1);
 bigSugaryDrink = new Drink('Big Sugary Drink', '', 1, 'thirst' -2);
 giantSugaryDrink = new Drink('Giant sugary drink', '', 2, 'thirst' -3);
 
-//Making the arrays for each kind of item
-
+//Item pool function. Picks a random item from the item pool
+//Definitely needs rework.
 function ItemPool(itemKind) {
     let itemRarity;
     let types;
