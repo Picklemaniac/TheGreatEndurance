@@ -9,14 +9,16 @@ function move(y, x) {
     player1.xlocation += x;
     player1.controls();
     map1.mapShow();
-    console.log('move werkt');
     switch (map1.grid[player1.ylocation][player1.xlocation]) {
         case 2:
             if (confirm("Do you want this chest?") == true) {
                 let itemKind = Math.floor(Math.random() * 2);
                 let item = ItemPool(itemKind);
-                inventory1.addItem(itemKind,item);
-                // document.getElementById("inventory").value += map1.ItemPool(itemKind, itemKindSub, itemRarity) + "\n";
+                inventory1.addItem(itemKind, item);
+                inventory1.fillInventory();
+                // document.getElementById("weapons").innerHTML = '<option value="0" disabled selected> Select weapon</option>';
+                // document.getElementById("foods").innerHTML = '<option value="0" disabled selected> Select food</option>';
+                // document.getElementById("drinks").innerHTML = '<option value="0" disabled selected> Select drink</option>';
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }
 
@@ -25,16 +27,15 @@ function move(y, x) {
 }
 
 document.getElementById("north").addEventListener("click", function () {
-    move(-1,0);
+    move(-1, 0);
 });
 document.getElementById("east").addEventListener("click", function () {
-    move(0,1);
+    move(0, 1);
 });
 document.getElementById("south").addEventListener("click", function () {
-    move(1,0);
+    move(1, 0);
 });
 document.getElementById("west").addEventListener("click", function () {
-    move(0,-1);
+    move(0, -1);
 });
-
 player1.controls();

@@ -23,19 +23,15 @@ class Player {
         let surrounding = this.neighbors(map1.grid, player1.ylocation, player1.xlocation);
 
         if (surrounding[0] > 0) {
-            console.log("Go East");
             document.getElementById('east').disabled = false;
         }
         if (surrounding[1] > 0) {
-            console.log("Go South");
             document.getElementById('south').disabled = false;
         }
         if (surrounding[2] > 0) {
-            console.log("Go West");
             document.getElementById('west').disabled = false;
         }
         if (surrounding[3] > 0) {
-            console.log("Go North");
             document.getElementById('north').disabled = false;
         }
     }
@@ -46,6 +42,9 @@ class Inventory {
         this.Foods = [];
         this.Drinks = [];
         this.Weapons = [];
+        this.htmlWeaponsInventory = '';
+        this.htmlFoodsInventory = '';
+        this.htmlDrinksInventory = '';
     }
 
     addItem(itemKind, item) {
@@ -54,20 +53,46 @@ class Inventory {
                 this.Weapons.push(item);
                 console.log('het item' + item.name + ' is toegoevoegd')
                 console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de weapons inventory:' + JSON.stringify(this.Weapons) + '')
+                console.log('dit is nu de weapons inventory:' + this.Weapons[0] + '')
                 break;
             case 1:
                 this.Foods.push(item);
                 console.log('het item' + item.name + ' is toegoevoegd')
                 console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de foods inventory:' + JSON.stringify(this.Foods)  + '')
+                console.log('dit is nu de foods inventory:' + this.Foods[0]  + '')
                 break;
             case 2:
                 this.Drinks.push(item);
                 console.log('het item' + item.name + ' is toegoevoegd')
                 console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de drinks inventory:' + JSON.stringify(this.Drinks)  + '')
+                console.log('dit is nu de drinks inventory:' + this.Drinks[0]  + '')
                 break;
         }
+    }
+
+    fillInventory(){
+        for (let weapons = 0; weapons < this.Weapons.length; weapons++) {
+            
+            this.htmlWeaponsInventory += `<option id='weapon'> ${this.Weapons[weapons].name}</option>`;
+            console.log(this.htmlWeaponsInventory);
+            document.getElementById("weapons").innerHTML += this.htmlWeaponsInventory;
+        }
+        for (let foods = 0; foods < this.Foods.length; foods++) {
+            
+            this.htmlFoodsInventory += `<option id='food'> ${this.Foods[foods].name}</option>`;
+            console.log(this.htmlFoodsInventory);
+            document.getElementById("foods").innerHTML += this.htmlFoodsInventory;
+        }
+        for (let drinks = 0; drinks < this.Drinks.length; drinks++) {
+            
+            this.htmlDrinksInventory += `<option id='drink'> ${this.Drinks[drinks].name}</option>`;
+            console.log(this.htmlDrinksInventory);
+            document.getElementById("drinks").innerHTML += this.htmlDrinksInventory;
+            
+        }
+
+        this.htmlWeaponsInventory = '';
+        this.htmlFoodsInventory = '';
+        this.htmlDrinksInventory = '';
     }
 }
