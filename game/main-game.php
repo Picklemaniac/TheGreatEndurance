@@ -17,19 +17,19 @@
     <div>
         <div id="inventory">
             <button id="inventoryToggle">Inventory</button>
-            <select id='weapons' onchange="weaponSelected()">
+            <select id='weapons' onchange="weaponSelected(this.value)">
                 <option value="0" disabled selected> Select weapon</option>
             </select>
             <select id='foods' onchange="foodSelected(this.value)">
                 <option value="0" disabled selected> Select food</option>
             </select>
-            <select id='drinks' onchange="drinkSelected()">
+            <select id='drinks' onchange="drinkSelected(this.value)">
                 <option value="0" disabled selected> Select drink</option>
             </select>
             <br>
             <button id="eat" onclick="eat()" disabled>Eat</button>
-            <button id="drink" disabled>Drink</button>
-            <button id="equip" disabled>Equip</button>
+            <button id="drink" disabled onclick="drink()">Drink</button>
+            <button id="equip" disabled onclick="equip()">Equip</button>
             <button id="discard" onclick="discard()" disabled>Discard</button>
         </div>
     </div>
@@ -42,6 +42,7 @@
     </div>
     <script src="..\script\game_objects\map.js"></script>
     <script src="..\script\game_objects\player.js"></script>
+    <script src="..\script\game_objects\inventory.js"></script>
     <script src="..\script\game_objects\item.js"></script>
     <script src="..\script\main.js"></script>
 </body>

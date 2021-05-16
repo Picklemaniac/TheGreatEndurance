@@ -32,11 +32,29 @@ function move(y, x) {
 function eat() {
     player1.hunger += selectedItem.fills;
     showStats();
-    let index = inventory1.Foods.indexOf(selectedItem);
-    inventory1.Foods.splice(index, 1);
-    inventory1.fillInventory();
+    getIndex(inventory1.Foods);
     selectedItem = null;
+}
 
+function getIndex(inventoryType) {
+    let index = inventoryType.indexOf(selectedItem);
+    inventoryType.splice(index, 1);
+    inventory1.fillInventory();
+}
+
+function drink() {
+    switch (selectedItem.replenishType) {
+        case 'thirst':
+            player1.thirst += selectedItem.quantity;
+            break;
+        case 'health':
+            player1.health += selectedItem.quantity;
+            break;
+    }
+    showStats();
+    getIndex(inventory1.Drinks);
+    selectedItem = null;
+    
 }
 
 function discard() {
@@ -48,13 +66,11 @@ function discard() {
 
             case 'food':
 
-                let index = inventory1.Foods.indexOf(selectedItem);
-                inventory1.Foods.splice(index, 1);
-                inventory1.fillInventory();
+                getIndex(inventory1.Foods);
                 break;
 
             case 'drink':
-
+                getIndex(inventory1.Drinks);
                 break;
         }
     }
@@ -86,11 +102,14 @@ function foodSelected(selectedFood) {
     console.log(selectedItem);
 }
 
-function drinkSelected() {
+function drinkSelected(selectedDrink) {
     eatButton.disabled = true;
     drinkButton.disabled = false;
     equipButton.disabled = true;
     discardButton.disabled = false;
+    selectedItem = JSON.parse(selectedDrink)
+    selectedItemtype = 'drink';
+    console.log(selectedItem);
 }
 
 document.getElementById("north").addEventListener("click", function () {

@@ -2,7 +2,7 @@ class Item {
     constructor(name, info, rarity) {
         this.name = name;
         this.info = info;
-        this.rarity = rarity
+        this.rarity = rarity;
     }
 }
 
@@ -20,8 +20,10 @@ class Weapon extends Item {
 }
 
 class Drink extends Item {
-    constructor(name, info, rarity) {
+    constructor(name, info, rarity, replenishType, quantity) {
         super(name, info, rarity);
+        this.replenishType = replenishType;
+        this.quantity = quantity;
     }
 }
 
@@ -63,21 +65,21 @@ fullBread = new Food('Full bread', '', 2, 3);
 
 // drinks
 
-water = new Drink('water', '', 0);
-cleanWater = new Drink('clean water', '', 1);
-expenisveWater = new Drink('expenisve water', '', 2);
+water = new Drink('water', '', 0, 'thirst', 1);
+cleanWater = new Drink('clean water', '', 1, 'thirst', 2);
+expenisveWater = new Drink('expenisve water', '', 2, 'thirst', 1);
 
-healthPotion = new Drink('Health potion', '', 0);
-bigHealthPotion = new Drink('Big heatlh potion', '', 1);
-giantHealthPotion = new Drink('Giant health potion', '', 2);
+healthPotion = new Drink('Health potion', '', 0, 'health', 1);
+bigHealthPotion = new Drink('Big heatlh potion', '', 1, 'health', 2);
+giantHealthPotion = new Drink('Giant health potion', '', 2, 'health', 3);
 
-manaPotion = new Drink('Mana potion', '', 0);
-bigManaPotion = new Drink('Big mana potion', '', 1);
-giantManaPotion = new Drink('Giant mana potion', '', 2);
+manaPotion = new Drink('Mana potion', '', 0 , 'health', 1);
+bigManaPotion = new Drink('Big mana potion', '', 1, 'health', 2);
+giantManaPotion = new Drink('Giant mana potion', '', 2, 'health', 3);
 
-sugaryDrink = new Drink('Sugary drink', '', 0);
-bigSugaryDrink = new Drink('Big Sugary Drink', '', 1);
-giantSugaryDrink = new Drink('Giant sugary drink', '', 2);
+sugaryDrink = new Drink('Sugary drink', '', 0, 'thirst' -1);
+bigSugaryDrink = new Drink('Big Sugary Drink', '', 1, 'thirst' -2);
+giantSugaryDrink = new Drink('Giant sugary drink', '', 2, 'thirst' -3);
 
 //Making the arrays for each kind of item
 
