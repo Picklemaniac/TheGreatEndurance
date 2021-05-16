@@ -3,6 +3,7 @@ let player1 = new Player(2, 3); //I should be able to move north and south from 
 let map1 = new Map();
 let inventory1 = new Inventory();
 let selectedItem;
+let selectedItemtype;
 const eatButton = document.getElementById('eat');
 const drinkButton = document.getElementById('drink');
 const equipButton = document.getElementById('equip');
@@ -31,11 +32,33 @@ function move(y, x) {
 function eat() {
     player1.hunger += selectedItem.fills;
     showStats();
-    const index = inventory1.Foods.indexOf(selectedItem);
+    let index = inventory1.Foods.indexOf(selectedItem);
     inventory1.Foods.splice(index, 1);
     inventory1.fillInventory();
     selectedItem = null;
-   
+
+}
+
+function discard() {
+    if (confirm('are you sure you want to discard this item?')) {
+        switch (selectedItemtype) {
+            case 'weapon':
+
+                break;
+
+            case 'food':
+
+                let index = inventory1.Foods.indexOf(selectedItem);
+                inventory1.Foods.splice(index, 1);
+                inventory1.fillInventory();
+                break;
+
+            case 'drink':
+
+                break;
+        }
+    }
+
 }
 
 function showStats() {
@@ -59,6 +82,7 @@ function foodSelected(selectedFood) {
     equipButton.disabled = true;
     discardButton.disabled = false;
     selectedItem = JSON.parse(selectedFood)
+    selectedItemtype = 'food';
     console.log(selectedItem);
 }
 

@@ -30,7 +30,7 @@
             <button id="eat" onclick="eat()" disabled>Eat</button>
             <button id="drink" disabled>Drink</button>
             <button id="equip" disabled>Equip</button>
-            <button id="discard" disabled>Discard</button>
+            <button id="discard" onclick="discard()" disabled>Discard</button>
         </div>
     </div>
     <div>
