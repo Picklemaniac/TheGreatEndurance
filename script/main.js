@@ -15,10 +15,10 @@ function move(y, x) {
                 let itemKind = Math.floor(Math.random() * 2);
                 let item = ItemPool(itemKind);
                 inventory1.addItem(itemKind, item);
+                document.getElementById("weapons").innerHTML = '<option value="0" disabled selected> Select weapon</option>';
+                document.getElementById("foods").innerHTML = '<option value="0" disabled selected> Select food</option>';
+                document.getElementById("drinks").innerHTML = '<option value="0" disabled selected> Select drink</option>';
                 inventory1.fillInventory();
-                // document.getElementById("weapons").innerHTML = '<option value="0" disabled selected> Select weapon</option>';
-                // document.getElementById("foods").innerHTML = '<option value="0" disabled selected> Select food</option>';
-                // document.getElementById("drinks").innerHTML = '<option value="0" disabled selected> Select drink</option>';
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }
 

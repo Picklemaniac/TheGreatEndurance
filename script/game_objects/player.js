@@ -42,9 +42,6 @@ class Inventory {
         this.Foods = [];
         this.Drinks = [];
         this.Weapons = [];
-        this.htmlWeaponsInventory = '';
-        this.htmlFoodsInventory = '';
-        this.htmlDrinksInventory = '';
     }
 
     addItem(itemKind, item) {
@@ -72,23 +69,19 @@ class Inventory {
 
     fillInventory(){
         for (let weapons = 0; weapons < this.Weapons.length; weapons++) {
-            
-            this.htmlWeaponsInventory += `<option id='weapon'> ${this.Weapons[weapons].name}</option>`;
-            console.log(this.htmlWeaponsInventory);
-            document.getElementById("weapons").innerHTML += this.htmlWeaponsInventory;
+            let opt = document.createElement("option");
+            opt.textContent = this.Weapons[weapons].name;
+            document.getElementById("weapons").appendChild(opt);
         }
         for (let foods = 0; foods < this.Foods.length; foods++) {
-            
-            this.htmlFoodsInventory += `<option id='food'> ${this.Foods[foods].name}</option>`;
-            console.log(this.htmlFoodsInventory);
-            document.getElementById("foods").innerHTML += this.htmlFoodsInventory;
+            let opt = document.createElement("option");
+            opt.textContent = this.Foods[foods].name;
+            document.getElementById("foods").appendChild(opt);
         }
         for (let drinks = 0; drinks < this.Drinks.length; drinks++) {
-            
-            this.htmlDrinksInventory += `<option id='drink'> ${this.Drinks[drinks].name}</option>`;
-            console.log(this.htmlDrinksInventory);
-            document.getElementById("drinks").innerHTML += this.htmlDrinksInventory;
-            
+            let opt = document.createElement("option");
+            opt.textContent = this.Drinks[drinks].name;
+            document.getElementById("drinks").appendChild(opt); 
         }
 
         this.htmlWeaponsInventory = '';
