@@ -7,8 +7,9 @@ class Item {
 }
 
 class Food extends Item {
-    constructor(name, info, rarity) {
+    constructor(name, info, rarity, fills) {
         super(name, info, rarity);
+        this.fills = fills;
     }
 }
 
@@ -44,21 +45,21 @@ cruelJudgement = new Weapon('Cruel Judgement', '', 2)
 
 //foods
 
-shit = new Food('shit', '', 0);
-biggerShit = new Food('bigger shit', '', 1);
-legendaryShit = new Food('Legendary shit', '', 2);
+shit = new Food('shit', '', 0, 1);
+biggerShit = new Food('bigger shit', '', 1, 2);
+legendaryShit = new Food('Legendary shit', '', 2, 3);
 
-cookie = new Food('Cookie', '', 0);
-bigCookie = new Food('Big Cookie', '', 1);
-americanCookie = new Food('American Cookie', '', 2);
+cookie = new Food('Cookie', '', 0, 1);
+bigCookie = new Food('Big Cookie', '', 1, 2);
+americanCookie = new Food('American Cookie', '', 2, 3);
 
-riceBowl = new Food('Rice bowl', '', 0);
-bigRiceBowl = new Food('Big Rice bowl', '', 1);
-giantRiceBowl = new Food(' Giant Rice bowl', '', 2);
+riceBowl = new Food('Rice bowl', '', 0, 1);
+bigRiceBowl = new Food('Big Rice bowl', '', 1, 2);
+giantRiceBowl = new Food(' Giant Rice bowl', '', 2, 3);
 
-breadSlice = new Food('Bread slice', '', 0);
-halfBread = new Food('Half bread', '', 1);
-fullBread = new Food('Full bread', '', 2);
+breadSlice = new Food('Bread slice', '', 0, 1);
+halfBread = new Food('Half bread', '', 1, 2);
+fullBread = new Food('Full bread', '', 2, 3);
 
 // drinks
 
@@ -111,11 +112,11 @@ function ItemPool(itemKind) {
             itemRarity = Math.floor(Math.random() * weapons[types].length);
             return weapons[Math.floor(Math.random() * types)][itemRarity];
         case 1:
-            types = weapons.length - 1;
+            types = foods.length - 1;
             itemRarity = Math.floor(Math.random() * foods[types].length);
             return foods[Math.floor(Math.random() * types)][itemRarity];
         case 2:
-            types = weapons.length - 1;
+            types = drinks.length - 1;
             itemRarity = Math.floor(Math.random() * drinks[types].length);
             return drinks[Math.floor(Math.random() * types)][itemRarity];
     }

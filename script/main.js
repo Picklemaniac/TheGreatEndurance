@@ -2,6 +2,11 @@
 let player1 = new Player(2, 3); //I should be able to move north and south from here
 let map1 = new Map();
 let inventory1 = new Inventory();
+let selectedItem;
+const eatButton = document.getElementById('eat');
+const drinkButton = document.getElementById('drink');
+const equipButton = document.getElementById('equip');
+const discardButton = document.getElementById('discard');
 
 
 function move(y, x) {
@@ -12,18 +17,56 @@ function move(y, x) {
     switch (map1.grid[player1.ylocation][player1.xlocation]) {
         case 2:
             if (confirm("Do you want this chest?") == true) {
-                let itemKind = Math.floor(Math.random() * 2);
+                let itemKind = Math.floor(Math.random() * 3);
                 let item = ItemPool(itemKind);
                 inventory1.addItem(itemKind, item);
-                document.getElementById("weapons").innerHTML = '<option value="0" disabled selected> Select weapon</option>';
-                document.getElementById("foods").innerHTML = '<option value="0" disabled selected> Select food</option>';
-                document.getElementById("drinks").innerHTML = '<option value="0" disabled selected> Select drink</option>';
                 inventory1.fillInventory();
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }
 
             break;
     }
+}
+
+function eat() {
+    player1.hunger += selectedItem.fills;
+    showStats();
+    const index = inventory1.Foods.indexOf(selectedItem);
+    inventory1.Foods.splice(index, 1);
+    inventory1.fillInventory();
+    selectedItem = null;
+   
+}
+
+function showStats() {
+    document.getElementById('health').innerText = player1.health
+    document.getElementById('attack').innerText = player1.attack
+    document.getElementById('thirst').innerText = player1.thirst
+    document.getElementById('hunger').innerText = player1.hunger
+    //document.getElementById('weapon').innerText = player1.weaponSelected
+}
+
+function weaponSelected() {
+    eatButton.disabled = true;
+    drinkButton.disabled = true;
+    equipButton.disabled = false;
+    discardButton.disabled = false;
+}
+
+function foodSelected(selectedFood) {
+    eatButton.disabled = false;
+    drinkButton.disabled = true;
+    equipButton.disabled = true;
+    discardButton.disabled = false;
+    selectedItem = JSON.parse(selectedFood)
+    console.log(selectedItem);
+}
+
+function drinkSelected() {
+    eatButton.disabled = true;
+    drinkButton.disabled = false;
+    equipButton.disabled = true;
+    discardButton.disabled = false;
 }
 
 document.getElementById("north").addEventListener("click", function () {
@@ -38,4 +81,5 @@ document.getElementById("south").addEventListener("click", function () {
 document.getElementById("west").addEventListener("click", function () {
     move(0, -1);
 });
+showStats()
 player1.controls();
