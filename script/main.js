@@ -1,4 +1,3 @@
-
 let player1 = new Player(2, 3); //I should be able to move north and south from here
 let map1 = new Map();
 let inventory1 = new Inventory();
@@ -18,13 +17,12 @@ function move(y, x) {
     switch (map1.grid[player1.ylocation][player1.xlocation]) {
         case 2:
             if (confirm("Do you want this chest?") == true) {
-                let itemKind = Math.floor(Math.random() * 3);
-                let item = ItemPool(itemKind);
+                let item = generateRoomLoot();
+                console.log(item);
                 inventory1.addItem(itemKind, item);
                 inventory1.fillInventory();
                 map1.grid[player1.ylocation][player1.xlocation] = 1;
             }
-
             break;
     }
 }

@@ -5,6 +5,7 @@ class Inventory {
         this.Foods = [];
         this.Drinks = [];
         this.Weapons = [];
+        this.Items = [];
     }
 
     //Push an item to one of the 3 inventories

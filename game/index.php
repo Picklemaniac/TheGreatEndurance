@@ -126,9 +126,9 @@
             </div>
             <div class="navigation">
                 <button class="navBtnStyling">North</button><br>
-                <button class="navBtnStyling">East</button>
-                <button class="navBtnStyling">South</button><br>
                 <button class="navBtnStyling">West</button>
+                <button class="navBtnStyling">East</button><br>
+                <button class="navBtnStyling">South</button>
             </div>
         </div>
     </div>

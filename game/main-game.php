@@ -40,10 +40,17 @@
         <p>hunger: <span id="hunger"></span></p>
         <p>weapon: <span id="weapon"></span></p>
     </div>
+
+    <!-- Initialize game content-->
+    <script src="..\script\game_objects_data\item_data.js"></script>
+
+    <!-- Initialize objects -->
     <script src="..\script\game_objects\map.js"></script>
     <script src="..\script\game_objects\player.js"></script>
-    <script src="..\script\game_objects\inventory.js"></script>
     <script src="..\script\game_objects\item.js"></script>
+    <script src="..\script\game_objects\inventory.js"></script>
+
+    <!-- Initialize main script(s) -->
     <script src="..\script\main.js"></script>
 </body>
 

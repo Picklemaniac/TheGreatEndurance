@@ -1,130 +1,42 @@
-//Define an item
-class Item {
-    constructor(name, info, rarity) {
-        this.name = name;
-        this.info = info;
-        this.rarity = rarity;
-    }
-}
+const lootTiers = [
+    {min: 0, max: 0.2}, //trash 20%
+    {min: 0.2, max: 0.5}, // bad 30%
+    {min: 0.5, max: 0.8}, // medium 30%
+    {min: 0.8, max: 0.95}, // good 15%
+    {min: 0.95, max: Infinity} // valuable 5%
+]
 
-//Define a food
-class Food extends Item {
-    constructor(name, info, rarity, fills) {
-        super(name, info, rarity);
-        this.fills = fills;
-    }
-}
+const lootTypes = [
+    {min: 0, max: 0.5}, //Consumable (50%)
+    {min: 0.5, max: 0.8}, // Item (30%)
+    {min: 0.8, max: Infinity}, // Weapon (20%)
+]
 
-//Define a weapon
-class Weapon extends Item {
-    constructor(name, info, rarity) {
-        super(name, info, rarity);
-    }
-}
+function generateRoomLoot() {
+    let lootType = Math.random(); // define a random loot type
+    let lootRarity = Math.random(); // define a random loot tier
 
-//Define a drink
-class Drink extends Item {
-    constructor(name, info, rarity, replenishType, quantity) {
-        super(name, info, rarity);
-        this.replenishType = replenishType;
-        this.quantity = quantity;
-    }
-}
+    const selectedLootType = lootTypes.findIndex(rarity => rarity.min <= lootType && rarity.max > lootType); // Random loot type
+    const selectedRarity = lootTiers.findIndex(rarity => rarity.min <= lootRarity && rarity.max > lootRarity); // Random loot tier
 
-//weapons
+    let matchingLoot; //Variable that gets filled with all possible loot
 
-stoneBlade = new Weapon('stone blade', '', 0);
-ironBlade = new Weapon('iron blade', '', 1);
-cruelEdge = new Weapon('cruel edge', '', 2);
 
-stoneAxe = new Weapon('Stone axe', '', 0);
-ironAxe = new Weapon('Stone axe', '', 1);
-cruelBrute = new Weapon('Stone axe', '', 2);
-
-stoneGauntlets = new Weapon('Stone gauntlets', '', 0);
-ironGauntlets = new Weapon('Iron gauntlets', '', 1)
-cruelHands = new Weapon('Cruel hands', '', 2);
-
-stonePole = new Weapon('Stone pole', '', 0);
-ironPole = new Weapon('Iron pole', '', 1)
-cruelJudgement = new Weapon('Cruel Judgement', '', 2)
-
-//foods
-
-shit = new Food('shit', '', 0, 1);
-biggerShit = new Food('bigger shit', '', 1, 2);
-legendaryShit = new Food('Legendary shit', '', 2, 3);
-
-cookie = new Food('Cookie', '', 0, 1);
-bigCookie = new Food('Big Cookie', '', 1, 2);
-americanCookie = new Food('American Cookie', '', 2, 3);
-
-riceBowl = new Food('Rice bowl', '', 0, 1);
-bigRiceBowl = new Food('Big Rice bowl', '', 1, 2);
-giantRiceBowl = new Food(' Giant Rice bowl', '', 2, 3);
-
-breadSlice = new Food('Bread slice', '', 0, 1);
-halfBread = new Food('Half bread', '', 1, 2);
-fullBread = new Food('Full bread', '', 2, 3);
-
-// drinks
-
-water = new Drink('water', '', 0, 'thirst', 1);
-cleanWater = new Drink('clean water', '', 1, 'thirst', 2);
-expenisveWater = new Drink('expenisve water', '', 2, 'thirst', 1);
-
-healthPotion = new Drink('Health potion', '', 0, 'health', 1);
-bigHealthPotion = new Drink('Big heatlh potion', '', 1, 'health', 2);
-giantHealthPotion = new Drink('Giant health potion', '', 2, 'health', 3);
-
-manaPotion = new Drink('Mana potion', '', 0 , 'health', 1);
-bigManaPotion = new Drink('Big mana potion', '', 1, 'health', 2);
-giantManaPotion = new Drink('Giant mana potion', '', 2, 'health', 3);
-
-sugaryDrink = new Drink('Sugary drink', '', 0, 'thirst' -1);
-bigSugaryDrink = new Drink('Big Sugary Drink', '', 1, 'thirst' -2);
-giantSugaryDrink = new Drink('Giant sugary drink', '', 2, 'thirst' -3);
-
-//Item pool function. Picks a random item from the item pool
-//Definitely needs rework.
-function ItemPool(itemKind) {
-    let itemRarity;
-    let types;
-
-    let weapons = [
-        [stoneBlade, ironBlade, cruelEdge],
-        [stoneAxe, ironAxe, cruelBrute],
-        [stoneGauntlets, ironGauntlets, cruelHands],
-        [stonePole, ironPole, cruelJudgement],
-    ];
-
-    let foods = [
-        [shit, biggerShit, legendaryShit],
-        [cookie, bigCookie, americanCookie],
-        [riceBowl, bigRiceBowl, giantRiceBowl],
-        [breadSlice, halfBread, fullBread],
-    ];
-
-    let drinks = [
-        [water, cleanWater, expenisveWater],
-        [healthPotion, bigHealthPotion, giantHealthPotion],
-        [manaPotion, bigManaPotion, giantManaPotion],
-        [sugaryDrink, bigSugaryDrink, giantSugaryDrink],
-    ];
-
-    switch (itemKind) {
+    switch (selectedLootType) {
+        //Case Consumable
         case 0:
-            types = weapons.length - 1;
-            itemRarity = Math.floor(Math.random() * weapons[types].length);
-            return weapons[Math.floor(Math.random() * types)][itemRarity];
+            matchingLoot = items.consumables.filter(item => item.rarity === selectedRarity); //Fill with all possible loot
+            break;
+        //Case Item
         case 1:
-            types = foods.length - 1;
-            itemRarity = Math.floor(Math.random() * foods[types].length);
-            return foods[Math.floor(Math.random() * types)][itemRarity];
+            matchingLoot = items.items.filter(item => item.rarity === selectedRarity); //Fill with all possible loot
+            break;
+        //Case Weapon
         case 2:
-            types = drinks.length - 1;
-            itemRarity = Math.floor(Math.random() * drinks[types].length);
-            return drinks[Math.floor(Math.random() * types)][itemRarity];
+            matchingLoot = items.weapons.filter(item => item.rarity === selectedRarity); //Fill with all possible loot
+            break;
     }
 
+    //Return a random piece of all the possible loot. If it doesn't exist give nothing.
+    return matchingLoot[[Math.floor(Math.random() * matchingLoot.length)] ?? null];
 }

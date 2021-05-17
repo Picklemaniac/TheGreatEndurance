@@ -2,16 +2,14 @@ class Map {
     //Initialize the full map
     //0 = wall 1 = movable location
     constructor() {
-        this.sizeX = 8;
-        this.sizeY = 7;
         this.grid = [
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 0, 1, 0, 0],
-            [0, 1, 0, 1, 1, 1, 1, 0],
-            [0, 1, 0, 1, 0, 1, 0, 0],
-            [0, 1, 1, 1, 1, 1, 1, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+            [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0],
+            [0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ];
         this.roomShift();
         this.mapShow();
@@ -19,11 +17,11 @@ class Map {
 
     //This functions adds random loot to some places on the grid.
     roomShift() {
-        for (let y = 0; y < this.sizeY; y++) {
-            for (let x = 0; x < this.sizeX; x++) {
+        for (let y = 0; y < this.grid.length; y++) {
+            for (let x = 0; x < this.grid[y].length; x++) {
                 if (this.grid[y][x] == 1) {
-                    let dice = Math.floor(Math.random() * 100) + 1;
-                    if (dice > 20 && dice < 40) {
+                    let dice = Math.random();
+                    if (dice < 0.90) {
                         this.grid[y][x] = 2;
                     }
 
@@ -37,9 +35,9 @@ class Map {
     mapShow() {
         let html = "<table>";
         //Add a table row for each Y value and a table cell for each X value
-        for (let y = 0; y < this.sizeY; y++) {
+        for (let y = 0; y < this.grid.length; y++) {
             html += `<tr>`;
-            for (let x = 0; x < this.sizeX; x++) {
+            for (let x = 0; x < this.grid[y].length; x++) {
                 //If the current player location is equal to the cell being rendered, show the player
                 if (y === player1.ylocation && x === player1.xlocation) {
                     html += `<td style='background-color: orange'>p</td>`;
