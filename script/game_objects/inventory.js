@@ -15,7 +15,7 @@ class Inventory {
         if (item === 0 || item === undefined) return;
         let index = this.inventoryContent.indexOf(item);
         this.inventoryContent.splice(index, 1);
-        console.log(this.inventoryContent);
+        this.displayInventory();
     }
 
 

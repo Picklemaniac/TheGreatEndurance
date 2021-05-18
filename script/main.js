@@ -8,34 +8,16 @@ const weaponsDisplay = document.getElementById('weaponsDisplay');
 const foodsDisplay = document.getElementById('foodsDisplay');
 const drinksDisplay = document.getElementById('drinksDisplay');
 
-function move(y, x) {
-    player1.ylocation += y;
-    player1.xlocation += x;
-    player1.displayControls();
-    map1.renderMap();
-    switch (map1.grid[player1.ylocation][player1.xlocation]) {
-        case 2:
-            if (confirm("Take this item?") === true) {
-                let item = generateRoomLoot();
-                inventory1.addItemToInventory(item);
-                console.log(inventory1.inventoryContent)
-                inventory1.displayInventory();
-                map1.grid[player1.ylocation][player1.xlocation] = 1;
-            }
-            break;
-    }
-}
-
 function selectItem(type) {
     switch(type) {
         case "food":
-            selectedItem = foodsDisplay.value;
+            selectedItem = JSON.parse(foodsDisplay.value);
             break;
         case "drink":
-            selectedItem = foodsDisplay.value;
+            selectedItem = JSON.parse(foodsDisplay.value);
             break;
         case "weapon":
-            selectedItem = weaponsDisplay.value;
+            selectedItem = JSON.parse(weaponsDisplay.value);
             break;
         default:
             alert("Impossible selection? How did you do this?!");
@@ -61,15 +43,15 @@ function consume(type) {
 function discard() {
     if (selectedItem === 0 || selectedItem === undefined) return;
 
-    if (confirm(`Are you sure you want to discard ${selectedItem}?`)) {
+    if (confirm(`Are you sure you want to discard ${selectedItem.name}?`)) {
         inventory1.removeItemFromInventory(selectedItem);
     }
 }
 
-document.getElementById("north").addEventListener("click", function () {move(-1, 0);});
-document.getElementById("east").addEventListener("click", function () {move(0, 1);});
-document.getElementById("south").addEventListener("click", function () {move(1, 0);});
-document.getElementById("west").addEventListener("click", function () {move(0, -1);});
+document.getElementById("north").addEventListener("click", function () {player1.moveOnMap(-1, 0);});
+document.getElementById("east").addEventListener("click", function () {player1.moveOnMap(0, 1);});
+document.getElementById("south").addEventListener("click", function () {player1.moveOnMap(1, 0);});
+document.getElementById("west").addEventListener("click", function () {player1.moveOnMap(0, -1);});
 
 player1.displayStats();
 player1.displayControls();

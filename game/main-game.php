@@ -26,8 +26,8 @@
                 <option value="0" disabled selected> Select drink</option>
             </select>
             <br>
-            <button id="eatActionBtn" onclick="consume()">Eat</button>
-            <button id="drinkActionBtn" onclick="consume()">Drink</button>
+            <button id="eatActionBtn" onclick="consume('food')">Eat</button>
+            <button id="drinkActionBtn" onclick="consume('drink')">Drink</button>
             <button id="equipActionBtn" onclick="equip()">Equip</button>
             <button id="discardActionBtn" onclick="discard()">Discard</button>
         </div>

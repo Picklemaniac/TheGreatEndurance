@@ -24,6 +24,24 @@ class Player {
         inventory1.displayInventory();
     }
 
+    moveOnMap(y, x) {
+        this.ylocation += y;
+        this.xlocation += x;
+        this.displayControls();
+        map1.renderMap();
+        switch (map1.grid[this.ylocation][this.xlocation]) {
+            case 2:
+                if (confirm("Take this item?") === true) {
+                    let item = generateRoomLoot();
+                    inventory1.addItemToInventory(item);
+                    console.log(inventory1.inventoryContent)
+                    inventory1.displayInventory();
+                    map1.grid[this.ylocation][this.xlocation] = 1;
+                }
+                break;
+        }
+    }
+
     //This functions checks the tiles neighbouring the player on the map
     //This was ripped from Stackoverflow. No idea how it works
     neighbours(arr, m, n) {
