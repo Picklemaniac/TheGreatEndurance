@@ -8,6 +8,7 @@ const weaponsDisplay = document.getElementById('weaponsDisplay');
 const foodsDisplay = document.getElementById('foodsDisplay');
 const drinksDisplay = document.getElementById('drinksDisplay');
 
+//Picks the currently selected item. Not really ideal, will definitely change in the future.
 function selectItem(type) {
     switch(type) {
         case "food":
