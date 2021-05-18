@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Testing</title>
 </head>
 
 <body>
@@ -16,33 +16,32 @@
     <button id="west" disabled> West </button>
     <div>
         <div id="inventory">
-            <button id="inventoryToggle">Inventory</button>
-            <select id='weapons' onchange="weaponSelected(this.value)">
+            <select id='weaponsDisplay' onchange="selectItem('weapon')">
                 <option value="0" disabled selected> Select weapon</option>
             </select>
-            <select id='foods' onchange="foodSelected(this.value)">
+            <select id='foodsDisplay' onchange="selectItem('food')">
                 <option value="0" disabled selected> Select food</option>
             </select>
-            <select id='drinks' onchange="drinkSelected(this.value)">
+            <select id='drinksDisplay' onchange="selectItem('drink')">
                 <option value="0" disabled selected> Select drink</option>
             </select>
             <br>
-            <button id="eat" onclick="eat()" disabled>Eat</button>
-            <button id="drink" disabled onclick="drink()">Drink</button>
-            <button id="equip" disabled onclick="equip()">Equip</button>
-            <button id="discard" onclick="discard()" disabled>Discard</button>
+            <button id="eatActionBtn" onclick="consume()">Eat</button>
+            <button id="drinkActionBtn" onclick="consume()">Drink</button>
+            <button id="equipActionBtn" onclick="equip()">Equip</button>
+            <button id="discardActionBtn" onclick="discard()">Discard</button>
         </div>
     </div>
     <div>
-        <p>health: <span id="health"></span> </p>
-        <p>attack: <span id="attack"></span></p>
-        <p>thirst: <span id="thirst"></span></p>
-        <p>hunger: <span id="hunger"></span></p>
-        <p>weapon: <span id="weapon"></span></p>
+        <p>health: <span id="healthStatDisplay"></span> </p>
+        <p>attack: <span id="attackStatDisplay"></span></p>
+        <p>thirst: <span id="thirstStatDisplay"></span></p>
+        <p>hunger: <span id="hungerStatDisplay"></span></p>
+        <p>weapon: <span id="weaponEquippedDisplay"></span></p>
     </div>
 
     <!-- Initialize game content-->
-    <script src="..\script\game_objects_data\item_data.js"></script>
+    <script src="..\script\game_objects\data\item_data.js"></script>
 
     <!-- Initialize objects -->
     <script src="..\script\game_objects\map.js"></script>
@@ -50,7 +49,7 @@
     <script src="..\script\game_objects\item.js"></script>
     <script src="..\script\game_objects\inventory.js"></script>
 
-    <!-- Initialize main script(s) -->
+    <!-- Initialize main scripts -->
     <script src="..\script\main.js"></script>
 </body>
 

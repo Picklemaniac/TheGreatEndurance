@@ -2,64 +2,57 @@ class Inventory {
     //3 inventory's.
     //One inventory for weapons, one for drinks, one for foods
     constructor() {
-        this.Foods = [];
-        this.Drinks = [];
-        this.Weapons = [];
-        this.Items = [];
+        this.inventoryContent = [];
     }
 
-    //Push an item to one of the 3 inventories
-    //Parameters are the inventory to push it too, and the item itself
-    addItem(itemKind, item) {
-        switch (itemKind) {
-            case 0:
-                this.Weapons.push(item);
-                console.log('het item' + item.name + ' is toegoevoegd')
-                console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de weapons inventory:' + this.Weapons[0] + '')
-                break;
-            case 1:
-                this.Foods.push(item);
-                console.log('het item' + item.name + ' is toegoevoegd')
-                console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de foods inventory:' + this.Foods[0] + '')
-                break;
-            case 2:
-                this.Drinks.push(item);
-                console.log('het item' + item.name + ' is toegoevoegd')
-                console.log('het soort item is ' + itemKind + ' is toegoevoegd')
-                console.log('dit is nu de drinks inventory:' + this.Drinks[0] + '')
-                break;
-        }
+    //Push an item to the inventory (parameter is the item you want to add)
+    addItemToInventory(item) {
+        this.inventoryContent.push(item)
     }
+
+    //Remove an item from the inventory (parameter is the item you want to remove)
+    removeItemFromInventory(item) {
+        if (item === 0 || item === undefined) return;
+        let index = this.inventoryContent.indexOf(item);
+        this.inventoryContent.splice(index, 1);
+        console.log(this.inventoryContent);
+    }
+
 
     //This function displays the current inventory to the player
-    //Will probably need reworks in the future
-    fillInventory() {
-        document.getElementById("weapons").innerHTML = '<option value="0" disabled selected> Select weapon</option>';
-        document.getElementById("foods").innerHTML = '<option value="0" disabled selected> Select food</option>';
-        document.getElementById("drinks").innerHTML = '<option value="0" disabled selected> Select drink</option>';
+    displayInventory() {
+        //Initialize all the displays
+        const weaponsDisplay = document.getElementById("weaponsDisplay");
+        const foodsDisplay = document.getElementById("foodsDisplay");
+        const drinksDisplay = document.getElementById("drinksDisplay");
 
-        //For each weapon / food / drink in the player inventory
-        for (let weapons = 0; weapons < this.Weapons.length; weapons++) {
-            //Create a new HTML <option> tag
-            //Give it the name of the weapon, and give the weapon info as JSON
+        //Empty the current inventory displays
+        weaponsDisplay.innerHTML = '<option value="0" disabled selected> Select weapon</option>';
+        foodsDisplay.innerHTML = '<option value="0" disabled selected> Select food</option>';
+        drinksDisplay.innerHTML = '<option value="0" disabled selected> Select drink</option>';
+
+        //create option element in advance
+
+        //For each item in the current inventory
+        //Display it to the right place
+        for (let i = 0; i < this.inventoryContent.length ; i++) {
             let opt = document.createElement("option");
-            opt.textContent = this.Weapons[weapons].name;
-            opt.value = JSON.stringify(this.Weapons[weapons]);
-            document.getElementById("weapons").appendChild(opt);
-        }
-        for (let foods = 0; foods < this.Foods.length; foods++) {
-            let opt = document.createElement("option");
-            opt.textContent = this.Foods[foods].name;
-            opt.value = JSON.stringify(this.Foods[foods]);
-            document.getElementById("foods").appendChild(opt);
-        }
-        for (let drinks = 0; drinks < this.Drinks.length; drinks++) {
-            let opt = document.createElement("option");
-            opt.textContent = this.Drinks[drinks].name;
-            opt.value = JSON.stringify(this.Drinks[drinks]);
-            document.getElementById("drinks").appendChild(opt);
+            opt.textContent = this.inventoryContent[i].name;
+            opt.value = JSON.stringify(this.inventoryContent[i]);
+
+            switch (this.inventoryContent[i].type) {
+                case "food":
+                    foodsDisplay.appendChild(opt);
+                    break;
+                case "drink":
+                    drinksDisplay.appendChild(opt);
+                    break;
+                case "weapon":
+                    weaponsDisplay.appendChild(opt);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

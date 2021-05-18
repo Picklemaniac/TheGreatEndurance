@@ -7,9 +7,9 @@ const lootTiers = [
 ]
 
 const lootTypes = [
-    {min: 0, max: 0.5}, //Consumable (50%)
-    {min: 0.5, max: 0.8}, // Item (30%)
-    {min: 0.8, max: Infinity}, // Weapon (20%)
+    {min: 0, max: 0.6}, //Consumable (60%)
+    {min: 0.6, max: 0.8}, // Item (20%)
+    {min: 0.8, max: Infinity}, // Equipment (20%)
 ]
 
 function generateRoomLoot() {
@@ -21,7 +21,6 @@ function generateRoomLoot() {
 
     let matchingLoot; //Variable that gets filled with all possible loot
 
-
     switch (selectedLootType) {
         //Case Consumable
         case 0:
@@ -29,11 +28,11 @@ function generateRoomLoot() {
             break;
         //Case Item
         case 1:
-            matchingLoot = items.items.filter(item => item.rarity === selectedRarity); //Fill with all possible loot
+            matchingLoot = items.items.filter(item => item.rarity === selectedRarity); //Fill with all possible loot;
             break;
         //Case Weapon
         case 2:
-            matchingLoot = items.weapons.filter(item => item.rarity === selectedRarity); //Fill with all possible loot
+            matchingLoot = items.equipment.filter(item => item.rarity === selectedRarity); //Fill with all possible loot
             break;
     }
 

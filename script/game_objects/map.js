@@ -12,19 +12,18 @@ class Map {
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ];
         this.roomShift();
-        this.mapShow();
+        this.renderMap();
     }
 
-    //This functions adds random loot to some places on the grid.
+    //This functions adds random loot to some places on the grid. Now at 90%
     roomShift() {
         for (let y = 0; y < this.grid.length; y++) {
             for (let x = 0; x < this.grid[y].length; x++) {
-                if (this.grid[y][x] == 1) {
+                if (this.grid[y][x] === 1) {
                     let dice = Math.random();
                     if (dice < 0.90) {
                         this.grid[y][x] = 2;
                     }
-
                 }
             }
         }
@@ -32,7 +31,7 @@ class Map {
     }
 
     //This functions renders the map and shows the current player location
-    mapShow() {
+    renderMap() {
         let html = "<table>";
         //Add a table row for each Y value and a table cell for each X value
         for (let y = 0; y < this.grid.length; y++) {
@@ -44,15 +43,15 @@ class Map {
                 }
                 else {
                     //If it's a wall make it red
-                    if (this.grid[y][x] == 0) {
+                    if (this.grid[y][x] === 0) {
                         html += `<td style='background-color: red'>   ` + this.grid[y][x] + `</td>`;
                     }
                     //If it's a moveable location make it green
-                    else if (this.grid[y][x] == 1) {
+                    else if (this.grid[y][x] === 1) {
                         html += `<td style='background-color: green'>   ` + this.grid[y][x] + `</td>`;
                     }
                     //If it's a treasure chest show a brown thing?
-                    else if (this.grid[y][x] == 2) {
+                    else if (this.grid[y][x] === 2) {
                         html += `<td style='background-color: brown'> c </td>`;
                     }
                     //This shouldn't happen!?!?!
