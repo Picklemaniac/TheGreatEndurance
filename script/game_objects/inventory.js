@@ -31,11 +31,6 @@ class Inventory {
 
     //This function displays the current inventory to the player
     displayInventory() {
-        //Initialize all the displays
-        const weaponsDisplay = document.getElementById("weaponsDisplay");
-        const foodsDisplay = document.getElementById("foodsDisplay");
-        const drinksDisplay = document.getElementById("drinksDisplay");
-
         //Empty the current inventory displays
         weaponsDisplay.innerHTML = '<option value="0" disabled selected> Select weapon</option>';
         foodsDisplay.innerHTML = '<option value="0" disabled selected> Select food</option>';

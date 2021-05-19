@@ -50,7 +50,7 @@
     <script src="..\script\game_objects\inventory.js"></script>
 
     <!-- Initialize main scripts -->
-    <script src="..\script\gameManager.js"></script>
+    <script src="..\script\game_manager.js"></script>
     <script src="..\script\main.js"></script>
 </body>
 
