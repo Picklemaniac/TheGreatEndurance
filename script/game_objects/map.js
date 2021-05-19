@@ -1,9 +1,16 @@
+let map;
+
 class Map {
     //Initialize the full map
     //0 = wall 1 = movable location
     constructor() {
         this.grid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+            [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0],
+            [0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0],
             [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
             [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0],
             [0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
@@ -27,7 +34,7 @@ class Map {
                 }
             }
         }
-        this.grid[player1.ylocation][player1.xlocation] = 1;
+        this.grid[player.ylocation][player.xlocation] = 1;
     }
 
     //This functions renders the map and shows the current player location
@@ -38,7 +45,7 @@ class Map {
             html += `<tr>`;
             for (let x = 0; x < this.grid[y].length; x++) {
                 //If the current player location is equal to the cell being rendered, show the player
-                if (y === player1.ylocation && x === player1.xlocation) {
+                if (y === player.ylocation && x === player.xlocation) {
                     html += `<td style='background-color: orange'>p</td>`;
                 }
                 else {
@@ -56,7 +63,7 @@ class Map {
                     }
                     //This shouldn't happen!?!?!
                     else {
-                        html += `<td>   ` + map1.grid[y][x] + `</td>`;
+                        html += `<td>   ` + map.grid[y][x] + `</td>`;
                     }
                 }
             }

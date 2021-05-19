@@ -16,20 +16,20 @@
     <button id="west" disabled> West </button>
     <div>
         <div id="inventory">
-            <select id='weaponsDisplay' onchange="selectItem('weapon')">
+            <select id='weaponsDisplay'>
                 <option value="0" disabled selected> Select weapon</option>
             </select>
-            <select id='foodsDisplay' onchange="selectItem('food')">
+            <select id='foodsDisplay'>
                 <option value="0" disabled selected> Select food</option>
             </select>
-            <select id='drinksDisplay' onchange="selectItem('drink')">
+            <select id='drinksDisplay'>
                 <option value="0" disabled selected> Select drink</option>
             </select>
             <br>
-            <button id="eatActionBtn" onclick="consume('food')">Eat</button>
-            <button id="drinkActionBtn" onclick="consume('drink')">Drink</button>
-            <button id="equipActionBtn" onclick="equip()">Equip</button>
-            <button id="discardActionBtn" onclick="discard()">Discard</button>
+            <button id="eatActionBtn">Eat</button>
+            <button id="drinkActionBtn">Drink</button>
+            <button id="equipActionBtn">Equip</button>
+            <button id="discardActionBtn">Discard</button>
         </div>
     </div>
     <div>
@@ -50,6 +50,7 @@
     <script src="..\script\game_objects\inventory.js"></script>
 
     <!-- Initialize main scripts -->
+    <script src="..\script\gameManager.js"></script>
     <script src="..\script\main.js"></script>
 </body>
 

@@ -1,6 +1,9 @@
+let inventory;
+
 class Inventory {
     constructor() {
         this.inventoryContent = [];
+        this.inventorySize = 20;
     }
 
     //Push an item to the inventory (parameter is the item you want to add)
@@ -16,6 +19,16 @@ class Inventory {
         this.displayInventory();
     }
 
+    //Function to check if the inventory is full (return true if full, return false if not)
+    checkInventoryFull(itemSize) {
+        let inventoryStuffing = 0;
+        for (let i = 0; i < this.inventoryContent.length; i++) {
+            inventoryStuffing += this.inventoryContent[i].inv_space;
+        }
+        console.log(`Inventory is ${inventoryStuffing} van de ${this.inventorySize} gevuld`)
+        return inventoryStuffing + itemSize >= this.inventorySize;
+    }
+
     //This function displays the current inventory to the player
     displayInventory() {
         //Initialize all the displays
@@ -28,10 +41,7 @@ class Inventory {
         foodsDisplay.innerHTML = '<option value="0" disabled selected> Select food</option>';
         drinksDisplay.innerHTML = '<option value="0" disabled selected> Select drink</option>';
 
-        //create option element in advance
-
-        //For each item in the current inventory
-        //Display it to the right place
+        //For each item in the current inventory display it to the right place
         for (let i = 0; i < this.inventoryContent.length ; i++) {
             let opt = document.createElement("option");
             opt.textContent = this.inventoryContent[i].name;
@@ -51,5 +61,6 @@ class Inventory {
                     break;
             }
         }
+        player.selectedItem = 0;
     }
 }

@@ -1,42 +1,55 @@
+let player;
+
 class Player {
     //Initialize the player location and stats
-    constructor(ylocation, xlocation) {
-        this.ylocation = ylocation;
-        this.xlocation = xlocation;
+    constructor() {
+        //Location and mapping
+        this.ylocation = 2;
+        this.xlocation = 3;
+
+        //General Stats
         this.health = 20;
         this.attack = 3;
         this.thirst = 50;
         this.hunger = 50;
-        this.weaponEquiped = undefined;
+
+        //Equipment
+        this.weaponEquiped = null;
+
+        //Misc
+        this.selectedItem = null;
     }
 
-    //Lets the player consume an item
-    //Changes the given stats and removes the consumed item
+    //Lets the player consume an item (changes the given stats and removes the consumed item)
     consume(item) {
-        //If the user didn't select anything, don't do anything
         if (item === 0 || item === undefined) return;
         this.health += item.stats[0];
         this.attack += item.stats[1];
         this.thirst += item.stats[2];
         this.hunger += item.stats[3];
-        inventory1.removeItemFromInventory(item);
-        inventory1.displayInventory();
+        inventory.removeItemFromInventory(item);
+        inventory.displayInventory();
     }
 
     moveOnMap(y, x) {
         this.ylocation += y;
         this.xlocation += x;
         this.displayControls();
-        map1.renderMap();
-        switch (map1.grid[this.ylocation][this.xlocation]) {
+        map.renderMap();
+        switch (map.grid[this.ylocation][this.xlocation]) {
             case 2:
-                // if (confirm("Take this item?") === true) {
-                    let item = generateRoomLoot();
-                    inventory1.addItemToInventory(item);
-                    console.log(inventory1.inventoryContent)
-                    inventory1.displayInventory();
-                    map1.grid[this.ylocation][this.xlocation] = 1;
-                //}
+                let item = generateRoomLoot();
+
+                if (inventory.checkInventoryFull(item.inv_space)) {
+                    console.log(`Item does not fit in inventory; size: ${item.inv_space}`)
+                }
+                else {
+                    inventory.addItemToInventory(item);
+                    map.grid[this.ylocation][this.xlocation] = 1;
+                }
+                console.log(inventory.inventoryContent)
+                console.log(inventory)
+                inventory.displayInventory();
                 break;
         }
     }
@@ -60,7 +73,7 @@ class Player {
         document.getElementById('south').disabled = true;
 
         //Use the neighbour function to check the 4 surrounding tiles of the player
-        let surrounding = this.neighbours(map1.grid, this.ylocation, this.xlocation);
+        let surrounding = this.neighbours(map.grid, this.ylocation, this.xlocation);
 
         //[0] = east, [1] = south, [2] = west, [3] = north
         if (surrounding[0] > 0) {
@@ -77,11 +90,12 @@ class Player {
         }
     }
 
+    //This function displays the current player stats to the right location
     displayStats() {
-        document.getElementById('healthStatDisplay').innerText = player1.health
-        document.getElementById('attackStatDisplay').innerText = player1.attack
-        document.getElementById('thirstStatDisplay').innerText = player1.thirst
-        document.getElementById('hungerStatDisplay').innerText = player1.hunger
-        document.getElementById('weaponEquippedDisplay').innerText = player1.weaponEquiped;
+        document.getElementById('healthStatDisplay').innerText = player.health
+        document.getElementById('attackStatDisplay').innerText = player.attack
+        document.getElementById('thirstStatDisplay').innerText = player.thirst
+        document.getElementById('hungerStatDisplay').innerText = player.hunger
+        document.getElementById('weaponEquippedDisplay').innerText = player.weaponEquiped;
     }
 }

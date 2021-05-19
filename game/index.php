@@ -109,15 +109,9 @@
         <div id="currentActions" class="currenActions">
             <div class="currentActionButtons">
                 <div class="actionMargin">
-                    <button class="navBtnStyling">Attack</button>
-                    <button class="navBtnStyling">Defend</button>
-                    <button class="navBtnStyling">Attack</button>
-                    <button class="navBtnStyling">Attack</button>
-                    <button class="navBtnStyling">Defend</button>
-                    <button class="navBtnStyling">Attack</button>
-                    <button class="navBtnStyling">Attack</button>
-                    <button class="navBtnStyling">Defend</button>
-                    <button class="navBtnStyling">Attack</button>
+                    <button class="navBtnStyling">Pick up piece of willow bark</button>
+                    <button class="navBtnStyling">Take a sip from mud pool</button>
+                    <button class="navBtnStyling">Interact with treasure chest</button>
                 </div>
             </div>
             <div class="combat">
