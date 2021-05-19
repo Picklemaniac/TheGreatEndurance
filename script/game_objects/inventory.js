@@ -1,6 +1,4 @@
 class Inventory {
-    //3 inventory's.
-    //One inventory for weapons, one for drinks, one for foods
     constructor() {
         this.inventoryContent = [];
     }
@@ -13,11 +11,10 @@ class Inventory {
     //Remove an item from the inventory (parameter is the item you want to remove)
     removeItemFromInventory(item) {
         if (item === 0 || item === undefined) return;
-        let index = this.inventoryContent.indexOf(item);
-        this.inventoryContent.splice(index, 1);
+        const index = this.inventoryContent.findIndex(x => x.name === item.name);
+        if (index !== undefined) this.inventoryContent.splice(index, 1);
         this.displayInventory();
     }
-
 
     //This function displays the current inventory to the player
     displayInventory() {

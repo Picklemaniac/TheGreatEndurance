@@ -15,7 +15,6 @@ class Player {
     consume(item) {
         //If the user didn't select anything, don't do anything
         if (item === 0 || item === undefined) return;
-
         this.health += item.stats[0];
         this.attack += item.stats[1];
         this.thirst += item.stats[2];
@@ -31,13 +30,13 @@ class Player {
         map1.renderMap();
         switch (map1.grid[this.ylocation][this.xlocation]) {
             case 2:
-                if (confirm("Take this item?") === true) {
+                // if (confirm("Take this item?") === true) {
                     let item = generateRoomLoot();
                     inventory1.addItemToInventory(item);
                     console.log(inventory1.inventoryContent)
                     inventory1.displayInventory();
                     map1.grid[this.ylocation][this.xlocation] = 1;
-                }
+                //}
                 break;
         }
     }
