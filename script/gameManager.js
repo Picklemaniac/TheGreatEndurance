@@ -55,7 +55,7 @@ function selectItem(type) {
             player.selectedItem = JSON.parse(foodsDisplay.value);
             break;
         case "drink":
-            player.selectedItem = JSON.parse(foodsDisplay.value);
+            player.selectedItem = JSON.parse(drinksDisplay.value);
             break;
         case "weapon":
             player.selectedItem = JSON.parse(weaponsDisplay.value);

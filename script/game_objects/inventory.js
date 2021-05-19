@@ -26,7 +26,7 @@ class Inventory {
             inventoryStuffing += this.inventoryContent[i].inv_space;
         }
         console.log(`Inventory is ${inventoryStuffing} van de ${this.inventorySize} gevuld`)
-        return inventoryStuffing + itemSize >= this.inventorySize;
+        return inventoryStuffing + itemSize > this.inventorySize;
     }
 
     //This function displays the current inventory to the player
