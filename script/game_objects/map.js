@@ -63,7 +63,7 @@ class Map {
                     }
                     //This shouldn't happen!?!?!
                     else {
-                        html += `<td>   ` + map.grid[y][x] + `</td>`;
+                        html += `<td>   ` + this.grid[y][x] + `</td>`;
                     }
                 }
             }
