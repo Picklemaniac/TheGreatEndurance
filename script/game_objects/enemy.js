@@ -14,4 +14,8 @@ class Enemy{
         player.health -= this.attack;
         gameManager.displayStats();
     }
+
+    checkEnemyDeath() {
+        return this.health <= 0;
+    }
 }

@@ -160,15 +160,26 @@ function startCombat() {
     document.getElementById('combatField').append(attackButton);
     console.log(currentEnemy.name);
     gameManager.displayEnemyStats();
-    setInterval(() => {
+    let playerCombat = setInterval(() => {
         if (player.stamina < player.maxStamina) {
-            player.regenStamina();
+            if (currentEnemy.checkEnemyDeath() === false) {
+                player.regenStamina();
+            }
+            else {
+                this.clearInterval(playerCombat);
+            }
         }
     }, 4000);
     // enemy 
-    setInterval(() => {
+    let enemyCombat = setInterval(() => {
+        if (currentEnemy.checkEnemyDeath() === false) {
             currentEnemy.battleAction();
-        
+        }
+        else {
+            console.log("Can't attack, I am dead");
+            document.getElementById('enemyStats').innerText = ''
+            this.clearInterval(enemyCombat);
+        }
     }, 5000);
 }
 

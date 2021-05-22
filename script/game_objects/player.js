@@ -65,8 +65,6 @@ class Player {
                 this.stamina -= 20;
                 gameManager.displayStats();
                 if (currentEnemy.health <= this.attack) {
-                    console.log('he died');
-                    document.getElementById('enemyStats').innerText = ''
                 }
                 if (currentEnemy.health >= this.attack) {
                     console.log(currentEnemy.health);
