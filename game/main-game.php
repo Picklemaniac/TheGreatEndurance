@@ -41,13 +41,13 @@
         <p>Stamina <span id="staminaStatDisplay"></span></p>
     </div>
     <div>
-    <button id="startCombatBtn" onclick="startCombat()"> Start combat</button>
+    <button id="startCombatBtn"> Start combat</button>
     </div>
     <br>
     <div id="combatField">
-    <div id="enemyWindow">
-    <p id="enemyStats"></p>
-    </div>
+        <div id="enemyWindow">
+            <p id="enemyStats"></p>
+        </div>
     </div>
 
     <!-- Initialize game content-->
@@ -61,6 +61,7 @@
     <script src="..\script\game_objects\enemy.js"></script>
 
     <!-- Initialize main scripts -->
+    <script src="..\script\combat_manager.js"></script>
     <script src="..\script\game_manager.js"></script>
     <script src="..\script\main.js"></script>
 </body>

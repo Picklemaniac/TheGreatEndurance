@@ -35,6 +35,16 @@ class Player {
         inventory.displayInventory();
     }
 
+    equip(item) {
+        if (item === 0 || item === undefined) return;
+
+        switch (item.type) {
+            case "weapon":
+                this.weaponEquiped = item;
+                break;
+        }
+    }
+
     moveOnMap(y, x) {
         this.ylocation += y;
         this.xlocation += x;

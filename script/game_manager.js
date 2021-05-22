@@ -48,8 +48,11 @@ class GameManager {
         //Action controls
         eatActionBtn.addEventListener("click", function () { consumeClick("food") });
         drinkActionBtn.addEventListener("click", function () { consumeClick("drink") });
-        equipActionBtn.addEventListener("click", function () { alert("Nothing here yet whoops") });
+        equipActionBtn.addEventListener("click", function () { equipClick() });
         discardActionBtn.addEventListener("click", function () { discardClick() });
+
+        document.getElementById("startCombatBtn").addEventListener("click", function () { combatManager.startCombat() });
+
     }
 
     //This function displays the current player stats to the right location
@@ -58,7 +61,7 @@ class GameManager {
         document.getElementById('attackStatDisplay').innerText = player.attack
         document.getElementById('thirstStatDisplay').innerText = player.thirst
         document.getElementById('hungerStatDisplay').innerText = player.hunger
-        document.getElementById('weaponEquippedDisplay').innerText = player.weaponEquiped;
+        if (player.weaponEquiped !== null) document.getElementById('weaponEquippedDisplay').innerText = player.weaponEquiped.name;
         document.getElementById('staminaStatDisplay').innerText = `${player.stamina} / ${player.maxStamina}`;
     }
 
@@ -128,6 +131,11 @@ function selectItem(type) {
     }
 }
 
+function equipClick() {
+    if (weaponsDisplay.value !== 0) player.equip(JSON.parse(weaponsDisplay.value));
+    gameManager.displayStats();
+}
+
 function consumeClick(type) {
     switch (type) {
         case "food":
@@ -148,44 +156,3 @@ function discardClick() {
         inventory.removeItemFromInventory(player.selectedItem);
     }
 }
-
-function startCombat() {
-    currentEnemy = new Enemy('skeleton', 20, 5, 50, 2, 100);
-    let attackButton = document.createElement('button');
-    attackButton.innerText = 'attack';
-    attackButton.id = 'attackButton';
-    attackButton.addEventListener('click', function () {
-        player.battleAction(0);
-    });
-    document.getElementById('combatField').append(attackButton);
-    console.log(currentEnemy.name);
-    gameManager.displayEnemyStats();
-    let combatManager = setInterval(() => {
-        gameManager.displayStats();
-        gameManager.displayEnemyStats();
-    }, 100);
-
-    let playerCombat = setInterval(() => {
-        if (player.stamina < player.maxStamina) {
-            if (currentEnemy.checkEnemyDeath() === false) {
-                player.regenStamina();
-            }
-            else {
-                this.clearInterval(playerCombat);
-            }
-        }
-    }, 4000);
-    // enemy 
-    let enemyCombat = setInterval(() => {
-        if (currentEnemy.checkEnemyDeath() === false) {
-            currentEnemy.battleAction();
-        }
-        else {
-            console.log("Can't attack, I am dead");
-            document.getElementById('enemyStats').innerText = ''
-            this.clearInterval(enemyCombat);
-        }
-    }, 5000);
-}
-
-
