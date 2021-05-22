@@ -160,6 +160,11 @@ function startCombat() {
     document.getElementById('combatField').append(attackButton);
     console.log(currentEnemy.name);
     gameManager.displayEnemyStats();
+    let combatManager = setInterval(() => {
+        gameManager.displayStats();
+        gameManager.displayEnemyStats();
+    }, 100);
+
     let playerCombat = setInterval(() => {
         if (player.stamina < player.maxStamina) {
             if (currentEnemy.checkEnemyDeath() === false) {

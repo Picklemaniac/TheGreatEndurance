@@ -12,7 +12,6 @@ class Enemy{
 
     battleAction(){
         player.health -= this.attack;
-        gameManager.displayStats();
     }
 
     checkEnemyDeath() {

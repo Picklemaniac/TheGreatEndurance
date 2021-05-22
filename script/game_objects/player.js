@@ -63,12 +63,12 @@ class Player {
             case 0:
                 currentEnemy.health -= this.attack;
                 this.stamina -= 20;
-                gameManager.displayStats();
+                
                 if (currentEnemy.health <= this.attack) {
                 }
                 if (currentEnemy.health >= this.attack) {
                     console.log(currentEnemy.health);
-                    gameManager.displayEnemyStats();
+                    
                 }
                 break;
 
@@ -83,6 +83,6 @@ class Player {
 
     regenStamina() {
         this.stamina += this.staminaRegen;
-        gameManager.displayStats();
+        
     }
 }
