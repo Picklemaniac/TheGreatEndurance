@@ -24,31 +24,32 @@ class GameManager {
     gameStart() {
         player = new Player();
         inventory = new Inventory();
-        map =new Map();
+        map = new Map();
 
         this.initializeButtons();
         this.displayStats();
         this.displayControls();
     }
 
+
     //Initialize all the necessary buttons
     initializeButtons() {
         //Movement Controls
-        northBtn.addEventListener("click", function () {player.moveOnMap(-1, 0);});
-        eastBtn.addEventListener("click", function () {player.moveOnMap(0, 1);});
-        southBtn.addEventListener("click", function () {player.moveOnMap(1, 0);});
-        westBtn.addEventListener("click", function () {player.moveOnMap(0, -1);});
+        northBtn.addEventListener("click", function () { player.moveOnMap(-1, 0); });
+        eastBtn.addEventListener("click", function () { player.moveOnMap(0, 1); });
+        southBtn.addEventListener("click", function () { player.moveOnMap(1, 0); });
+        westBtn.addEventListener("click", function () { player.moveOnMap(0, -1); });
 
         //Management Controlls
-        drinksDisplay.addEventListener("change", function () {selectItem("drink")});
-        foodsDisplay.addEventListener("change", function () {selectItem("food")});
-        weaponsDisplay.addEventListener("change", function () {selectItem("weapon")});
+        drinksDisplay.addEventListener("change", function () { selectItem("drink") });
+        foodsDisplay.addEventListener("change", function () { selectItem("food") });
+        weaponsDisplay.addEventListener("change", function () { selectItem("weapon") });
 
         //Action controls
-        eatActionBtn.addEventListener("click", function () {consumeClick("food")});
-        drinkActionBtn.addEventListener("click", function () {consumeClick("drink")});
-        equipActionBtn.addEventListener("click", function () {alert("Nothing here yet whoops")});
-        discardActionBtn.addEventListener("click", function () {discardClick()});
+        eatActionBtn.addEventListener("click", function () { consumeClick("food") });
+        drinkActionBtn.addEventListener("click", function () { consumeClick("drink") });
+        equipActionBtn.addEventListener("click", function () { alert("Nothing here yet whoops") });
+        discardActionBtn.addEventListener("click", function () { discardClick() });
     }
 
     //This function displays the current player stats to the right location
@@ -58,6 +59,16 @@ class GameManager {
         document.getElementById('thirstStatDisplay').innerText = player.thirst
         document.getElementById('hungerStatDisplay').innerText = player.hunger
         document.getElementById('weaponEquippedDisplay').innerText = player.weaponEquiped;
+        document.getElementById('staminaStatDisplay').innerText = `${player.stamina} / ${player.maxStamina}`;
+    }
+
+    displayEnemyStats(){
+        document.getElementById('enemyStats').innerText = `
+        name: ${currentEnemy.name}
+        health: ${currentEnemy.health}
+        attack: ${currentEnemy.attack}
+        stamina: ${currentEnemy.stamina}
+        `
     }
 
     //This function enables or disables the player movement controls based on which direction he can currently move in.
@@ -101,7 +112,7 @@ class GameManager {
 
 //Picks the currently selected item. Not really ideal, will definitely change in the future.
 function selectItem(type) {
-    switch(type) {
+    switch (type) {
         case "food":
             player.selectedItem = JSON.parse(foodsDisplay.value);
             break;
@@ -118,7 +129,7 @@ function selectItem(type) {
 }
 
 function consumeClick(type) {
-    switch(type) {
+    switch (type) {
         case "food":
             if (foodsDisplay.value !== 0) player.consume(JSON.parse(foodsDisplay.value));
             break;
@@ -137,3 +148,28 @@ function discardClick() {
         inventory.removeItemFromInventory(player.selectedItem);
     }
 }
+
+function startCombat() {
+    currentEnemy = new Enemy('skeleton', 20, 5, 50, 2, 100);
+    let attackButton = document.createElement('button');
+    attackButton.innerText = 'attack';
+    attackButton.id = 'attackButton';
+    attackButton.addEventListener('click', function () {
+        player.battleAction(0);
+    });
+    document.getElementById('combatField').append(attackButton);
+    console.log(currentEnemy.name);
+    gameManager.displayEnemyStats();
+    setInterval(() => {
+        if (player.stamina < player.maxStamina) {
+            player.regenStamina();
+        }
+    }, 4000);
+    // enemy 
+    setInterval(() => {
+            currentEnemy.battleAction();
+        
+    }, 5000);
+}
+
+

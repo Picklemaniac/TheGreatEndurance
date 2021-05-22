@@ -38,6 +38,16 @@
         <p>thirst: <span id="thirstStatDisplay"></span></p>
         <p>hunger: <span id="hungerStatDisplay"></span></p>
         <p>weapon: <span id="weaponEquippedDisplay"></span></p>
+        <p>Stamina <span id="staminaStatDisplay"></span></p>
+    </div>
+    <div>
+    <button id="startCombatBtn" onclick="startCombat()"> Start combat</button>
+    </div>
+    <br>
+    <div id="combatField">
+    <div id="enemyWindow">
+    <p id="enemyStats"></p>
+    </div>
     </div>
 
     <!-- Initialize game content-->
@@ -48,6 +58,7 @@
     <script src="..\script\game_objects\player.js"></script>
     <script src="..\script\game_objects\item.js"></script>
     <script src="..\script\game_objects\inventory.js"></script>
+    <script src="..\script\game_objects\enemy.js"></script>
 
     <!-- Initialize main scripts -->
     <script src="..\script\game_manager.js"></script>

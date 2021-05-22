@@ -13,6 +13,10 @@ class Player {
         this.thirst = 50;
         this.hunger = 50;
 
+        this.stamina = 100;
+        this.staminaRegen = 15;
+        this.maxStamina = 100;
+
         //Equipment
         this.weaponEquiped = null;
 
@@ -52,5 +56,35 @@ class Player {
                 inventory.displayInventory();
                 break;
         }
+    }
+
+    battleAction(actionType) {
+        switch (actionType) {
+            case 0:
+                currentEnemy.health -= this.attack;
+                this.stamina -= 20;
+                gameManager.displayStats();
+                if (currentEnemy.health <= this.attack) {
+                    console.log('he died');
+                    document.getElementById('enemyStats').innerText = ''
+                }
+                if (currentEnemy.health >= this.attack) {
+                    console.log(currentEnemy.health);
+                    gameManager.displayEnemyStats();
+                }
+                break;
+
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+        }
+    }
+
+    regenStamina() {
+        this.stamina += this.staminaRegen;
+        gameManager.displayStats();
     }
 }
