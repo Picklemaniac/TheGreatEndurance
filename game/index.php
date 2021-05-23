@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/inventory.css">
     <title>Test</title>
 </head>
 <body>
@@ -61,6 +62,7 @@
             <button onclick="openMisc()" class="bigBtnStyling">Misc</button>
         </div>
     </div>
+
     <div class="rightMenu">
         <div class="charName">
             <div class="charNameMargin">
@@ -92,7 +94,9 @@
             <button onclick="openMainMenu()" class="mediumBtnStyling">Home / Menu</button>
         </div>
     </div>
-    <div class="gameBody">
+
+
+    <div id="gameBody" class="gameBody">
         <div class="logoText">The Great Endurance</div>
         <div id="historyText" class="historyText">
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
@@ -102,9 +106,9 @@
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
         </div>
         <div id="currentEvents" class="currentEvents">
-            <p class="currentText">You’re in a dark room. The mossy stone walls around you are damp with some kind of fungus. Mushrooms are growing on the ceiling.</p>
-            <p class="currentText">Upon inspecting the room you notice a strange locked box in the corner. A long dead corpse appears to be guarding it.</p>
-            <p class="currentText">There’s a corridor going left, and a corridor going right. There also seems to be a strange hole in the wall to the front, but you’re not sure if it would lead anywhere...</p>
+
+            <div id=""></div>
+
         </div>
         <div id="currentActions" class="currenActions">
             <div class="currentActionButtons">
@@ -126,6 +130,46 @@
             </div>
         </div>
     </div>
+
+    <div id="inventoryBody" class="inventoryBody">
+        <div class="logoText">The Great Endurance</div>
+        <div class="inventoryDiv">
+
+            <button id="backBtn" class="navBtnStyling">Back</button>
+            <hr>
+            <div id="fullInventory" class="fullInventory">
+
+                <div class="inventoryItems">
+                    <p class="invHeader">Inventory: <span id="invSizeDisplay">0 / 20:</span></p>
+                    <ul class="inventoryItemsDisplay">
+                        <li>Cookie</li>
+                        <li>Iron gauntlets</li>
+                        <li>Bandage</li>
+                        <li>Cookie</li>
+
+                    </ul>
+                </div>
+
+                <div class="itemDescription">
+                    <p class="invHeader">Item:</p>
+                    <div class="selectedItemDescription">
+                        <p id="selectedItemName" class="descriptionText">Iron Pole</p>
+                        <p id="selectedItemDescription" class="descriptionText">A long pole with a sharp point at the end. It is made of iron.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="inventoryActions">
+            <button class="inventoryButton">Equip</button>
+            <button class="inventoryButton">Eat</button>
+            <button class="inventoryButton">Drink</button>
+            <button class="inventoryButton">Use</button>
+        </div>
+    </div>
+
+
 </div>
 
 </body>

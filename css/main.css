@@ -89,6 +89,7 @@
 .mediumBtnStyling:hover {
     background-color: #262626;
 }
+
 .mediumBtnStyling:disabled {
     background-color: #262626;
 }
@@ -135,7 +136,6 @@
 .basicActionTable {
     width: 95%;
 }
-
 
 hr {
     border-color: #939393;
@@ -236,7 +236,7 @@ html, body {
 
 .charInfo {
     grid-area: charInfo;
-    font-size: 2.4vh;
+    font-size: 1.4vw;
 }
 
 .menuNavRight {

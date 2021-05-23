@@ -70,6 +70,7 @@ class Player {
 
     battleAction(actionType) {
         switch (actionType) {
+            //Attack
             case 0:
                 currentEnemy.health -= this.attack;
                 this.stamina -= 20;
@@ -81,18 +82,21 @@ class Player {
                     
                 }
                 break;
-
+            //Defend
             case 1:
 
                 break;
+            //Evade
             case 2:
 
+                break;
+            //Special
+            case 3:
                 break;
         }
     }
 
     regenStamina() {
         this.stamina += this.staminaRegen;
-        
     }
 }

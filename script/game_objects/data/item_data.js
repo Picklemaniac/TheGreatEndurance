@@ -1,7 +1,7 @@
 const items = {
     equipment: [
-        { type: "weapon", rarity: 0, inv_space: 2, name: "stone blade", description: ""},
-        { type: "weapon", rarity: 1, inv_space: 2, name: "iron blade", description: ""},
+        { type: "weapon", rarity: 0, inv_space: 2, name: "Stone blade", description: ""},
+        { type: "weapon", rarity: 1, inv_space: 2, name: "Iron blade", description: ""},
         { type: "weapon", rarity: 2, inv_space: 2, name: "Cruel Edge", description: ""},
 
         { type: "weapon", rarity: 0, inv_space: 3, name: "stone blade", description: ""},

@@ -10,11 +10,20 @@ class Enemy{
         this.maxStamina = maxStamina;
     }
 
-    battleAction(){
-        player.health -= this.attack;
-    }
+    combatBehaviour() {
+        //Wait until you have enough stamina to do chosen combat action
 
-    checkEnemyDeath() {
-        return this.health <= 0;
+        //If not enough stamina
+        //wait
+
+        //If have enough stamina
+        //Decide if you want to do it or not.
+
+        //If not, choose a random different action and repeat process.
+
+        //If yes, do action
+        //Drain stamina
+
+        //Choose new combat action and repeat
     }
 }

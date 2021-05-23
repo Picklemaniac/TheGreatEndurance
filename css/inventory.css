@@ -1,0 +1,119 @@
+.inventoryButton {
+    background-color: #303030;
+    border: solid #939393 1px;
+    color: white;
+    font-family: 'ancient-modern-tales', serif;
+    font-size: 1.2vw;
+    text-align: center;
+    width: 20%;
+    margin: 0.5vw;
+}
+.inventoryButton:hover {
+    background-color: #262626;
+}
+.inventoryButton:disabled {
+    background-color: #262626;
+}
+
+
+.fullInventory {
+    margin: 1.5vw;
+}
+
+.inventoryItems {
+    width: 47.5%;
+    float: left;
+    height: 25vmax;
+    overflow: auto;
+
+}
+
+.itemDescription {
+    float: right;
+    width: 47.5%;
+}
+
+
+.inventoryItemsDisplay {
+    padding: 0;
+    width: 95%;
+}
+
+/* Style the list items */
+.inventoryItemsDisplay li {
+    cursor: pointer;
+    padding: 1vw;
+    list-style-type: none;
+    background: #303030;
+    border: solid #939393 1px;
+    color: white;
+}
+
+
+.inventoryItemsDisplay li:hover {
+    background: #595959;
+}
+
+/* When clicked on, add a background color and strike out text */
+.inventoryItemsDisplay li.selectedItem {
+    background: #888;
+    color: #fff;
+}
+
+/* Add a "checked" mark when clicked on */
+.inventoryItemsDisplay li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+
+}
+
+.inventoryBody {
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2.5fr 0.5fr;
+    gap: 1.5vh 0px;
+    grid-template-areas:
+    "logoText"
+    "inventoryDiv"
+    "inventoryActions";
+    grid-area: gameBody;
+    height: 45vmax;
+}
+
+.inventoryDiv {
+    grid-area: inventoryDiv;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 1.0vw;
+}
+
+.invHeader {
+    font-size: 1.2vw;
+}
+
+.inventoryActions {
+    grid-area: inventoryActions;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 1.0vw;
+    text-align: center;
+}
+
+.selectedItemDescription {
+    border: solid #939393 1px;
+    color: white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.descriptionText {
+    margin: 1vw;
+    text-align: left;
+}

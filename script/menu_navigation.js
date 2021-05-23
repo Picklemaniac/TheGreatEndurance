@@ -1,58 +1,38 @@
-const history = document.getElementById("historyText");
-const centerDiv = document.getElementById("currentEvents");
-const currentActions = document.getElementById("currentActions");
+const gameBody = document.getElementById('gameBody');
+const inventoryBody = document.getElementById('inventoryBody');
+const backButton = document.getElementById("backBtn");
+
+
 
 function backToGame() {
-    history.style.visibility = "visible";
-    centerDiv.style.height = "auto";
-    currentActions.style.visibility = "visible";
-    centerDiv.innerHTML = "";
-}
-
-//This function sets the default navigation (Sets up a sepperate window in the center and adds a back button)
-function baseNavigation() {
-    history.style.visibility = "hidden";
-    centerDiv.style.height = "25vw";
-    centerDiv.innerHTML = "";
-    currentActions.style.visibility = "hidden";
-
-    let backButton = document.createElement("button");
-    backButton.innerText = "Back"
-    backButton.className = "navBtnStyling"
-    backButton.addEventListener ("click",function() {
-        backToGame();
-    });
-
-    centerDiv.append(backButton);
+    gameBody.style.display = "grid";
+    inventoryBody.style.display = "none";
 }
 
 function openInventory() {
-    baseNavigation();
-
-    let useItemButton = document.createElement("button");
-    let throwItemAwayButton = document.createElement("button");
+    gameBody.style.display = "none";
+    inventoryBody.style.display = "grid";
 }
 
 function openCrafting() {
-    baseNavigation();
 }
 
 function openMisc() {
-    baseNavigation();
 }
 
 function openSkills() {
-    baseNavigation();
 }
 
 function openStatsMood() {
-    baseNavigation();
 }
 
 function openCharacterMenu() {
-    baseNavigation();
 }
 
 function openMainMenu() {
     //Back to home menu?
 }
+
+backButton.addEventListener("click", function () {
+    backToGame();
+});

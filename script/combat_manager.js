@@ -18,10 +18,26 @@ class CombatManager {
 
         gameManager.displayEnemyStats();
 
+        //Update the player and enemy stats live when combat is enabled.
         let combatManager = setInterval(() => {
             gameManager.displayStats();
             gameManager.displayEnemyStats();
+
+            if (currentEnemy.checkEnemyDeath() === true) {
+
+            }
+
         }, 100);
+
+        //Slowly regen the stamina of both the player and the enemy. This is based on their stats
+        let staminaRegen = setInterval(() => {
+            player.regenStamina();
+        }, 1000);
+
+        //Have the enemy attack and use it's own stamina. Should be mostly random for now
+        let enemyCombat = setInterval(() => {
+
+        });
 
         // let playerCombat = setInterval(() => {
         //     if (player.stamina < player.maxStamina) {
