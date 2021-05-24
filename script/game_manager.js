@@ -22,12 +22,15 @@ const invList = document.getElementById("inventoryItemsDisplay")
 const itemNameDisplay = document.getElementById("selectedItemName");
 const itemInfoDisplay = document.getElementById("selectedItemDescription");
 
+const historyText = document.getElementById("historyText");
+
 class GameManager {
     //Starts the game
     gameStart() {
         player = new Player();
         inventory = new Inventory();
         map = new Map();
+        hallway = new HallwayManager();
 
         this.initializeButtons();
         this.displayStats();
@@ -38,10 +41,10 @@ class GameManager {
     //Initialize all the necessary buttons
     initializeButtons() {
         //Movement Controls
-        northBtn.addEventListener("click", function () { player.moveOnMap(-1, 0); });
-        eastBtn.addEventListener("click", function () { player.moveOnMap(0, 1); });
-        southBtn.addEventListener("click", function () { player.moveOnMap(1, 0); });
-        westBtn.addEventListener("click", function () { player.moveOnMap(0, -1); });
+        northBtn.addEventListener("click", function () { player.moveOnMap(-1, 0) });
+        eastBtn.addEventListener("click", function () { player.moveOnMap(0, 1) });
+        southBtn.addEventListener("click", function () { player.moveOnMap(1, 0) });
+        westBtn.addEventListener("click", function () { player.moveOnMap(0, -1) });
 
         //Management Controlls
         drinksDisplay.addEventListener("change", function () { selectItem("drink") });
@@ -68,7 +71,7 @@ class GameManager {
         document.getElementById('staminaStatDisplay').innerText = `${player.stamina} / ${player.maxStamina}`;
     }
 
-    displayEnemyStats(){
+    displayEnemyStats() {
         document.getElementById('enemyStats').innerText = `
         name: ${currentEnemy.name}
         health: ${currentEnemy.health}
@@ -85,7 +88,7 @@ class GameManager {
         invList.innerHTML = "";
 
         //For each item in the current inventory display it to the right place
-        for (let i = 0; i < inventory.inventoryContent.length ; i++) {
+        for (let i = 0; i < inventory.inventoryContent.length; i++) {
             let opt = document.createElement("option");
             opt.textContent = inventory.inventoryContent[i].name;
             opt.value = JSON.stringify(inventory.inventoryContent[i]);
@@ -151,6 +154,10 @@ class GameManager {
         return v.filter(([h, j]) => h + m >= 0 && h + m < arr.length && j + n >= 0 && j + n < arr[0].length)
             .map(([h, j]) => arr[h + m][j + n])
     }
+
+    startHallway() {
+            hallway.drawEvent();
+    }
 }
 
 //NOT PART OF THE GAME MANAGER
@@ -182,3 +189,4 @@ function consumeClick(type) {
 //         inventory.removeItemFromInventory(player.selectedItem);
 //     }
 // }
+

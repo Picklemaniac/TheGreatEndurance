@@ -41,7 +41,7 @@
         <p>Stamina <span id="staminaStatDisplay"></span></p>
     </div>
     <div>
-    <button id="startCombatBtn"> Start combat</button>
+        <button id="startCombatBtn"> Start combat</button>
     </div>
     <br>
     <div id="combatField">
@@ -49,7 +49,10 @@
             <p id="enemyStats"></p>
         </div>
     </div>
-
+    <div id="historyText" class="historyText">
+        <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
+    </div>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <!-- Initialize game content-->
     <script src="..\script\game_objects\data\item_data.js"></script>
 
@@ -62,6 +65,7 @@
 
     <!-- Initialize main scripts -->
     <script src="..\script\combat_manager.js"></script>
+    <script src="..\script\hallway_manager.js"></script>
     <script src="..\script\game_manager.js"></script>
     <script src="..\script\main.js"></script>
 </body>

@@ -83,6 +83,9 @@ class Player {
                 console.log(inventory)
                 gameManager.displayInventory();
                 break;
+            case 1:
+                gameManager.startHallway();
+            break;
         }
     }
 
