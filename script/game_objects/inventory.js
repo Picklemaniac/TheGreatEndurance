@@ -28,34 +28,4 @@ class Inventory {
         console.log(`Inventory is ${inventoryStuffing} van de ${this.inventorySize} gevuld`)
         return inventoryStuffing + itemSize > this.inventorySize;
     }
-
-    //This function displays the current inventory to the player
-    displayInventory() {
-        //Empty the current inventory displays
-        weaponsDisplay.innerHTML = '<option value="0" disabled selected> Select weapon</option>';
-        foodsDisplay.innerHTML = '<option value="0" disabled selected> Select food</option>';
-        drinksDisplay.innerHTML = '<option value="0" disabled selected> Select drink</option>';
-
-        //For each item in the current inventory display it to the right place
-        for (let i = 0; i < this.inventoryContent.length ; i++) {
-            let opt = document.createElement("option");
-            opt.textContent = this.inventoryContent[i].name;
-            opt.value = JSON.stringify(this.inventoryContent[i]);
-
-            switch (this.inventoryContent[i].type) {
-                case "food":
-                    foodsDisplay.appendChild(opt);
-                    break;
-                case "drink":
-                    drinksDisplay.appendChild(opt);
-                    break;
-                case "weapon":
-                    weaponsDisplay.appendChild(opt);
-                    break;
-                default:
-                    break;
-            }
-        }
-        player.selectedItem = 0;
-    }
 }

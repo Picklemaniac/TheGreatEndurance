@@ -17,32 +17,26 @@
                 <table class="basicActionTable">
                     <tr>
                         <td>
-                            <select class="foodBtnStyling">
+                            <select class="foodBtnStyling" id='foodsDisplay'>
                                 <option disabled selected>
                                     Select Food
-                                </option>
-                                <option>
-                                    food1
                                 </option>
                             </select>
                         </td>
                         <td>
-                            <button class="foodBtnStyling">Eat</button>
+                            <button class="foodBtnStyling" id="eatActionBtn">Eat</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <select class="foodBtnStyling">
+                            <select class="foodBtnStyling" id='drinksDisplay'>
                                 <option disabled selected>
                                     Select Drink
-                                </option>
-                                <option>
-                                    drink1
                                 </option>
                             </select>
                         </td>
                         <td>
-                            <button class="foodBtnStyling">Drink</button>
+                            <button class="foodBtnStyling" id="drinkActionBtn">Drink</button>
                         </td>
                     </tr>
                     <tr>
@@ -73,14 +67,14 @@
         <div class="charInfo">
             <hr>
             <p>
-                Health: <span class="good">15/24</span> <br>
-                Stamina: <span class="bad">3/45</span> <br>
-                General Mood: <span class="bad">Terrible</span>
+                Health: <span class="bad"  id="healthStatDisplay"></span><br>
+                Hunger: <span class="bad"  id="hungerStatDisplay"></span><br>
+                Thirst: <span class="bad"  id="thirstStatDisplay"></span><br>
             </p>
             <p>
-                Hunger: <span class="bad">Malnourished</span> <br>
-                Thirst: <span class="bad">Parched</span> <br>
-                Rest: <span class="bad">Sleep Deprived</span>
+                Attack: <span class="bad"  id="attackStatDisplay"></span><br>
+                Stamina: <span class="bad" id="staminaStatDisplay"></span><br>
+                Weapon equipped: <span class="bad"  id="weaponEquippedDisplay"></span>
             </p>
             <hr>
         </div>
@@ -107,7 +101,7 @@
         </div>
         <div id="currentEvents" class="currentEvents">
 
-            <div id=""></div>
+            <div id="container" style="display: none"></div>
 
         </div>
         <div id="currentActions" class="currenActions">
@@ -123,10 +117,10 @@
                 <button class="navBtnStyling">Defend</button>
             </div>
             <div class="navigation">
-                <button class="navBtnStyling">North</button><br>
-                <button class="navBtnStyling">West</button>
-                <button class="navBtnStyling">East</button><br>
-                <button class="navBtnStyling">South</button>
+                <button class="navBtnStyling" id="north">North</button><br>
+                <button class="navBtnStyling" id="west">West</button>
+                <button class="navBtnStyling" id="east">East</button><br>
+                <button class="navBtnStyling" id="south">South</button>
             </div>
         </div>
     </div>
@@ -141,11 +135,7 @@
 
                 <div class="inventoryItems">
                     <p class="invHeader">Inventory: <span id="invSizeDisplay">0 / 20:</span></p>
-                    <ul class="inventoryItemsDisplay">
-                        <li>Cookie</li>
-                        <li>Iron gauntlets</li>
-                        <li>Bandage</li>
-                        <li>Cookie</li>
+                    <ul id="inventoryItemsDisplay" class="inventoryItemsDisplay">
 
                     </ul>
                 </div>
@@ -153,8 +143,8 @@
                 <div class="itemDescription">
                     <p class="invHeader">Item:</p>
                     <div class="selectedItemDescription">
-                        <p id="selectedItemName" class="descriptionText">Iron Pole</p>
-                        <p id="selectedItemDescription" class="descriptionText">A long pole with a sharp point at the end. It is made of iron.</p>
+                        <p id="selectedItemName" class="descriptionText"></p>
+                        <p id="selectedItemDescription" class="descriptionText"></p>
                     </div>
                 </div>
             </div>
@@ -163,9 +153,7 @@
 
         <div class="inventoryActions">
             <button class="inventoryButton">Equip</button>
-            <button class="inventoryButton">Eat</button>
-            <button class="inventoryButton">Drink</button>
-            <button class="inventoryButton">Use</button>
+            <button class="inventoryButton">Discard</button>
         </div>
     </div>
 
@@ -174,5 +162,22 @@
 
 </body>
 
+<!-- Initialize basic navigation -->
 <script src="..\script\menu_navigation.js"></script>
+
+<!-- Initialize game content-->
+<script src="..\script\game_objects\data\item_data.js"></script>
+
+<!-- Initialize objects -->
+<script src="..\script\game_objects\map.js"></script>
+<script src="..\script\game_objects\player.js"></script>
+<script src="..\script\game_objects\item.js"></script>
+<script src="..\script\game_objects\inventory.js"></script>
+<script src="..\script\game_objects\enemy.js"></script>
+
+<!-- Initialize main scripts -->
+<script src="..\script\combat_manager.js"></script>
+<script src="..\script\game_manager.js"></script>
+<script src="..\script\main.js"></script>
+
 </html>

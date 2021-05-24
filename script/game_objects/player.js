@@ -24,6 +24,24 @@ class Player {
         this.selectedItem = null;
     }
 
+    //Picks the currently selected item. Not really ideal, will definitely change in the future.
+// function selectItem(type) {
+//     switch (type) {
+//         case "food":
+//             player.selectedItem = JSON.parse(foodsDisplay.value);
+//             break;
+//         case "drink":
+//             player.selectedItem = JSON.parse(drinksDisplay.value);
+//             break;
+//         case "weapon":
+//             player.selectedItem = JSON.parse(weaponsDisplay.value);
+//             break;
+//         default:
+//             alert("Impossible selection? How did you do this?!");
+//             break;
+//     }
+// }
+
     //Lets the player consume an item (changes the given stats and removes the consumed item)
     consume(item) {
         if (item === 0 || item === undefined) return;
@@ -32,7 +50,7 @@ class Player {
         this.thirst += item.stats[2];
         this.hunger += item.stats[3];
         inventory.removeItemFromInventory(item);
-        inventory.displayInventory();
+        gameManager.displayInventory();
     }
 
     equip(item) {
@@ -63,7 +81,7 @@ class Player {
                 }
                 console.log(inventory.inventoryContent)
                 console.log(inventory)
-                inventory.displayInventory();
+                gameManager.displayInventory();
                 break;
         }
     }

@@ -37,7 +37,8 @@
     background-color: #262626;
 }
 .navBtnStyling:disabled {
-    background-color: #262626;
+    background-color: #070707;
+    color: #595959;
 }
 
 .foodBtnStyling {
