@@ -49,8 +49,10 @@ class Player {
         this.attack += item.stats[1];
         this.thirst += item.stats[2];
         this.hunger += item.stats[3];
+
         inventory.removeItemFromInventory(item);
         gameManager.displayInventory();
+
     }
 
     equip(item) {

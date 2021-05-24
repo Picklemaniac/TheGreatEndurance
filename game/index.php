@@ -112,10 +112,12 @@
                     <button class="navBtnStyling">Interact with treasure chest</button>
                 </div>
             </div>
+
             <div class="combat">
                 <button class="navBtnStyling">Attack</button><br>
                 <button class="navBtnStyling">Defend</button>
             </div>
+
             <div class="navigation">
                 <button class="navBtnStyling" id="north">North</button><br>
                 <button class="navBtnStyling" id="west">West</button>
@@ -145,6 +147,7 @@
                     <div class="selectedItemDescription">
                         <p id="selectedItemName" class="descriptionText"></p>
                         <p id="selectedItemDescription" class="descriptionText"></p>
+                        <p id="selectedItemStats" class="descriptionText"></p>
                     </div>
                 </div>
             </div>
@@ -152,8 +155,10 @@
         </div>
 
         <div class="inventoryActions">
-            <button class="inventoryButton">Equip</button>
-            <button class="inventoryButton">Discard</button>
+            <button id="inventoryEquipBtn" class="inventoryButton" style="display: none">Equip</button>
+            <button id="inventoryEatBtn" class="inventoryButton" style="display: none">Eat</button>
+            <button id="inventoryDrinkBtn" class="inventoryButton" style="display: none">Drink</button>
+            <button id="inventoryDiscardBtn" class="inventoryButton" style="display: none">Discard</button>
         </div>
     </div>
 
