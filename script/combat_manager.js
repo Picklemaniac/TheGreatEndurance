@@ -2,63 +2,114 @@ let combatManager;
 
 class CombatManager {
 
+    constructor() {
+        this.enemyTypes = [
+            {min: 0, max: 0.2}, //Pest 20%
+            {min: 0.2, max: 0.5}, // Weak 30%
+            {min: 0.5, max: 0.8}, // Normal 30%
+            {min: 0.8, max: 0.95}, // Strong 15%
+            {min: 0.95, max: Infinity} // Beast 5%
+        ]
+    }
+
     //Starts a combat instance
     startCombat() {
-        currentEnemy = new Enemy('skeleton', 20, 5, 50, 2, 100);
+        this.pullRandomEnemy();
+        this.combatLoop();
+        this.displayCombatChoices();
+    }
 
-        let attackButton = document.createElement('button');
-        attackButton.innerText = 'attack';
-        attackButton.id = 'attackButton';
-        attackButton.addEventListener('click', function () {
-            player.battleAction(0);
-        });
-        document.getElementById('combatField').append(attackButton);
+    offensiveAction() {
+        console.log("attack")
+    }
 
-        console.log(currentEnemy.name);
+    defensiveAction() {
+        console.log("defend")
+    }
 
-        gameManager.displayEnemyStats();
-
-        //Update the player and enemy stats live when combat is enabled.
-        let combatManager = setInterval(() => {
+    //Runs the main combat loop
+    //Displays the player and enemy stats live
+    //Checks if the player or enemy is dead
+    combatLoop() {
+        let combatLoopInterval = setInterval(() => {
+            currentEnemy.combatBehaviour();
             gameManager.displayStats();
             gameManager.displayEnemyStats();
 
-            if (currentEnemy.checkEnemyDeath() === true) {
-
+            if (currentEnemy.health <= 0) {
+                gameManager.displayStats();
+                document.getElementById('enemyStats').innerText = "";
+                clearInterval(combatLoopInterval);
+                clearInterval(staminaRegenInterval);
             }
 
-        }, 100);
+        }, 25);
 
-        //Slowly regen the stamina of both the player and the enemy. This is based on their stats
-        let staminaRegen = setInterval(() => {
+        //Regenerates the stamina of the player and enemy every second
+        let staminaRegenInterval = setInterval(() => {
+            currentEnemy.regenStamina();
             player.regenStamina();
-        }, 1000);
+        }, 1000)
 
-        //Have the enemy attack and use it's own stamina. Should be mostly random for now
-        let enemyCombat = setInterval(() => {
+    }
+
+    pullRandomEnemy() {
+        let enemyType = Math.random();
+        const randomEnemy = this.enemyTypes.findIndex(rarity => rarity.min <= enemyType && rarity.max > enemyType);
+        let possibleEnemies;
+
+        switch (randomEnemy){
+            case 0:
+                possibleEnemies = enemies.pest;
+                break;
+            case 1:
+                possibleEnemies = enemies.weak;
+                break;
+            case 2:
+                possibleEnemies = enemies.normal;
+                break;
+            case 3:
+                possibleEnemies = enemies.strong;
+                break;
+            case 4:
+                possibleEnemies = enemies.beast;
+                break;
+        }
+
+        let generatedEnemy = possibleEnemies[Math.floor(Math.random() * possibleEnemies.length)];
+
+        currentEnemy = new Enemy(generatedEnemy);
+    }
+
+    displayCombatChoices() {
+        document.getElementById("startCombatBtn").style.display = "none";
+
+        let attackCombatAction = document.createElement("button");
+        let defendCombatAction = document.createElement("button");
+        let evadeCombatAction = document.createElement("button");
+
+        attackCombatAction.innerText = "Attack";
+        defendCombatAction.innerText = "Defend";
+        evadeCombatAction.innerText = "Evade";
+
+        attackCombatAction.className = "navBtnStyling";
+        defendCombatAction.className = "navBtnStyling";
+        evadeCombatAction.className = "navBtnStyling";
+
+        attackCombatAction.addEventListener("click", function (){
+            currentEnemy.health -= player.attack;
+        });
+
+        defendCombatAction.addEventListener("click", function (){
 
         });
 
-        // let playerCombat = setInterval(() => {
-        //     if (player.stamina < player.maxStamina) {
-        //         if (currentEnemy.checkEnemyDeath() === false) {
-        //             player.regenStamina();
-        //         }
-        //         else {
-        //             this.clearInterval(playerCombat);
-        //         }
-        //     }
-        // }, 4000);
-        // // enemy
-        // let enemyCombat = setInterval(() => {
-        //     if (currentEnemy.checkEnemyDeath() === false) {
-        //         currentEnemy.battleAction();
-        //     }
-        //     else {
-        //         console.log("Can't attack, I am dead");
-        //         document.getElementById('enemyStats').innerText = ''
-        //         this.clearInterval(enemyCombat);
-        //     }
-        // }, 5000);
+        evadeCombatAction.addEventListener("click", function (){
+
+        });
+
+        document.getElementById("currentActionButtons").append(attackCombatAction);
+        document.getElementById("currentActionButtons").append(defendCombatAction);
+        document.getElementById("currentActionButtons").append(evadeCombatAction);
     }
 }

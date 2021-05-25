@@ -102,14 +102,19 @@
         <div id="currentEvents" class="currentEvents">
 
             <div id="container" style="display: none"></div>
+            <div id="enemyStats">
+
+            </div>
+            <hr>
+            <div>
+
+            </div>
 
         </div>
         <div id="currentActions" class="currenActions">
             <div class="currentActionButtons">
-                <div class="actionMargin">
-                    <button class="navBtnStyling">Pick up piece of willow bark</button>
-                    <button class="navBtnStyling">Take a sip from mud pool</button>
-                    <button class="navBtnStyling">Interact with treasure chest</button>
+                <div id="currentActionButtons" class="actionMargin">
+                    <button class="navBtnStyling" id="startCombatBtn">Start Combat Test</button>
                 </div>
             </div>
 
@@ -172,6 +177,8 @@
 
 <!-- Initialize game content-->
 <script src="..\script\game_objects\data\item_data.js"></script>
+<script src="..\script\game_objects\data\enemy_data.js"></script>
+<script src="..\script\game_objects\data\combat_action_data.js"></script>
 
 <!-- Initialize objects -->
 <script src="..\script\game_objects\map.js"></script>

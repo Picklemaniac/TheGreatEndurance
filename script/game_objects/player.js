@@ -24,24 +24,6 @@ class Player {
         this.selectedItem = null;
     }
 
-    //Picks the currently selected item. Not really ideal, will definitely change in the future.
-// function selectItem(type) {
-//     switch (type) {
-//         case "food":
-//             player.selectedItem = JSON.parse(foodsDisplay.value);
-//             break;
-//         case "drink":
-//             player.selectedItem = JSON.parse(drinksDisplay.value);
-//             break;
-//         case "weapon":
-//             player.selectedItem = JSON.parse(weaponsDisplay.value);
-//             break;
-//         default:
-//             alert("Impossible selection? How did you do this?!");
-//             break;
-//     }
-// }
-
     //Lets the player consume an item (changes the given stats and removes the consumed item)
     consume(item) {
         if (item === 0 || item === undefined) return;
@@ -88,35 +70,9 @@ class Player {
         }
     }
 
-    battleAction(actionType) {
-        switch (actionType) {
-            //Attack
-            case 0:
-                currentEnemy.health -= this.attack;
-                this.stamina -= 20;
-                
-                if (currentEnemy.health <= this.attack) {
-                }
-                if (currentEnemy.health >= this.attack) {
-                    console.log(currentEnemy.health);
-                    
-                }
-                break;
-            //Defend
-            case 1:
-
-                break;
-            //Evade
-            case 2:
-
-                break;
-            //Special
-            case 3:
-                break;
-        }
-    }
-
     regenStamina() {
-        this.stamina += this.staminaRegen;
+        if (this.stamina < this.maxStamina) {
+            this.stamina += this.staminaRegen;
+        }
     }
 }

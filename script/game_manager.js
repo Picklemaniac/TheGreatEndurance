@@ -57,7 +57,7 @@ class GameManager {
         inventoryEquipBtn.addEventListener("click", function () { equipClick() });
         inventoryDiscardBtn.addEventListener("click", function () { discardClick() });
 
-        // document.getElementById("startCombatBtn").addEventListener("click", function () { combatManager.startCombat() });
+        document.getElementById("startCombatBtn").addEventListener("click", function () { combatManager.startCombat() });
 
     }
 
@@ -73,10 +73,10 @@ class GameManager {
 
     displayEnemyStats(){
         document.getElementById('enemyStats').innerText = `
-        name: ${currentEnemy.name}
-        health: ${currentEnemy.health}
-        attack: ${currentEnemy.attack}
-        stamina: ${currentEnemy.stamina}
+        Name: ${currentEnemy.name}
+        Health: ${currentEnemy.health}
+        Attack: ${currentEnemy.attack}
+        Stamina: ${currentEnemy.stamina}
         `
     }
 
@@ -202,6 +202,7 @@ function discardClick() {
     if (player.selectedItem === 0 || player.selectedItem === null) return;
     if (confirm(`Are you sure you want to discard ${player.selectedItem.name}?`)) {
         inventory.removeItemFromInventory(player.selectedItem);
+        gameManager.displayItem()
     }
 }
 
@@ -217,4 +218,5 @@ function consumeClick(type) {
             break;
     }
     gameManager.displayStats();
+    gameManager.displayItem();
 }
