@@ -19,6 +19,7 @@ class Player {
 
         //Equipment
         this.weaponEquiped = null;
+        this.armorEquiped = null;
 
         //Misc
         this.selectedItem = null;
@@ -39,7 +40,6 @@ class Player {
 
     equip(item) {
         if (item === 0 || item === undefined) return;
-
         switch (item.type) {
             case "weapon":
                 this.weaponEquiped = item;

@@ -50,11 +50,13 @@ class GameManager {
         //Quick select controlls
         drinksDisplay.addEventListener("change", function () { player.selectedItem = JSON.parse(this.value) });
         foodsDisplay.addEventListener("change", function () { player.selectedItem = JSON.parse(this.value) });
-        eatActionBtn.addEventListener("click", function () { consumeClick("food") });
-        drinkActionBtn.addEventListener("click", function () { consumeClick("drink") });
+        eatActionBtn.addEventListener("click", function () { quickConsumeClick("food") });
+        drinkActionBtn.addEventListener("click", function () { quickConsumeClick("drink") });
 
         //Inventory action controls
         inventoryEquipBtn.addEventListener("click", function () { equipClick() });
+        inventoryEatBtn.addEventListener("click", function () { consumeClick() });
+        inventoryDrinkBtn.addEventListener("click", function () { consumeClick() });
         inventoryDiscardBtn.addEventListener("click", function () { discardClick() });
 
         document.getElementById("startCombatBtn").addEventListener("click", function () { combatManager.startCombat() });
@@ -194,7 +196,7 @@ class GameManager {
 
 function equipClick() {
     if (player.selectedItem === 0 || player.selectedItem === null) return;
-    player.equip();
+    player.equip(player.selectedItem);
     gameManager.displayStats();
 }
 
@@ -206,7 +208,14 @@ function discardClick() {
     }
 }
 
-function consumeClick(type) {
+function consumeClick() {
+    if (player.selectedItem === 0 || player.selectedItem === null) return;
+    player.consume(player.selectedItem)
+    gameManager.displayStats();
+    gameManager.displayItem()
+}
+
+function quickConsumeClick(type) {
     switch (type) {
         case "food":
             if (foodsDisplay.value !== 0) player.consume(JSON.parse(foodsDisplay.value));

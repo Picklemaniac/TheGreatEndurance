@@ -24,11 +24,11 @@ class Enemy{
 
     randomCombatAction(actionType, actionTypeArray) {
         let randomPossibleAction = actionType[Math.floor(Math.random() * actionType.length)];
-        return actionTypeArray.find(obj => obj.id === randomPossibleAction);
+        return actionTypeArray.find(obj => obj.name.toLowerCase() === randomPossibleAction.toLowerCase());
     }
 
     combatBehaviour() {
-        if (this.nextAction === null) {
+        if (this.nextAction === null || this.nextAction === undefined) {
             let randomActionType = Math.floor(Math.random() * 2);
             switch (randomActionType) {
                 case 0:
@@ -45,7 +45,7 @@ class Enemy{
             }
         }
         else {
-            console.log(this.nextAction);
+            console.log(this.nextAction)
             //Wait until you have enough stamina to do chosen combat action
             if (this.stamina >= this.nextAction.stamina_usage) {
                 //If have enough stamina
@@ -64,6 +64,10 @@ class Enemy{
     offensive() {
         player.health -= Math.floor(Math.random() * (this.nextAction.damage[1] - this.nextAction.damage[0] + 1)) + this.nextAction.damage[0]
         this.stamina -= this.nextAction.stamina_usage;
+    }
+
+    defensive() {
+
     }
 
 }

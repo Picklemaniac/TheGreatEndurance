@@ -32,7 +32,6 @@ class CombatManager {
     //Checks if the player or enemy is dead
     combatLoop() {
         let combatLoopInterval = setInterval(() => {
-            currentEnemy.combatBehaviour();
             gameManager.displayStats();
             gameManager.displayEnemyStats();
 
@@ -43,12 +42,13 @@ class CombatManager {
                 clearInterval(staminaRegenInterval);
             }
 
-        }, 25);
+        }, 1);
 
         //Regenerates the stamina of the player and enemy every second
         let staminaRegenInterval = setInterval(() => {
             currentEnemy.regenStamina();
             player.regenStamina();
+            currentEnemy.combatBehaviour();
         }, 1000)
 
     }
@@ -78,6 +78,10 @@ class CombatManager {
 
         let generatedEnemy = possibleEnemies[Math.floor(Math.random() * possibleEnemies.length)];
 
+        console.log(`
+        Generated enemy: ${JSON.stringify(generatedEnemy)}
+        `)
+
         currentEnemy = new Enemy(generatedEnemy);
     }
 
@@ -97,7 +101,10 @@ class CombatManager {
         evadeCombatAction.className = "navBtnStyling";
 
         attackCombatAction.addEventListener("click", function (){
-            currentEnemy.health -= player.attack;
+            if (player.stamina > 20) {
+                currentEnemy.health -= player.attack;
+                player.stamina -= 20
+            }
         });
 
         defendCombatAction.addEventListener("click", function (){
@@ -108,8 +115,11 @@ class CombatManager {
 
         });
 
+        //Default combat actions
         document.getElementById("currentActionButtons").append(attackCombatAction);
         document.getElementById("currentActionButtons").append(defendCombatAction);
         document.getElementById("currentActionButtons").append(evadeCombatAction);
+
+        //Combat actions based on equipment go here
     }
 }
