@@ -19,14 +19,6 @@ class CombatManager {
         this.displayCombatChoices();
     }
 
-    offensiveAction() {
-        console.log("attack")
-    }
-
-    defensiveAction() {
-        console.log("defend")
-    }
-
     //Runs the main combat loop
     //Displays the player and enemy stats live
     //Checks if the player or enemy is dead
@@ -101,10 +93,7 @@ class CombatManager {
         evadeCombatAction.className = "navBtnStyling";
 
         attackCombatAction.addEventListener("click", function (){
-            if (player.stamina > 20) {
-                currentEnemy.health -= player.attack;
-                player.stamina -= 20
-            }
+            playerCombat.offensive();
         });
 
         defendCombatAction.addEventListener("click", function (){

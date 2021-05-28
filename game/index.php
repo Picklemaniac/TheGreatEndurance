@@ -187,6 +187,8 @@
 <script src="..\script\game_objects\inventory.js"></script>
 <script src="..\script\game_objects\enemy.js"></script>
 
+<script src="..\script\game_objects\combat.js"></script>
+
 <!-- Initialize main scripts -->
 <script src="..\script\combat_manager.js"></script>
 <script src="..\script\game_manager.js"></script>

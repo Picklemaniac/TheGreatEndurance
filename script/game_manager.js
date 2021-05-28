@@ -33,6 +33,9 @@ class GameManager {
         inventory = new Inventory();
         map = new Map();
 
+        playerCombat = new PlayerCombat();
+        enemyCombat = new EnemyCombat();
+
         this.initializeButtons();
         this.displayStats();
         this.displayControls();
@@ -66,18 +69,18 @@ class GameManager {
     //This function displays the current player stats to the right location
     displayStats() {
         document.getElementById('healthStatDisplay').innerText = player.health
-        document.getElementById('attackStatDisplay').innerText = player.attack
+        document.getElementById('attackStatDisplay').innerText = player.prowess
         document.getElementById('thirstStatDisplay').innerText = player.thirst
         document.getElementById('hungerStatDisplay').innerText = player.hunger
         if (player.weaponEquiped !== null) document.getElementById('weaponEquippedDisplay').innerText = player.weaponEquiped.name;
-        document.getElementById('staminaStatDisplay').innerText = `${player.stamina} / ${player.maxStamina}`;
+        document.getElementById('staminaStatDisplay').innerText = `${player.stamina} / ${player.endurance}`;
     }
 
     displayEnemyStats(){
         document.getElementById('enemyStats').innerText = `
         Name: ${currentEnemy.name}
         Health: ${currentEnemy.health}
-        Attack: ${currentEnemy.attack}
+        Attack: ${currentEnemy.prowess}
         Stamina: ${currentEnemy.stamina}
         `
     }
@@ -142,6 +145,7 @@ class GameManager {
         //Display avaiable actions
         switch (player.selectedItem.type) {
             case "weapon":
+            case "armor":
                 inventoryEquipBtn.style.display = ""
                 break;
             case "food":

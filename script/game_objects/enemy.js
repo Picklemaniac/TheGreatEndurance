@@ -2,23 +2,31 @@ let currentEnemy;
 
 class Enemy{
     constructor(enemy){
+
+        //General stats
         this.name = enemy.name;
+
         this.health = enemy.stats[0];
-        this.attack = enemy.stats[1];
+
         this.stamina = enemy.stats[2];
-        this.staminaRegen = enemy.stats[3];
+        this.endurance = enemy.stats[3];
+
+        this.prowess = enemy.stats[1];
         this.maxStamina = enemy.stats[4];
 
+        //Combat actions
         this.offensiveCombatActions = enemy.offensive;
         this.defensiveCombatActions = enemy.defensive;
         this.specialCombatActions = enemy.special;
 
+        //Combat management
         this.nextAction = null;
+        this.defensiveStance = null;
     }
 
     regenStamina() {
         if (this.stamina < this.maxStamina) {
-            this.stamina += this.staminaRegen;
+            this.stamina += this.endurance;
         }
     }
 
@@ -34,6 +42,7 @@ class Enemy{
                 case 0:
                     if (this.offensiveCombatActions === []) return;
                     this.nextAction = this.randomCombatAction(this.offensiveCombatActions, combat_actions.offensive);
+                    console.log(this.nextAction)
                     break;
                 case 1:
                     if (this.defensiveCombatActions === []) return;
@@ -67,7 +76,7 @@ class Enemy{
     }
 
     defensive() {
-
+        this.defensiveStance = this.nextAction;
     }
 
 }

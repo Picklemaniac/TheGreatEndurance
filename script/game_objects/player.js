@@ -9,17 +9,21 @@ class Player {
 
         //General Stats
         this.health = 20;
-        this.attack = 3;
+
+        this.stamina = 100;
+        this.endurance = 100;
+
+        this.prowess = 3;
+        this.strength = 5;
+
         this.thirst = 50;
         this.hunger = 50;
 
-        this.stamina = 100;
-        this.staminaRegen = 15;
-        this.maxStamina = 100;
 
         //Equipment
-        this.weaponEquiped = null;
+        this.weaponEquiped = { type: "weapon", rarity: 0, inv_space: 0, weight: 0, attack: 1, name: "Fists", description: ""};
         this.armorEquiped = null;
+        this.equipLoad = 3;
 
         //Misc
         this.selectedItem = null;
@@ -29,7 +33,7 @@ class Player {
     consume(item) {
         if (item === 0 || item === undefined) return;
         this.health += item.stats[0];
-        this.attack += item.stats[1];
+        this.prowess += item.stats[1];
         this.thirst += item.stats[2];
         this.hunger += item.stats[3];
 
@@ -43,6 +47,9 @@ class Player {
         switch (item.type) {
             case "weapon":
                 this.weaponEquiped = item;
+                break;
+            case "armor":
+                this.armorEquiped = item;
                 break;
         }
     }
@@ -67,12 +74,6 @@ class Player {
                 console.log(inventory)
                 gameManager.displayInventory();
                 break;
-        }
-    }
-
-    regenStamina() {
-        if (this.stamina < this.maxStamina) {
-            this.stamina += this.staminaRegen;
         }
     }
 }
