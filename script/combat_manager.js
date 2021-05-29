@@ -38,9 +38,10 @@ class CombatManager {
 
         //Regenerates the stamina of the player and enemy every second
         let staminaRegenInterval = setInterval(() => {
-            currentEnemy.regenStamina();
-            player.regenStamina();
             currentEnemy.combatBehaviour();
+
+            enemyCombat.staminaGain();
+            playerCombat.staminaGain();
         }, 1000)
 
     }
@@ -78,6 +79,7 @@ class CombatManager {
     }
 
     displayCombatChoices() {
+        //Default combat actions
         document.getElementById("startCombatBtn").style.display = "none";
 
         let attackCombatAction = document.createElement("button");
@@ -93,7 +95,7 @@ class CombatManager {
         evadeCombatAction.className = "navBtnStyling";
 
         attackCombatAction.addEventListener("click", function (){
-            playerCombat.offensive();
+            playerCombat.offensive({name: "Attack", stamina_usage: 20, damage: 1});
         });
 
         defendCombatAction.addEventListener("click", function (){
@@ -104,7 +106,6 @@ class CombatManager {
 
         });
 
-        //Default combat actions
         document.getElementById("currentActionButtons").append(attackCombatAction);
         document.getElementById("currentActionButtons").append(defendCombatAction);
         document.getElementById("currentActionButtons").append(evadeCombatAction);

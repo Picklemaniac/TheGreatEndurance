@@ -8,11 +8,11 @@ class Enemy{
 
         this.health = enemy.stats[0];
 
-        this.stamina = enemy.stats[2];
-        this.endurance = enemy.stats[3];
+        this.stamina = enemy.stats[1];
+        this.endurance = enemy.stats[2];
 
-        this.prowess = enemy.stats[1];
-        this.maxStamina = enemy.stats[4];
+        this.prowess = enemy.stats[3];
+        this.strength = enemy.stats[4];
 
         //Combat actions
         this.offensiveCombatActions = enemy.offensive;
@@ -22,12 +22,6 @@ class Enemy{
         //Combat management
         this.nextAction = null;
         this.defensiveStance = null;
-    }
-
-    regenStamina() {
-        if (this.stamina < this.maxStamina) {
-            this.stamina += this.endurance;
-        }
     }
 
     randomCombatAction(actionType, actionTypeArray) {
@@ -59,24 +53,14 @@ class Enemy{
             if (this.stamina >= this.nextAction.stamina_usage) {
                 //If have enough stamina
                 //Decide if you want to do it or not.
-                if (Math.random() < 0.5) {
+                if (Math.random() < 0.7) {
                     //If yes, do action
                     //Drain stamina
-                    this.offensive();
+                    enemyCombat.offensive(this.nextAction);
                 }
                 //Choose a new action
                 this.nextAction = null;
             }
         }
     }
-
-    offensive() {
-        player.health -= Math.floor(Math.random() * (this.nextAction.damage[1] - this.nextAction.damage[0] + 1)) + this.nextAction.damage[0]
-        this.stamina -= this.nextAction.stamina_usage;
-    }
-
-    defensive() {
-        this.defensiveStance = this.nextAction;
-    }
-
 }

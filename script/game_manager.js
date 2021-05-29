@@ -194,9 +194,7 @@ class GameManager {
     }
 }
 
-//NOT PART OF THE GAME MANAGER
-//Just a neat way to initialize all DOM actions
-//I felt like these belonged in the game_manager file, but not the class
+//All DOM functions
 
 function equipClick() {
     if (player.selectedItem === 0 || player.selectedItem === null) return;
