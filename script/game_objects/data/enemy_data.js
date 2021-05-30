@@ -51,7 +51,7 @@ const enemies = {
     ],
     beast: [
         {
-            name: "QMusic",
+            name: "Kyumuzic",
             stats: [200, 50, 200, 15, 10],
             offensive: ['Attack', 'Heavy attack', 'Big bite'],
             defensive: ['Evade'],

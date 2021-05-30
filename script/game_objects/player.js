@@ -9,9 +9,8 @@ class Player {
 
         //General Stats
         this.health = 20;
-
-        this.stamina = 100;
-        this.endurance = 100;
+        this.stamina = 50;
+        this.endurance = 80;
 
         this.prowess = 3;
         this.strength = 5;

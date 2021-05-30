@@ -20,7 +20,7 @@ class PlayerCombat {
     }
 
     staminaGain() {
-        let staminaGain = (player.endurance * 0.15) + (player.strength - player.equipLoad);
+        let staminaGain = (player.endurance * 0.10) + (player.strength - player.equipLoad);
 
         if (player.stamina < player.endurance) {
             player.stamina += staminaGain;
