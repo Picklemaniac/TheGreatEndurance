@@ -56,7 +56,7 @@ class Enemy{
                 if (Math.random() < 0.7) {
                     //If yes, do action
                     //Drain stamina
-                    enemyCombat.offensive(this.nextAction);
+                    combatActions.offensive(player, currentEnemy, this.nextAction);
                 }
                 //Choose a new action
                 this.nextAction = null;

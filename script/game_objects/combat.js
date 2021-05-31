@@ -1,13 +1,21 @@
-let playerCombat
-let enemyCombat
+let combatActions
 
-class PlayerCombat {
-    offensive(action) {
-        if (player.stamina > this.staminaDrain(action.stamina_usage)) {
-            let damage = player.weaponEquiped.attack + (((player.weaponEquiped.attack +  player.prowess) / 100)) * (player.prowess  + action.damage);
+class CombatActions {
+    offensive(target, self, action) {
+        if (self.stamina > this.staminaDrain(self, action.stamina_usage)) {
+            let damage;
+
+            if (self === player) {
+                damage = player.weaponEquiped.attack + (((player.weaponEquiped.attack +  player.prowess) / 100)) * (player.prowess  + action.damage);
+            }
+            else if (self === currentEnemy) {
+                damage = action.damage + (((action.damage + currentEnemy.prowess) / 100) * currentEnemy.prowess)
+            }
+
             damage += (damage / 100 * Math.floor(Math.random()*16));
-            currentEnemy.health -= Math.round(damage);
-            player.stamina -= this.staminaDrain(action.stamina_usage);
+
+            target.health -= Math.round(damage);
+            self.stamina -= this.staminaDrain(self, action.stamina_usage);
         }
     }
 
@@ -15,51 +23,31 @@ class PlayerCombat {
 
     }
 
-    staminaDrain(baseStaminaUsage) {
-        return Math.round(baseStaminaUsage - ((baseStaminaUsage / 100) + player.strength - player.equipLoad));
-    }
-
-    staminaGain() {
-        let staminaGain = (player.endurance * 0.10) + (player.strength - player.equipLoad);
-
-        if (player.stamina < player.endurance) {
-            player.stamina += staminaGain;
+    staminaDrain(self, baseStaminaUsage) {
+        if (self === player) {
+            return Math.round(baseStaminaUsage - ((baseStaminaUsage / 100) + player.strength - player.equipLoad));
         }
-        if (player.stamina > player.endurance) {
-            player.stamina = player.endurance;
-        }
-    }
-}
-
-class EnemyCombat {
-    offensive(action) {
-        if (currentEnemy.stamina > this.staminaDrain(action.stamina_usage)) {
-            let damage = action.damage + (((action.damage + currentEnemy.prowess) / 100) * currentEnemy.prowess)
-            damage += (damage / 100 * Math.floor(Math.random()*16));
-            player.health -= Math.round(damage);
-            currentEnemy.stamina -= this.staminaDrain(action.stamina_usage);
+        else if (self === currentEnemy) {
+            return Math.round(baseStaminaUsage - ((baseStaminaUsage / 100) + currentEnemy.strength));
         }
     }
 
-    defensive() {
+    staminaGain(self) {
+        let staminaGain;
 
-    }
-
-    staminaDrain(baseStaminaUsage) {
-        return Math.round(baseStaminaUsage - ((baseStaminaUsage / 100) + currentEnemy.strength));
-    }
-
-    staminaGain() {
-        let staminaGain = (currentEnemy.endurance * 0.10) + currentEnemy.strength;
-
-        if (currentEnemy.stamina < currentEnemy.endurance) {
-            currentEnemy.stamina += staminaGain;
+        if (self === player) {
+            staminaGain = (player.endurance * 0.10) + (player.strength - player.equipLoad);
+        }
+        else if (self === currentEnemy) {
+            staminaGain = (currentEnemy.endurance * 0.10) + currentEnemy.strength;
         }
 
-        if (currentEnemy.stamina > currentEnemy.endurance) {
-            currentEnemy.stamina = currentEnemy.endurance;
+        if (self.stamina < self.endurance) {
+            self.stamina += staminaGain;
+        }
+
+        if (self.stamina > self.endurance) {
+            self.stamina = self.endurance;
         }
     }
-
-
 }

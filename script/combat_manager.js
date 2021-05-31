@@ -40,8 +40,8 @@ class CombatManager {
         let staminaRegenInterval = setInterval(() => {
             currentEnemy.combatBehaviour();
 
-            enemyCombat.staminaGain();
-            playerCombat.staminaGain();
+            combatActions.staminaGain(currentEnemy);
+            combatActions.staminaGain(player);
         }, 1000)
 
     }
@@ -95,7 +95,7 @@ class CombatManager {
         evadeCombatAction.className = "navBtnStyling";
 
         attackCombatAction.addEventListener("click", function (){
-            playerCombat.offensive({name: "Attack", stamina_usage: 20, damage: 1});
+            combatActions.offensive(currentEnemy, player, {name: "Attack", stamina_usage: 20, damage: 1});
         });
 
         defendCombatAction.addEventListener("click", function (){
