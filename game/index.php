@@ -101,11 +101,18 @@
         </div>
         <div id="currentEvents" class="currentEvents">
 
-            <div id="container" style="display: none"></div>
-            <div id="enemyStats">
+            <div id="container" style="display: none">
 
             </div>
-            <hr>
+
+            <div class="enemyContainer" id="enemyContainer">
+                <div id="enemyStats"></div>
+                <hr>
+                <div id="combatText">
+
+                </div>
+            </div>
+
             <div>
 
             </div>

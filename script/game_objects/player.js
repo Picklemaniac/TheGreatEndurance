@@ -15,14 +15,19 @@ class Player {
         this.prowess = 3;
         this.strength = 5;
 
+        this.dexterity = 5;
+
         this.thirst = 50;
         this.hunger = 50;
-
 
         //Equipment
         this.weaponEquiped = { type: "weapon", rarity: 0, inv_space: 0, weight: 0, attack: 1, name: "Fists", description: ""};
         this.armorEquiped = null;
         this.equipLoad = 3;
+
+        //Combat management
+        this.defensiveStance = null;
+
 
         //Misc
         this.selectedItem = null;

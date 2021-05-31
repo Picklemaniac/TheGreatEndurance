@@ -13,14 +13,37 @@ class CombatActions {
             }
 
             damage += (damage / 100 * Math.floor(Math.random()*16));
+            damage = Math.round(damage);
+
+            if (target.defensiveStance !== null) {
+                console.log(`
+                Blocked for: ${target.defensiveStance}
+                ----------------
+                Damage first was: ${damage}
+                `)
+
+
+                damage -= (damage / 100) * target.defensiveStance;
+
+
+                console.log(`
+                ----------------
+                New damage is: ${damage}
+                `)
+
+                target.defensiveStance = null;
+            }
 
             target.health -= Math.round(damage);
             self.stamina -= this.staminaDrain(self, action.stamina_usage);
         }
     }
 
-    defensive() {
-
+    defensive(self, action) {
+        //Pick the percentage of damage blocked based on the action
+        console.log("Block Activated")
+        self.defensiveStance = Math.floor(Math.random() * (action.blocks[1] - action.blocks[0] + 1)) + action.blocks[0];
+        self.stamina -= this.staminaDrain(self, action.stamina_usage);
     }
 
     staminaDrain(self, baseStaminaUsage) {

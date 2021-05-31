@@ -138,10 +138,16 @@
     width: 95%;
 }
 
+.enemyContainer {
+    text-align: center;
+}
+
 hr {
     border-color: #939393;
     width: 100%;
 }
+
+
 
 /* Grid Stuff*/
 html, body {

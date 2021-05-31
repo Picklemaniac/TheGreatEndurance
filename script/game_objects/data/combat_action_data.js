@@ -10,9 +10,10 @@ const combat_actions = {
 
     //Prevents your own stats from changing in some way
     defensive: [
-        {name: "Hold up sword", stamina_usage: 20, blocks: [0, 20], fail_chance: 40},
-        {name: "Hold up shield", stamina_usage: 60, blocks: [0, 50], fail_chance: 20},
-        {name: "Quick step", stamina_usage: 30, blocks: [100, 100], fail_chance: 80},
-        {name: "Evade", stamina_usage: 60, blocks: [100, 100], fail_chance: 50},
+        {name: "Defend", stamina_usage: 20, blocks: [0, 20]},
+        {name: "Hold up sword", stamina_usage: 20, blocks: [0, 20]},
+        {name: "Hold up shield", stamina_usage: 60, blocks: [0, 50]},
+        {name: "Quick step", stamina_usage: 30, blocks: [100, 100]},
+        {name: "Evade", stamina_usage: 60, blocks: [100, 100]},
     ],
 }

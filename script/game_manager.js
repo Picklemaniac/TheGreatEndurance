@@ -76,9 +76,8 @@ class GameManager {
 
     displayEnemyStats(){
         document.getElementById('enemyStats').innerText = `
-        Name: ${currentEnemy.name}
+        ${currentEnemy.name}
         Health: ${currentEnemy.health}
-        Attack: ${currentEnemy.prowess}
         Stamina: ${currentEnemy.stamina}
         `
     }

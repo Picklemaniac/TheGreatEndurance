@@ -14,6 +14,8 @@ class Enemy{
         this.prowess = enemy.stats[3];
         this.strength = enemy.stats[4];
 
+
+
         //Combat actions
         this.offensiveCombatActions = enemy.offensive;
         this.defensiveCombatActions = enemy.defensive;
@@ -21,6 +23,7 @@ class Enemy{
 
         //Combat management
         this.nextAction = null;
+        this.nextActionType = null;
         this.defensiveStance = null;
     }
 
@@ -36,11 +39,12 @@ class Enemy{
                 case 0:
                     if (this.offensiveCombatActions === []) return;
                     this.nextAction = this.randomCombatAction(this.offensiveCombatActions, combat_actions.offensive);
-                    console.log(this.nextAction)
+                    this.nextActionType = 'offensive'
                     break;
                 case 1:
                     if (this.defensiveCombatActions === []) return;
-                    // this.nextAction = this.randomCombatAction(this.defensiveCombatActions, combat_actions.defensive);
+                    this.nextAction = this.randomCombatAction(this.defensiveCombatActions, combat_actions.defensive);
+                    this.nextActionType = 'defensive'
                     break;
                 case 2:
                     if (this.specialCombatActions === []) return;
@@ -48,19 +52,28 @@ class Enemy{
             }
         }
         else {
-            console.log(this.nextAction)
             //Wait until you have enough stamina to do chosen combat action
-            if (this.stamina >= this.nextAction.stamina_usage) {
+            if (this.stamina >= combatActions.staminaDrain(currentEnemy, this.nextAction.stamina_usage)) {
                 //If have enough stamina
                 //Decide if you want to do it or not.
                 if (Math.random() < 0.7) {
                     //If yes, do action
                     //Drain stamina
-                    combatActions.offensive(player, currentEnemy, this.nextAction);
+                        console.log(this.nextAction)
+
+                        switch (this.nextActionType){
+                            case 'offensive':
+                                combatActions.offensive(player, currentEnemy, this.nextAction);
+                                break;
+                            case 'defensive':
+                                combatActions.defensive(currentEnemy, this.nextAction);
+                                break;
+                        }
                 }
+            }
                 //Choose a new action
                 this.nextAction = null;
-            }
+                this.nextActionType = null;
         }
     }
 }

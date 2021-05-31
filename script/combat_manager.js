@@ -71,10 +71,6 @@ class CombatManager {
 
         let generatedEnemy = possibleEnemies[Math.floor(Math.random() * possibleEnemies.length)];
 
-        console.log(`
-        Generated enemy: ${JSON.stringify(generatedEnemy)}
-        `)
-
         currentEnemy = new Enemy(generatedEnemy);
     }
 
@@ -99,11 +95,12 @@ class CombatManager {
         });
 
         defendCombatAction.addEventListener("click", function (){
+            combatActions.defensive(player, {name: "Defend", stamina_usage: 20, blocks: [20, 50]});
 
         });
 
         evadeCombatAction.addEventListener("click", function (){
-
+            combatActions.defensive(player, {name: "Defend", stamina_usage: 20, blocks: [100, 100]});
         });
 
         document.getElementById("currentActionButtons").append(attackCombatAction);
