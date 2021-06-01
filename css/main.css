@@ -277,8 +277,6 @@ html, body {
     border-color: #939393;
     border-style: solid;
     border-width: 2px;
-    display: flex;
-    flex-direction: column-reverse;
 }
 
 .currentEvents {

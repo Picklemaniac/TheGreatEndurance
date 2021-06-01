@@ -94,10 +94,6 @@
         <div class="logoText">The Great Endurance</div>
         <div id="historyText" class="historyText">
             <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
-            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
-            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
-            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
-            <p class="historyParagraph">A rat bites your leg as you traverse the dark hallway...</p>
         </div>
         <div id="currentEvents" class="currentEvents">
 

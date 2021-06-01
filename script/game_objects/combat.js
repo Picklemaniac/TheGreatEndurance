@@ -34,12 +34,15 @@ class CombatActions {
                 target.defensiveStance = null;
             }
 
+            combatManager.displayCombatText("An attack just happened");
+
             target.health -= Math.round(damage);
             self.stamina -= this.staminaDrain(self, action.stamina_usage);
         }
     }
 
     defensive(self, action) {
+        combatManager.displayCombatText("A <span class='bad'>defense</span> just happened");
         //Pick the percentage of damage blocked based on the action
         console.log("Block Activated")
         self.defensiveStance = Math.floor(Math.random() * (action.blocks[1] - action.blocks[0] + 1)) + action.blocks[0];

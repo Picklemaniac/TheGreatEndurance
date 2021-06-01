@@ -109,4 +109,15 @@ class CombatManager {
 
         //Combat actions based on equipment go here
     }
+
+    displayCombatText(text) {
+        let textDisplay = document.createElement('p');
+        textDisplay.innerHTML = text
+        document.getElementById('combatText').append(textDisplay);
+        setTimeout(function () {
+            document.getElementById('combatText').removeChild(textDisplay);
+            textDisplay.className = 'historyParagraph';
+            document.getElementById('historyText').append(textDisplay);
+        }, 1500)
+    }
 }
