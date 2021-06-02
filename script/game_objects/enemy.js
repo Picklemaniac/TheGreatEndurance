@@ -15,7 +15,6 @@ class Enemy{
         this.strength = enemy.stats[4];
 
 
-
         //Combat actions
         this.offensiveCombatActions = enemy.offensive;
         this.defensiveCombatActions = enemy.defensive;
@@ -53,7 +52,7 @@ class Enemy{
         }
         else {
             //Wait until you have enough stamina to do chosen combat action
-            if (this.stamina >= combatActions.staminaDrain(currentEnemy, this.nextAction.stamina_usage)) {
+            if (this.stamina >= combat.staminaDrain(currentEnemy, this.nextAction.stamina_usage)) {
                 //If have enough stamina
                 //Decide if you want to do it or not.
                 if (Math.random() < 0.7) {
@@ -63,10 +62,10 @@ class Enemy{
 
                         switch (this.nextActionType){
                             case 'offensive':
-                                combatActions.offensive(player, currentEnemy, this.nextAction);
+                                combat.offensive(player, currentEnemy, this.nextAction);
                                 break;
                             case 'defensive':
-                                combatActions.defensive(currentEnemy, this.nextAction);
+                                combat.defensive(currentEnemy, this.nextAction);
                                 break;
                         }
                 }

@@ -32,7 +32,7 @@ class GameManager {
         player = new Player();
         inventory = new Inventory();
         map = new Map();
-        combatActions = new CombatActions();
+        combat = new Combat();
 
         this.initializeButtons();
         this.displayStats();

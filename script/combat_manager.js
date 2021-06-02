@@ -40,8 +40,8 @@ class CombatManager {
         let staminaRegenInterval = setInterval(() => {
             currentEnemy.combatBehaviour();
 
-            combatActions.staminaGain(currentEnemy);
-            combatActions.staminaGain(player);
+            combat.staminaGain(currentEnemy);
+            combat.staminaGain(player);
         }, 1000)
 
     }
@@ -82,7 +82,7 @@ class CombatManager {
         let defendCombatAction = document.createElement("button");
         let evadeCombatAction = document.createElement("button");
 
-        attackCombatAction.innerText = "Attack";
+        attackCombatAction.innerText = "Punch";
         defendCombatAction.innerText = "Defend";
         evadeCombatAction.innerText = "Evade";
 
@@ -91,16 +91,16 @@ class CombatManager {
         evadeCombatAction.className = "navBtnStyling";
 
         attackCombatAction.addEventListener("click", function (){
-            combatActions.offensive(currentEnemy, player, {name: "Attack", stamina_usage: 20, damage: 1});
+            combat.offensive(currentEnemy, player, {name: "Punch", stamina_usage: 20, damage: 1});
         });
 
         defendCombatAction.addEventListener("click", function (){
-            combatActions.defensive(player, {name: "Defend", stamina_usage: 20, blocks: [20, 50]});
+            combat.defensive(player, {name: "Defend", stamina_usage: 20, blocks: [20, 50]});
 
         });
 
         evadeCombatAction.addEventListener("click", function (){
-            combatActions.defensive(player, {name: "Defend", stamina_usage: 20, blocks: [100, 100]});
+            combat.defensive(player, {name: "Evade", stamina_usage: 20, blocks: [100, 100]});
         });
 
         document.getElementById("currentActionButtons").append(attackCombatAction);
@@ -108,6 +108,25 @@ class CombatManager {
         document.getElementById("currentActionButtons").append(evadeCombatAction);
 
         //Combat actions based on equipment go here
+    }
+
+    generatePlayerCombatText(action, target, weapon, type) {
+        let generatedText;
+
+        switch (type) {
+            case 'offensive':
+                generatedText = `You ${action.name} the ${target.name} using your ${weapon.name}. `
+                break;
+            case 'defensive':
+                generatedText = `You ${action.name} in preperation for the ${target.name}'s next attack.`
+                break;
+        }
+
+        return generatedText;
+    }
+
+    generateEnemyCombatText() {
+
     }
 
     displayCombatText(text) {

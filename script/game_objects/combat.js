@@ -1,52 +1,58 @@
-let combatActions
+let combat;
+let playerCombat;
+let enemyCombat;
 
-class CombatActions {
+class Combat {
     offensive(target, self, action) {
         if (self.stamina > this.staminaDrain(self, action.stamina_usage)) {
             let damage;
+            let combatText = '';
 
             if (self === player) {
                 damage = player.weaponEquiped.attack + (((player.weaponEquiped.attack +  player.prowess) / 100)) * (player.prowess  + action.damage);
+                combatText = combatManager.generatePlayerCombatText(action, currentEnemy, player.weaponEquiped, 'offensive');
             }
+
             else if (self === currentEnemy) {
                 damage = action.damage + (((action.damage + currentEnemy.prowess) / 100) * currentEnemy.prowess)
+                combatText = 'The enemy attacks you';
             }
 
             damage += (damage / 100 * Math.floor(Math.random()*16));
             damage = Math.round(damage);
 
             if (target.defensiveStance !== null) {
-                console.log(`
-                Blocked for: ${target.defensiveStance}
-                ----------------
-                Damage first was: ${damage}
-                `)
-
-
                 damage -= (damage / 100) * target.defensiveStance;
 
-
-                console.log(`
-                ----------------
-                New damage is: ${damage}
-                `)
+                if (target === currentEnemy) {
+                    combatText = `You try to attack the ${target.name} but he evaded it`
+                }
+                else if (target === player) {
+                    combatText = `The ${currentEnemy.name} tries to attack you using ${action.name}, but you evaded it`
+                }
 
                 target.defensiveStance = null;
             }
 
-            combatManager.displayCombatText("An attack just happened");
-
             target.health -= Math.round(damage);
             self.stamina -= this.staminaDrain(self, action.stamina_usage);
+            combatManager.displayCombatText(combatText)
         }
     }
 
     defensive(self, action) {
-        combatManager.displayCombatText("A <span class='bad'>defense</span> just happened");
-        //Pick the percentage of damage blocked based on the action
-        console.log("Block Activated")
+        let combatText = '';
         self.defensiveStance = Math.floor(Math.random() * (action.blocks[1] - action.blocks[0] + 1)) + action.blocks[0];
         self.stamina -= this.staminaDrain(self, action.stamina_usage);
+
+        if (self === player) {
+            combatText = combatManager.generatePlayerCombatText(action, currentEnemy, player.weaponEquiped, 'defensive');
+        }
+        else if (self === currentEnemy) {
+            combatText = 'The enemy prepares a defense'
+        }
+
+        combatManager.displayCombatText(combatText)
     }
 
     staminaDrain(self, baseStaminaUsage) {
@@ -76,4 +82,6 @@ class CombatActions {
             self.stamina = self.endurance;
         }
     }
+
+    //Define special things here:
 }
