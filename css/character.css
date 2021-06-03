@@ -1,0 +1,20 @@
+.characterInfoBody {
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2.5fr;
+    gap: 1.5vh 0px;
+    grid-template-areas:
+    "logoText"
+    "characterInfoDiv";
+    grid-area: gameBody;
+    height: 45vmax;
+}
+
+.characterInfoDiv {
+    grid-area: characterInfoDiv;
+    background: #262626;
+    border-color: #939393;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 1.0vw;
+}

@@ -111,18 +111,25 @@ class CombatManager {
     }
 
     generatePlayerCombatText(action, target, weapon, type) {
-        let generatedText;
 
-        switch (type) {
-            case 'offensive':
-                generatedText = `You ${action.name} the ${target.name} using your ${weapon.name}. `
-                break;
-            case 'defensive':
-                generatedText = `You ${action.name} in preperation for the ${target.name}'s next attack.`
-                break;
-        }
 
-        return generatedText;
+
+
+
+
+
+        // let generatedText;
+        //
+        // switch (type) {
+        //     case 'offensive':
+        //         generatedText = `You ${action.name} the ${target.name} using your ${weapon.name}. `
+        //         break;
+        //     case 'defensive':
+        //         generatedText = `You ${action.name} in preperation for the ${target.name}'s next attack.`
+        //         break;
+        // }
+        //
+        // return generatedText;
     }
 
     generateEnemyCombatText() {

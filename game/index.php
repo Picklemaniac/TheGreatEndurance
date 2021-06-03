@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/inventory.css">
-    <title>Test</title>
+    <link rel="stylesheet" href="../css/character.css">
+    <title>The Great Endurance</title>
 </head>
 <body>
 <div class="grid-container">
@@ -83,7 +84,7 @@
             <br>
             <button onclick="openStatsMood()" class="mediumBtnStyling">Stats / Mood</button>
             <br>
-            <button onclick="openCharacterMenu()" class="mediumBtnStyling">Character</button>
+            <button onclick="openCharacterInfo()" class="mediumBtnStyling">Character</button>
             <br>
             <button onclick="openMainMenu()" class="mediumBtnStyling">Home / Menu</button>
         </div>
@@ -159,7 +160,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="inventoryActions">
@@ -170,8 +170,19 @@
         </div>
     </div>
 
+    <div id="characterInfoBody" class="characterInfoBody">
+        <div class="logoText">The Great Endurance</div>
+        <div class="characterInfoDiv">
+            <button id="backBtn" class="navBtnStyling">Back</button>
+            <hr>
+            Stats:
 
+        </div>
+    </div>
 </div>
+
+
+
 
 </body>
 

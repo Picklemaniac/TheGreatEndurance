@@ -14,6 +14,8 @@ class Enemy{
         this.prowess = enemy.stats[3];
         this.strength = enemy.stats[4];
 
+        this.bodyparts = enemy.bodyparts;
+
 
         //Combat actions
         this.offensiveCombatActions = enemy.offensive;

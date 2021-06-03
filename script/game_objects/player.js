@@ -25,8 +25,21 @@ class Player {
         this.armorEquiped = null;
         this.equipLoad = 3;
 
+
         //Combat management
         this.defensiveStance = null;
+        this.anatomy = {
+            head: {health: 5, equipped: null},
+            torso: {health: 5, equipped: null},
+            leftArm: {health: 5, equipped: null},
+            rightArm: {health: 5, equipped: null},
+            leftHand: {health: 5, equipped: null},
+            rightHand: {health: 5, equipped: null},
+            leftLeg: {health: 5, equipped: null},
+            rightLeg: {health: 5, equipped: null},
+            leftFoot: {health: 5, equipped: null},
+            rightFoot: {health: 5, equipped: null},
+        }
 
 
         //Misc
