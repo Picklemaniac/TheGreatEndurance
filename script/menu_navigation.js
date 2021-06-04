@@ -1,7 +1,7 @@
 const gameBody = document.getElementById('gameBody');
 const inventoryBody = document.getElementById('inventoryBody');
 const characterInfoBody = document.getElementById('characterInfoBody');
-const backButton = document.getElementById("backBtn");
+const backButton = document.getElementsByClassName("backBtn");
 
 
 
@@ -44,6 +44,9 @@ function openMainMenu() {
     //Back to home menu?
 }
 
-backButton.addEventListener("click", function () {
-    backToGame();
-});
+for(let i = 0; i < backButton.length; i++) {
+    backButton[i].addEventListener("click", function () {
+        backToGame();
+    });
+}
+

@@ -1,15 +1,9 @@
 const items = {
     equipment: [
         { type: "weapon", rarity: 0, inv_space: 2, weight: 2, attack: 3, name: "Stone blade", description: "A big blade made of stone"},
-        { type: "weapon", rarity: 1, inv_space: 2, weight: 1, attack: 3, name: "Iron blade", description: "A big blade made of iron"},
+        { type: "weapon", rarity: 1, inv_space: 2, weight: 1, attack: 3, offensive: ['Uppercut'], defensive: ['Hold Up Sword'], name: "Iron blade",  description: "A big blade made of iron"},
         { type: "weapon", rarity: 2, inv_space: 2, weight: 2, attack: 3, name: "Cruel Edge", description: "The cruelest of all blades"},
 
-        { type: "weapon", rarity: 0, inv_space: 3, weight: 2, attack: 3, name: "stone blade", description: ""},
-        { type: "weapon", rarity: 1, inv_space: 3, weight: 1, attack: 3, name: "iron blade", description: ""},
-        { type: "weapon", rarity: 3, inv_space: 3, weight: 2, attack: 3, name: "Cruel Blade", description: ""},
-
-        { type: "weapon", rarity: 0, inv_space: 1, weight: 2, attack: 3, name: "Stone gauntlets", description: "", },
-        { type: "weapon", rarity: 1, inv_space: 1, weight: 1, attack: 3, name: "Iron gauntlets", description: "", },
         { type: "weapon", rarity: 4, inv_space: 1, weight: 2, attack: 3, name: "Cruel hands", description: "", },
 
         { type: "weapon", rarity: 0, inv_space: 2, weight: 2, attack: 3, name: "Stone pole", description: ""},
@@ -18,7 +12,7 @@ const items = {
 
         { type: "armor", rarity: 0, inv_space: 2, weight: 1, defense: 1, name: "Leather boots", description: "Boots made of leather"},
         { type: "armor", rarity: 1, inv_space: 2, weight: 2, defense: 3, name: "Torn leggings", description: "Ragged leggings, that look like they haven't been worn in ages"},
-        { type: "armor", rarity: 2, inv_space: 2, weight: 1, defense: 2, name: "Iron gauntles (Armor)", description: "Rusty gauntles made of a strong material"},
+        { type: "armor", rarity: 2, inv_space: 2, weight: 1, defense: 2, name: "Iron Gauntlet", description: "Rusty gauntles made of a strong material"},
         { type: "armor", rarity: 3, inv_space: 2, weight: 2, defense: 2, name: "Fur cap", description: "A small, yet thick cap made of fur"},
         { type: "armor", rarity: 4, inv_space: 2, weight: 5, defense: 5, name: "Iron chestplate", description: "A large metalic plate of iron"},
     ],

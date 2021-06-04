@@ -72,6 +72,7 @@ class CombatManager {
         let generatedEnemy = possibleEnemies[Math.floor(Math.random() * possibleEnemies.length)];
 
         currentEnemy = new Enemy(generatedEnemy);
+        currentEnemy.possibleActions();
     }
 
     displayCombatChoices() {

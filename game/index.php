@@ -123,8 +123,13 @@
             </div>
 
             <div class="combat">
-                <button class="navBtnStyling">Attack</button><br>
-                <button class="navBtnStyling">Defend</button>
+                <button class="navBtnStyling">Head</button><br>
+                <button class="navBtnStyling">Body</button>
+                <button class="navBtnStyling">Left leg</button>
+                <button class="navBtnStyling">Right leg</button>
+                <button class="navBtnStyling">Left arm</button>
+                <button class="navBtnStyling">Right arm</button>
+
             </div>
 
             <div class="navigation">
@@ -140,7 +145,7 @@
         <div class="logoText">The Great Endurance</div>
         <div class="inventoryDiv">
 
-            <button id="backBtn" class="navBtnStyling">Back</button>
+            <button id="backBtn" class="navBtnStyling backBtn">Back</button>
             <hr>
             <div id="fullInventory" class="fullInventory">
 
@@ -173,7 +178,7 @@
     <div id="characterInfoBody" class="characterInfoBody">
         <div class="logoText">The Great Endurance</div>
         <div class="characterInfoDiv">
-            <button id="backBtn" class="navBtnStyling">Back</button>
+            <button id="backBtn" class="navBtnStyling backBtn">Back</button>
             <hr>
             Stats:
 

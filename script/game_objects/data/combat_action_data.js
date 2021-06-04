@@ -1,6 +1,14 @@
 const combat_actions = {
     //Changes enemy stats in some way
     offensive: [
+        {name: "Punch", stamina_usage: 15, damage: 1},
+        {name: "Claw", stamina_usage: 20, damage: 2},
+        {name: "Scratch", stamina_usage: 40, damage: 4},
+        {name: "Tear", stamina_usage: 50, damage: 5},
+
+        {name: "Uppercut", stamina_usage: 30, damage: 3},
+        {name: "Slash", stamina_usage: 40, damage: 5},
+
         {name: "Attack", stamina_usage: 20, damage: 1},
         {name: "Light attack", stamina_usage: 10, damage: 2},
         {name: "Heavy attack", stamina_usage: 50, damage: 3},
