@@ -101,7 +101,8 @@ class Enemy{
 
     randomCombatAction(actionType, actionTypeArray) {
         let randomPossibleAction = actionType[Math.floor(Math.random() * actionType.length)];
-        return actionTypeArray.find(obj => obj.name.toLowerCase() === randomPossibleAction.toLowerCase());
+        console.log(randomPossibleAction)
+        return randomPossibleAction;
     }
 
     combatBehaviour() {

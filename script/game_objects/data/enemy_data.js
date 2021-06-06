@@ -6,10 +6,10 @@ const enemies = {
             anatomy: [
                 {name: 'head', health: 20, weapon: null, armor: null, offensive : ['Small bite'], defensive: []},
                 {name: 'body', health: 20, weapon: null, armor: null, offensive : [], defensive: []},
-                {name: 'front left paw', health: 4, weapon: null, armor: null, offensive : ['Light attack'], defensive: []},
-                {name: 'front right paw', health: 4, weapon: null, armor: null, offensive : ['Light attack'], defensive: []},
-                {name: 'back left paw', health: 4, weapon: null, armor: null, offensive : [], defensive: ['Quick step']},
-                {name: 'back right paw', health: 4, weapon: null, armor: null, offensive : [], defensive: ['Quick step']},
+                {name: 'front left paw', health: 6, weapon: null, armor: null, offensive : ['Light attack'], defensive: []},
+                {name: 'front right paw', health: 6, weapon: null, armor: null, offensive : ['Light attack'], defensive: []},
+                {name: 'back left paw', health: 6, weapon: null, armor: null, offensive : [], defensive: ['Quick step']},
+                {name: 'back right paw', health: 6, weapon: null, armor: null, offensive : [], defensive: ['Quick step']},
             ]
         }
     ],

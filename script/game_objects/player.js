@@ -28,19 +28,18 @@ class Player {
 
         //Combat management
         this.defensiveStance = null;
-        this.anatomy = {
-            head: {health: 5, equipped: null},
-            torso: {health: 5, equipped: null},
-            leftArm: {health: 5, equipped: null},
-            rightArm: {health: 5, equipped: null},
-            leftHand: {health: 5, equipped: null},
-            rightHand: {health: 5, equipped: null},
-            leftLeg: {health: 5, equipped: null},
-            rightLeg: {health: 5, equipped: null},
-            leftFoot: {health: 5, equipped: null},
-            rightFoot: {health: 5, equipped: null},
-        }
-
+        this.anatomy = [
+            {name: 'head', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'torso', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'left arm', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'right arm', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'left hand', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'right hand', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'left leg', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'right leg', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'left foot', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'right foot', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+        ]
 
         //Misc
         this.selectedItem = null;
