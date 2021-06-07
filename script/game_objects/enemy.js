@@ -18,8 +18,7 @@ class Enemy{
 
         this.equipLoad = 0;
 
-
-        // //Combat actions
+        //Combat actions
         this.offensiveCombatActions = [];
         this.defensiveCombatActions = [];
 
@@ -92,16 +91,16 @@ class Enemy{
             }
         }
 
-        console.log('--------------------------')
-        console.log(this.offensiveCombatActions)
-        console.log('--------------------------')
-        console.log(this.defensiveCombatActions)
+        // console.log('--------------------------')
+        // console.log(this.offensiveCombatActions)
+        // console.log('--------------------------')
+        // console.log(this.defensiveCombatActions)
     }
 
 
     randomCombatAction(actionType, actionTypeArray) {
         let randomPossibleAction = actionType[Math.floor(Math.random() * actionType.length)];
-        console.log(randomPossibleAction)
+        // console.log(randomPossibleAction)
         return randomPossibleAction;
     }
 
@@ -133,7 +132,7 @@ class Enemy{
 
                         switch (this.nextActionType){
                             case 'offensive':
-                                combat.offensive(player, currentEnemy, this.nextAction);
+                                combat.offensive(currentEnemy, player, this.nextAction);
                                 break;
                             case 'defensive':
                                 combat.defensive(currentEnemy, this.nextAction);

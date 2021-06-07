@@ -34,6 +34,8 @@ class GameManager {
         map = new Map();
         combat = new Combat();
 
+        player.possibleActions();
+
         this.initializeButtons();
         this.displayStats();
         this.displayControls();

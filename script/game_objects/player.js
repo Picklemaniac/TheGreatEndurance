@@ -7,8 +7,10 @@ class Player {
         this.ylocation = 2;
         this.xlocation = 3;
 
+        this.name = "You"
+
         //General Stats
-        this.health = 20;
+        this.health = 100;
         this.stamina = 50;
         this.endurance = 80;
 
@@ -20,8 +22,11 @@ class Player {
         this.thirst = 50;
         this.hunger = 50;
 
+        this.offensiveCombatActions = [];
+        this.defensiveCombatActions = [];
+
         //Equipment
-        this.weaponEquiped = { type: "weapon", rarity: 0, inv_space: 0, weight: 0, attack: 1, name: "Fists", description: ""};
+        this.weaponEquiped = null;
         this.armorEquiped = null;
         this.equipLoad = 3;
 
@@ -30,11 +35,11 @@ class Player {
         this.defensiveStance = null;
         this.anatomy = [
             {name: 'head', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
-            {name: 'torso', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'torso', health: 60, weapon: null, armor: null, offensive : [], defensive: ['Evade']},
             {name: 'left arm', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
             {name: 'right arm', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
-            {name: 'left hand', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
-            {name: 'right hand', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
+            {name: 'left hand', health: 60, weapon: 'iron blade', armor: null, offensive : [], defensive: []},
+            {name: 'right hand', health: 60, weapon: null, armor: null, offensive : ['Punch'], defensive: []},
             {name: 'left leg', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
             {name: 'right leg', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
             {name: 'left foot', health: 60, weapon: null, armor: null, offensive : [], defensive: []},
@@ -43,6 +48,75 @@ class Player {
 
         //Misc
         this.selectedItem = null;
+    }
+
+    possibleActions() {
+
+        this.offensiveCombatActions = [];
+        this.defensiveCombatActions = [];
+
+        for (let i = 0; i < this.anatomy.length; i++) {
+
+            if (this.anatomy[i].weapon !== null) {
+                let weapon = items.equipment.find(obj => obj.name.toLowerCase() === this.anatomy[i].weapon.toLowerCase())
+                console.log(weapon)
+                weapon.offensive.forEach(element => {
+                    let actionInfo = combat_actions.offensive.find(obj => obj.name.toLowerCase() === element.toLowerCase())
+                    let offensiveAction = {};
+                    offensiveAction["action_using"] = weapon.name;
+                    offensiveAction["name"] = actionInfo.name;
+                    offensiveAction["stamina_usage"] = actionInfo.stamina_usage;
+                    offensiveAction["damage"] = actionInfo.damage;
+                    offensiveAction["weapon_attack"] = weapon.attack;
+                    this.offensiveCombatActions.push(offensiveAction);
+                })
+
+            }
+
+            if (this.anatomy[i].armor !== null) {
+                let armor = items.equipment.find(obj => obj.name.toLowerCase() === this.anatomy[i].armor.toLowerCase())
+                console.log(armor)
+                armor.offensive.forEach(element => {
+                    let actionInfo = combat_actions.offensive.find(obj => obj.name.toLowerCase() === element.toLowerCase())
+                    let offensiveAction = {};
+                    offensiveAction["action_using"] = armor.name;
+                    offensiveAction["name"] = actionInfo.name;
+                    offensiveAction["stamina_usage"] = actionInfo.stamina_usage;
+                    offensiveAction["damage"] = actionInfo.damage;
+                    this.offensiveCombatActions.push(offensiveAction);
+                })
+            }
+
+            if (this.anatomy[i].offensive !== null) {
+                this.anatomy[i].offensive.forEach(element => {
+                    //Yes, I know this is shit. I tried to use array.push but it fucks up every single time
+                    let actionInfo = combat_actions.offensive.find(obj => obj.name.toLowerCase() === element.toLowerCase())
+                    let offensiveAction = {};
+                    offensiveAction["action_using"] = this.anatomy[i].name;
+                    offensiveAction["name"] = actionInfo.name;
+                    offensiveAction["stamina_usage"] = actionInfo.stamina_usage;
+                    offensiveAction["damage"] = actionInfo.damage;
+                    this.offensiveCombatActions.push(offensiveAction);
+                })
+            }
+
+            if (this.anatomy[i].defensive !== null) {
+                this.anatomy[i].defensive.forEach(element => {
+                    //Yes, I know this is shit. I tried to use array.push but it fucks up every single time
+                    let actionInfo = combat_actions.defensive.find(obj => obj.name.toLowerCase() === element.toLowerCase())
+                    let defensiveAction = {};
+                    defensiveAction["action_using"] = this.anatomy[i].name;
+                    defensiveAction["name"] = actionInfo.name;
+                    defensiveAction["stamina_usage"] = actionInfo.stamina_usage;
+                    defensiveAction["blocks"] = actionInfo.blocks;
+                    this.defensiveCombatActions.push(defensiveAction);
+                })
+            }
+        }
+
+        console.log("Possible player actions:")
+        console.log(this.offensiveCombatActions);
+        console.log(this.defensiveCombatActions);
     }
 
     //Lets the player consume an item (changes the given stats and removes the consumed item)

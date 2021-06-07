@@ -76,65 +76,31 @@ class CombatManager {
     }
 
     displayCombatChoices() {
-        //Default combat actions
-        document.getElementById("startCombatBtn").style.display = "none";
+        player.possibleActions()
 
-        let attackCombatAction = document.createElement("button");
-        let defendCombatAction = document.createElement("button");
-        let evadeCombatAction = document.createElement("button");
+        document.getElementById("currentActionButtons").innerHTML = "";
 
-        attackCombatAction.innerText = "Punch";
-        defendCombatAction.innerText = "Defend";
-        evadeCombatAction.innerText = "Evade";
+        //Show all offensive actions
+        for (let i = 0; i < player.offensiveCombatActions.length; i++) {
+            let offensiveAction = document.createElement("button");
+            offensiveAction.innerText = player.offensiveCombatActions[i].name;
+            offensiveAction.className = "navBtnStyling";
+            offensiveAction.addEventListener("click", function (){
+                combat.offensive(player, currentEnemy, player.offensiveCombatActions[i]);
+            })
+            document.getElementById("currentActionButtons").append(offensiveAction);
+        }
 
-        attackCombatAction.className = "navBtnStyling";
-        defendCombatAction.className = "navBtnStyling";
-        evadeCombatAction.className = "navBtnStyling";
-
-        attackCombatAction.addEventListener("click", function (){
-            combat.offensive(currentEnemy, player, {name: "Punch", stamina_usage: 20, damage: 1});
-        });
-
-        defendCombatAction.addEventListener("click", function (){
-            combat.defensive(player, {name: "Defend", stamina_usage: 20, blocks: [20, 50]});
-
-        });
-
-        evadeCombatAction.addEventListener("click", function (){
-            combat.defensive(player, {name: "Evade", stamina_usage: 20, blocks: [100, 100]});
-        });
-
-        document.getElementById("currentActionButtons").append(attackCombatAction);
-        document.getElementById("currentActionButtons").append(defendCombatAction);
-        document.getElementById("currentActionButtons").append(evadeCombatAction);
-
-        //Combat actions based on equipment go here
-    }
-
-    generatePlayerCombatText(action, target, weapon, type) {
-
-
-
-
-
-
-
-        // let generatedText;
-        //
-        // switch (type) {
-        //     case 'offensive':
-        //         generatedText = `You ${action.name} the ${target.name} using your ${weapon.name}. `
-        //         break;
-        //     case 'defensive':
-        //         generatedText = `You ${action.name} in preperation for the ${target.name}'s next attack.`
-        //         break;
-        // }
-        //
-        // return generatedText;
-    }
-
-    generateEnemyCombatText() {
-
+        //Show all defensive actions
+        for (let i = 0; i < player.defensiveCombatActions.length; i++) {
+            let defensiveAction = document.createElement("button");
+            defensiveAction.innerText = player.defensiveCombatActions[i].name;
+            defensiveAction.className = "navBtnStyling";
+            defensiveAction.addEventListener("click", function (){
+                combat.defensive(player, player.defensiveCombatActions[i]);
+            })
+            document.getElementById("currentActionButtons").append(defensiveAction);
+        }
     }
 
     displayCombatText(text) {
