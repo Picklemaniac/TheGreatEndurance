@@ -5,39 +5,39 @@ class Combat {
 
     offensive(self, target, action) {
         if (self.stamina > this.staminaDrain(self, action.stamina_usage)) {
-            //Your damage is a random number between the base damage of the attack,
-            // and the maximum amount of damage you can do using your general combat skill
-
-            //Eventually where you hit will also matter. So sharp weapons will be stronger against flesh, and will create more bleeds
-            //Blunt weapons will have an easier time with armor, and shattering bones
-            //Armor will also take quite a toll on this
-            //etc...
-
             let bonus = 0;
 
             if (action.hasOwnProperty("weapon_attack")) {
                 bonus = action.weapon_attack;
             }
 
-            let baseDamage = action.damage + bonus;
-            //max damage = base damage + 20 percent of the base damage + your prowess
-            let maxDamage = baseDamage + (((baseDamage + currentEnemy.prowess) / 100) * 20);
-
-            let dealtDamage = Math.floor(Math.random() * maxDamage) + baseDamage
+            let baseDamage = action.damage + bonus; //Min amount of damage
+            let maxDamage = baseDamage + (((baseDamage + self.prowess) / 100) * 20); //max amount of damage is 20% of base + prowess
+            let dealtDamage = Math.floor(Math.random() * maxDamage) + baseDamage //random number between min and max
 
             let bodyPartToHit = target.anatomy[Math.floor(Math.random() * target.anatomy.length)]
 
+            target.health -= dealtDamage;
             bodyPartToHit.health -= dealtDamage;
-            this.staminaDrain(self, action.stamina_usage);
 
+            self.stamina -= this.staminaDrain(self, action.stamina_usage);
 
-            console.log(dealtDamage);
             combatManager.displayCombatText(`${self.name} used ${action.name} on ${target.name}'s ${bodyPartToHit.name}`);
+
+            // console.log(target.anatomy)
+            console.log(`
+            Name: ${self.name}
+            prowess: ${self.prowess}
+            base damage: ${baseDamage}
+            max damage: ${maxDamage}
+            `)
         }
     }
 
-    defensive() {
-
+    defensive(self, action) {
+        self.defensiveStance = Math.floor(Math.random() * (action.blocks[1] - action.blocks[0] + 1)) + action.blocks[0];
+        self.stamina -= this.staminaDrain(self, action.stamina_usage);
+        combatManager.displayCombatText(`${self.name} used ${action.name}`)
     }
 
     staminaDrain(self, baseStaminaUsage) {

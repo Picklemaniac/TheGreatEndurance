@@ -16,6 +16,7 @@ class CombatManager {
     startCombat() {
         this.pullRandomEnemy();
         this.combatLoop();
+        player.possibleActions();
         this.displayCombatChoices();
     }
 

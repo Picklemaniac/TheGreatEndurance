@@ -69,9 +69,6 @@ const enemies = {
         {
             name: "Withering Bear",
             stats: [100, 50, 150, 10, 8],
-            offensive: ['Attack', 'Heavy attack', 'Big bite'],
-            defensive: ['Evade'],
-            special: [],
             anatomy: [
                 {name: 'head', health: 100, weapon: null, armor: null, offensive : ['Big bite'], defensive: []},
                 {name: 'body', health: 200, weapon: null, armor: null, offensive : [], defensive: []},

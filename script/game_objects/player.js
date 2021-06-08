@@ -14,7 +14,7 @@ class Player {
         this.stamina = 50;
         this.endurance = 80;
 
-        this.prowess = 3;
+        this.prowess = 20;
         this.strength = 5;
 
         this.dexterity = 5;
